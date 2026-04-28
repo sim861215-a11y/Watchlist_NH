@@ -129,7 +129,7 @@ async function buildSearchPolicy(company) {
   "priority_topics": ["우선수집 주제1", "우선수집 주제2"],
   "exclude_topics": ["제외할 주제1"],
   "article_limit": 5,
-  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장)"
+  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지"
 }
 
 search_queries: 리스크 탐지에 최적화된 검색어 3개
@@ -204,7 +204,17 @@ async function collectArticles(policy) {
         if (rec.articles?.length) articles = rec.articles;
       } catch {}
     }
-    if (!articles.length) throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
+    if (!articles.length) {
+      // Gemini가 JSON 대신 "기사 없음" 설명을 텍스트로 반환한 경우 → 빈 배열로 처리
+      const noArticleKeywords = ['없습니다', '없어', '찾을 수 없', '수집할 수 없', 'no article', 'not found', '검색 결과가 없', 'i am sorry', 'unable to fulfill', 'not supported', 'cannot fulfill', 'i cannot'];
+      const isNoArticle = noArticleKeywords.some(k => raw.toLowerCase().includes(k));
+      if (isNoArticle) {
+        log(`     → Gemini: 해당 기간 기사 없음 (정상 처리)`);
+        articles = [];
+      } else {
+        throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
+      }
+    }
   }
 
   const chunks = data.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
@@ -324,7 +334,7 @@ async function tgSend(text) {
 }
 
 // ── HTML 리포트 생성 ──────────────────────────────────────────────────────────
-function buildHtmlReport(archive) {
+function buildHtmlReport(archive, GITHUB_OWNER, GITHUB_REPO) {
   const archiveJson   = JSON.stringify(archive);
   const usePassword   = !!REPORT_PASSWORD;
   const dataBlock     = usePassword
@@ -457,6 +467,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
         <div style="font-weight:900;font-size:20px">📁 아카이브</div>
         <div id="arc-total" style="font-size:12px;color:var(--text3);margin-top:3px"></div>
       </div>
+      <button class="btn-sm" onclick="showResetModal()" style="color:#f87171;border-color:#450a0a;font-size:12px">🗑️ 아카이브 초기화</button>
+    </div>
+    <!-- 초기화 모달 -->
+    <div id="reset-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:24px">
+      <div style="background:#0d1117;border:1px solid #334155;border-radius:16px;padding:32px;width:100%;max-width:420px">
+        <div style="font-weight:900;font-size:16px;margin-bottom:6px">🗑️ 아카이브 초기화</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>GitHub Personal Access Token(PAT)이 필요합니다.</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">GitHub PAT <span style="color:#475569">(repo 권한 필요 · localStorage 저장)</span></div>
+        <input id="pat-input" type="password" placeholder="github_pat_..." style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
+        <div id="pat-err" style="color:#f87171;font-size:12px;margin-bottom:12px;display:none"></div>
+        <div style="display:flex;gap:10px">
+          <button class="btn-sm" onclick="hideResetModal()" style="flex:1">취소</button>
+          <button class="btn-sm" onclick="doReset()" style="flex:1;color:#f87171;border-color:#450a0a" id="reset-btn">초기화 실행</button>
+        </div>
+      </div>
     </div>
     <div id="arc-list"></div>
   </div>
@@ -464,6 +489,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 
 <script>
 ${dataBlock}
+const GH_OWNER='${GITHUB_OWNER}',GH_REPO='${GITHUB_REPO}';
 const SENT = {
   positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},
   neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},
@@ -674,6 +700,52 @@ function renderArchive(){
   }).join('');
 }
 
+// ── 아카이브 초기화 ──────────────────────────────────────────────────────────────
+function showResetModal(){
+  const saved = localStorage.getItem('gh_pat');
+  if(saved) document.getElementById('pat-input').value = saved;
+  document.getElementById('reset-modal').style.display='flex';
+  document.getElementById('pat-err').style.display='none';
+}
+function hideResetModal(){ document.getElementById('reset-modal').style.display='none'; }
+
+async function doReset(){
+  const pat = document.getElementById('pat-input').value.trim();
+  const err = document.getElementById('pat-err');
+  const btn = document.getElementById('reset-btn');
+  if(!pat){ err.textContent='PAT를 입력해주세요.'; err.style.display='block'; return; }
+  if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다. PAGES_URL Secret을 확인해주세요.'; err.style.display='block'; return; }
+
+  btn.textContent='초기화 중...'; btn.disabled=true;
+  err.style.display='none';
+
+  try {
+    // 현재 파일 SHA 조회
+    const getRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
+      headers:{ 'Authorization': \`Bearer \${pat}\`, 'Accept': 'application/vnd.github+json' }
+    });
+    if(!getRes.ok) throw new Error(\`파일 조회 실패 (\${getRes.status}) — PAT 권한(repo)을 확인해주세요.\`);
+    const { sha } = await getRes.json();
+
+    // 빈 JSON으로 덮어쓰기
+    const putRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
+      method: 'PUT',
+      headers:{ 'Authorization': \`Bearer \${pat}\`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message:'🗑️ 아카이브 초기화', content: btoa('{}'), sha })
+    });
+    if(!putRes.ok) throw new Error(\`파일 업데이트 실패 (\${putRes.status})\`);
+
+    localStorage.setItem('gh_pat', pat);
+    toast('✅ 아카이브가 초기화되었습니다. 페이지를 새로고침합니다...');
+    setTimeout(()=>location.reload(), 1800);
+  } catch(e) {
+    err.textContent = e.message;
+    err.style.display = 'block';
+    btn.textContent = '초기화 실행';
+    btn.disabled = false;
+  }
+}
+
 // ── 초기화 ─────────────────────────────────────────────────────────────────────
 async function decryptAndInit(password) {
   try {
@@ -783,7 +855,13 @@ async function main() {
   log(`\n💾 아카이브 저장 완료`);
 
   // HTML 리포트 생성
-  const html = buildHtmlReport(archive);
+  // GitHub owner/repo 추출 (초기화 API 호출용)
+  let GITHUB_OWNER = '', GITHUB_REPO = '';
+  if (PAGES_URL) {
+    const m = PAGES_URL.replace('https://', '').match(/^([^.]+)\.github\.io\/(.+)/);
+    if (m) { GITHUB_OWNER = m[1]; GITHUB_REPO = m[2].split('/')[0]; }
+  }
+  const html = buildHtmlReport(archive, GITHUB_OWNER, GITHUB_REPO);
   const reportPath = path.join(process.cwd(), 'docs', 'index.html');
   fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   fs.writeFileSync(reportPath, html, 'utf8');

@@ -7,7 +7,7 @@
  *  GEMINI_API_KEY      : Gemini API 키 (AIza...)
  *  TELEGRAM_BOT_TOKEN  : 텔레그램 봇 토큰
  *  TELEGRAM_CHAT_ID    : 텔레그램 채팅/채널 ID
- *  WATCHLIST           : 기업명 JSON 배열  예) ["삼성전자","카카오","NAVER"]
+ *  (기업 목록은 watchlist.txt 파일에서 관리 — Secret 불필요)
  */
 
 'use strict';
@@ -20,7 +20,18 @@ const CLAUDE_KEY  = process.env.ANTHROPIC_API_KEY;
 const GEMINI_KEY  = process.env.GEMINI_API_KEY;
 const TG_TOKEN    = process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT_ID  = process.env.TELEGRAM_CHAT_ID;
-const COMPANIES   = JSON.parse(process.env.WATCHLIST || '[]');
+// watchlist.txt에서 읽기 (한 줄에 기업명 하나, # 으로 주석 지원)
+const COMPANIES = (() => {
+  try {
+    return fs.readFileSync(path.join(process.cwd(), 'watchlist.txt'), 'utf8')
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l && !l.startsWith('#'));
+  } catch {
+    console.error('❌ watchlist.txt 파일을 찾을 수 없습니다');
+    process.exit(1);
+  }
+})();
 
 // ── 아카이브 파일 경로 ────────────────────────────────────────────────────────
 const ARCHIVE_PATH = path.join(process.cwd(), 'watchlist-archive.json');
@@ -313,7 +324,7 @@ async function main() {
     !GEMINI_KEY       && 'GEMINI_API_KEY',
     !TG_TOKEN         && 'TELEGRAM_BOT_TOKEN',
     !TG_CHAT_ID       && 'TELEGRAM_CHAT_ID',
-    !COMPANIES.length && 'WATCHLIST (비어있음)',
+    !COMPANIES.length && 'watchlist.txt (기업 목록이 비어있음)',
   ].filter(Boolean);
   if (missing.length) { console.error(`❌ 누락된 환경변수: ${missing.join(', ')}`); process.exit(1); }
 

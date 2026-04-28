@@ -27,7 +27,6 @@ jobs:
           GEMINI_API_KEY:     ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
-          WATCHLIST:          ${{ secrets.WATCHLIST }}
 
       - name: 아카이브 커밋 (변경 있을 때만)
         run: |

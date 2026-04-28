@@ -43,6 +43,7 @@ jobs:
         with:
           commit_message: "📊 아카이브 업데이트"
           file_pattern: "watchlist-archive.json docs/index.html"
+          push_options: '--force'
 
       - name: GitHub Pages 배포
         uses: peaceiris/actions-gh-pages@v4

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>WATCHLIST PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060a10;--bg2:#080c12;--bg3:#0d1117;--bg4:#090c10;
+  --border:#1e293b;--border2:#334155;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#475569;--text4:#334155;
+  --gold:#f59e0b;--gold2:#d97706;
+  --red:#f87171;--red-bg:#450a0a;
+  --font:'Noto Sans KR',sans-serif;--mono:'IBM Plex Mono',monospace;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg3)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.btn-sm{padding:8px 16px;font-size:12px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-family:var(--font);font-weight:800;cursor:pointer;border-radius:10px;transition:.2s}
+.btn-sm:hover{border-color:var(--border2);color:var(--text2)}
+.lbl{font-size:10px;color:var(--text3);font-weight:800;letter-spacing:2px;margin-bottom:8px;display:block}
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:4px;font-size:10px;font-weight:800}
+#hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:19px;flex-shrink:0;font-family:var(--mono)}
+#tabs{background:var(--bg2);border-bottom:1px solid #0f172a;display:flex;padding:0 12px;overflow-x:auto}
+.tab{background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;color:var(--text3);font-weight:800;font-size:13px;cursor:pointer;font-family:var(--font);transition:.25s;white-space:nowrap;flex-shrink:0}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+#toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid var(--border2);color:var(--text);padding:11px 22px;border-radius:10px;font-size:13px;font-weight:800;z-index:999;display:none;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#main{max-width:800px;margin:0 auto;padding:28px 16px}
+.empty{text-align:center;padding:70px 0;color:var(--text4);border:1px dashed var(--border);border-radius:14px;font-size:14px;line-height:2}
+.rcard{border-radius:14px;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.rcard-hdr{display:flex;align-items:center;justify-content:space-between;padding:17px 22px;cursor:pointer;user-select:none}
+.rcard-body{border-top:1px solid var(--border)}
+.risk-item{background:var(--bg4);border-radius:12px;padding:17px 20px;border:1px solid var(--border);border-left-width:5px;margin-bottom:10px}
+.risk-hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.risk-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#000}
+.risk-title{flex:1;font-size:15px;font-weight:800;color:#f1f5f9;line-height:1.4}
+.risk-sev{flex-shrink:0;font-size:10px;font-weight:800;border-radius:4px;padding:2px 7px;border-width:1px;border-style:solid;opacity:.85}
+.risk-detail{font-size:13px;color:var(--text2);line-height:1.85;padding-left:32px;white-space:pre-wrap}
+.src-toggle{display:flex;align-items:center;justify-content:space-between;padding:13px 0;cursor:pointer;user-select:none;border-top:1px solid var(--border)}
+.src-item{background:#0a0f18;border-radius:9px;padding:11px 15px;border:1px solid var(--border);display:flex;gap:11px;margin-bottom:7px}
+.src-link{font-size:13px;font-weight:700;color:#60a5fa;text-decoration:none;line-height:1.5;display:block;word-break:break-word}
+.src-link:hover{text-decoration:underline}
+.src-nourl{font-size:13px;font-weight:700;color:var(--text3);line-height:1.5;display:block}
+.src-meta{font-size:11px;color:var(--text4);margin-top:4px}
+.arc-item{background:var(--bg3);border:1px solid var(--border);border-radius:13px;padding:18px 22px;margin-bottom:10px}
+.date-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.date-chip{padding:7px 14px;border-radius:99px;font-size:12px;font-weight:800;cursor:pointer;border:1px solid var(--border);background:var(--bg3);color:var(--text3);font-family:var(--font);transition:.2s;white-space:nowrap}
+.date-chip:hover{border-color:var(--border2);color:var(--text2)}
+.date-chip.active{background:#1c1505;border-color:var(--gold2);color:var(--gold)}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+#pw-gate{position:fixed;inset:0;background:var(--bg);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
+#pw-box{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:40px 36px;width:100%;max-width:400px;text-align:center}
+#pw-input{background:var(--bg);border:1px solid var(--border2);border-radius:10px;padding:13px 18px;color:var(--text);font-size:14px;outline:none;width:100%;font-family:var(--font);margin:20px 0 10px;text-align:center;letter-spacing:2px}
+#pw-input:focus{border-color:var(--gold)}
+#pw-btn{background:var(--gold2);color:#000;border:none;border-radius:10px;padding:12px 32px;font-size:14px;font-weight:900;cursor:pointer;font-family:var(--font);width:100%;transition:.2s}
+#pw-btn:hover{background:var(--gold)}
+#pw-err{color:var(--red);font-size:12px;margin-top:10px;display:none}
+@media(max-width:640px){
+  #main{padding:16px 12px}
+  .rcard-hdr{padding:14px 16px;flex-wrap:wrap;gap:8px}
+  .risk-detail{padding-left:0;margin-top:8px}
+  .risk-hdr{flex-wrap:wrap}
+  .risk-sev{margin-left:auto}
+  .date-chip{font-size:11px;padding:6px 11px}
+  .arc-item{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+
+${usePassword ? `
+<!-- 비밀번호 게이트 -->
+<div id="pw-gate">
+  <div id="pw-box">
+    <div class="logo-icon" style="margin:0 auto 16px;width:48px;height:48px;font-size:22px">W</div>
+    <div style="font-weight:900;color:var(--gold);font-size:18px;font-family:var(--mono);letter-spacing:1px;margin-bottom:6px">WATCHLIST PRO</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:4px">비밀번호를 입력하세요</div>
+    <input id="pw-input" type="password" placeholder="••••••••" autocomplete="current-password"/>
+    <button id="pw-btn" onclick="tryPw()">열람하기</button>
+    <div id="pw-err">⚠️ 비밀번호가 올바르지 않습니다</div>
+  </div>
+</div>` : ''}
+
+<div id="hdr">
+  <div class="logo">
+    <div class="logo-icon">W</div>
+    <div>
+      <div style="font-weight:900;color:var(--gold);font-size:16px;font-family:var(--mono);letter-spacing:1px">WATCHLIST PRO</div>
+      <div style="font-size:11px;color:var(--text3)">리스크 분석 리포트</div>
+    </div>
+  </div>
+  <div id="hdr-meta" style="font-size:11px;color:var(--text3);text-align:right"></div>
+</div>
+
+<div id="tabs">
+  <button class="tab active" onclick="switchTab('report')">📊 리포트</button>
+  <button class="tab" onclick="switchTab('archive')">📁 아카이브</button>
+</div>
+
+<!-- 리포트 탭 -->
+<div id="tab-report">
+  <div id="main">
+    <div class="date-bar" id="date-bar"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px">
+      <div>
+        <div id="rep-title" style="font-weight:900;font-size:20px;letter-spacing:-.02em"></div>
+        <div id="rep-sub" style="font-size:12px;color:var(--text3);margin-top:3px"></div>
+      </div>
+      <div id="rep-chips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+    <div id="rep-content"></div>
+  </div>
+</div>
+
+<!-- 아카이브 탭 -->
+<div id="tab-archive" style="display:none">
+  <div id="main">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-weight:900;font-size:20px">📁 아카이브</div>
+        <div id="arc-total" style="font-size:12px;color:var(--text3);margin-top:3px"></div>
+      </div>
+    </div>
+    <div id="arc-list"></div>
+  </div>
+</div>
+
+<script>
+const ENCRYPTED='+FZpv4VAhrK5vKeDKLBdkg8GyvauvzhrNHDRNKx3N1Q+o4ySl3JAWt6w3gXPMdeQ9EpTxjQLtwoL1/bCxHEW3z89nR+V6WKbuL0mHgh8/wnNA+M+goUEL/Z+5UwXtYVPFiqAb1En9fKyFwKYBbFHPsBMmES2q+i1j/4xu5926CIpBsuPnLNRTMhDTEk4W6fFIBPikzFnNmBwfG8hkwcQtfwXXMMEvU6ppLNL5FiCcwe93pX7oytv9L9OjaHF7MHvuYY//2kYKackH+m+3L6GKgmbkQ+zxhs1bcwCLg5Gc49VOwUQfUmMtweKJzC2dlOf5Qt3GAJVQNQl797mQng6+YIHcwqxOqjVDqxwmsAe1NZmSwxFGbJ3Q7lHPNW6i6zhampMborZC/+M/wJQdgxhaZrlZs0RC2LgQ/426IQKlzrFWJ0laeU6ig7jAUR4ffp+QAFy0N7YFuNSRW/M5bsnLQkEJmCsLoqAYfzeHPfZ83Dj7em1Mcz3YN4tDlER/Cj1/VDp5HAbQzT/Mxisns8bVII8VsVQv62r0uqvfzYKZliGar1Fi4vF9LG+D832eIOl6H3XGVRa7pbUao9CVAAym8vAO1RImX3bC1k5qGsS/7WJX8rG5t//lFAjFJP6LcLLgvDhTqdlsHJQ9eeBDt67kAB+vVn3CBhgeSjMOQsEsSk9TkLov1u9BtQeJICKfltwlS8r96OcBWeiCZyIuRT5cptQdRWheVxEuQMeHw9nqHfTFptfMYY7UfASdN7Wv6cYJ83Kg/v2/k2j3KONlrbuiHhq5tw18HUKRkXk+GHDxLCMEHYuM6x9dB33zIJ1LjeEVjKer++le+RA+pKi0GWVI+S7VuWKW5A9r3OK3fHTQWA9dKS6m0DQfDqoAlNqmFRgj43n7COHuC1bWThJKmwRG2brwCPAuNjWarUtF7nnQ3gIJrDuvQAwlCert5r/6EwwULXEq5egZnheh1UlWNGNfnAND+hkWQvYV7MV0ysrF6E1oo3mT3lKfFji5SA+IsePMzX6KQb++FJBKaTQfbnRTEsq4dQumf1lTotAcdvUXL71uNk+mmEDSRWiGeryrcevs60ERpid20pp6DI3hYv+DhYTBshh1EkIUT0O3BRzhtmH4DA1aDwwTbmFMPxzzdPaVi5PIu3r3lEFXW15JAXA/OOBZ7e7YzndBHkSLoW7ceSv4+LdXuxDHh28WuAcgyHIEU0u5wcMEIG+jC4vtmFuoW507q0294picms6OTngUECstb9uiHBeycpZHvjT80mbrYhh1q2nkIrV0nG+gDOaB8/9U+69CUGtLLeo/o1gjzNTmbpWPj0O9AfMQTmQyRBl9Vt6W4QM0HRprsWZF77+mBxyr2xektchIdslaNGYp4YpYGNKZpZa5RG5ndJ9/+MS8YNqrb09YbnRNVy/yrROQBb7It2Uk9Z9A1FLbUynMqzcDjhNyVkRkllz6CAi4JOX6IYxq2FXr/ciN1MdDz0XJljzY8qYSCNs9dJHEZLTbqtKqTlgeWr33VU2KYq+a0jhNPBSk3JsvE8Ly2kesADw/B2hPDHHd4FnQSHREQuxYhBtnCKI+Eqao5zwlc3CRvSlqPHeFNerOmVwkm6Hf+M31Lpxd73JFcypLOy+po8dJuXOjqXwYgNPgAHFAbRP2dzmr0l8H0ppKvo5OzCY0JR8itWiVKmOplIzfGtYK2VLAE+fZGJmMWMTnjIYYktJ/X/P3aHb15r6S3oIkjCi80NmlZl7ssBJp4xW3DSn/3cVkzVtHpcrgTePXZIHrYcyyTtArmNHdxe2X0AcQ5qxb1+cnfxREZE7hbvIEwgyquHWYkdUSC8gAtzwShfVrIv2r4LInJRthykis7HMls4eLCHV25OZ8Hh6f2P5Xibn9jvGefuJEPe2SMhDltWqawnwBZErem1+2ykSbuE9/wB4jrFBu8tuyAetf2QuvNccJ6F4hYKoSSi658u7k5v4Iy2Ate9fDiXPgZ/wMWkVkp9vsKDsFbAIPAed2KQTXWTlNFkA7T0I/gfK8dm6uIr1mY32au6D3ix75nZn7jrIg82ZhjFPBxOjypqABcZngX/71w2bRxvlWYn8y+UuQhNdo0C//z0rZfQb/1j9ZnoMrN3gLXN/AHS+TDOFPnEtv3vGpyh9rM6Nrtz5JdOBECH72BnBGa8kSIlTIlHDszIYoUVYXN6Xc1PszeWPtb81Cvs7msT14N/VmJT49E08zkxOHj0SBe3ophOC10sxdXSLSw4ZR3PumCOW4ue9aYoV+zt9jgOSf3g/9i+h8nibBfrJj5i/OSPxaaOa8uFrNoWISfmAUhsn+H5sKtmXa5XaHTaBDic/MqM+Rs8GmEQ1HccTbAHXeXKumaN1jPDmh/LvIRExjc6lkAu5zy+IjgF2JNxu+wNyku5cg387jZ6db3tm1imQICtL5t4p1YQEuyeXazhgZap0zxLUac9HsFGQ+q91/912vdcmC0r3VXYOSL+UC3RnVRLSVLbj+6ES1BntHPzwl2n6A8soHtYVCWR9Fq4J3V4qLjsSpb206ybTXKJibDIJhJPqSgWsZ3UEQAjCnrzCMUMXpOqcdZnxb2K4fxsnhMUXzaIVgb314x09l7CCOW7fJWcxOcVDpGJwUWuSRNPWm5bH8vL7R2rPccoIAUsEBCPf2fHwcTm8N42zvkl17dCOwF8O/r0GNBdoznQlvTFEurO/JCrVyeLQz2mdNNtaTqplxlCI8FqFAv4mkbaq2+sIaEKYohUJBh5P/nXAmQbTy3JFX/FYsmropl64UT0dB8McH4MOOeK3/mgIEQuPgzGL55yW6UBAO+ZAsH0q9J3VdL1gzgxpvOZK4qxkFM6qgkS0z27inGQsN3LHArBW/xwFLzCSfrOrcYR6UaqQzgKFhU3kyB8PFvxim53mcofQlDvtdxSVGvyP9d4oC803/nftfBH8lrbPzzG+FH3YJ4wvv98pDF07cnvWFnfJBshmvmdulINW/zgziNSE9hnH0MiILON7x05lIFDUg12vf/YvZ/XkL6pqXXTGSGCaRD53MoSYeaCz+rkeA7SK+jFWCO60cOZ0mwntHiXwOaDbx0PDWLpOKFx1mQqcWqBdZ8zLtXMAMjVBBkaNUQIT3JeGH38nV4GU+FjcLdFVilQIbTLf9oMS2oUdr4Wb1C65IUAsg7qPuOid5aiKeImYER0+U46W85TNTP4faJwA9isrq8c3Imr7GfHUMbflhD4/86WBXYqt+asR7i0Y1PWQgtTlOc5pJ8+kyvAv5OE0zBdV/U1GuJcOtM2eEqmVTN3y/iTEQj446SaNkmDvLj/Gd9CQ3UKHhoWh4IgsKfIohLERV3tNO7PkS3ayBOm3WUa1UJBXGQhvuS4pXXiSNMtIjl4KRN+OjqIXVwdOrwyhmBv+pd+cG2rCjPhneTAi6TPPXReiCQvoOtKqQQBDje66l0a3jqsE3IfYvP1z4h0ogn3x6o5iYdJtuH8SvcmGIlIzE2JzDqHcyei5A34FIM8MzDUJ+/Sp0WDNw64emYwDDYQw12yhEpCAaarkgTAImGuJ+wIIHLHtDUWOCApMTUpwhUwe3nv2/Uue+EILXFuMm+qf/ob1s2uVcSCW1GfFCGbJGOCTKSvYsnTLRCqUJMFAq8DSYL/pjz0Mo+Z5d0HtNWn+bZhSpOrFaQxZE/eYQTLWUxJEqBtf5YxhhjSsQV+ojHQBrR9eLUDaxoAUElfJXO3jVYADSKexI08VdA4V4fhEAuRQVx1MMcu3LETrlZ+4FN4gw5DEheemwVUgKOUgeepmMSFJVYEGt9hJoTPv9h9HQ6mHWvBJsw/xmwoZ5JdKlSsUjqtOMRlh/qLLvEl2Z1xjT8oJbt7hHCaImS+vD/k9RBADn/QaqY7epkF8WhdfaGuEDSJxsG/DxDcgdqNp37/HvHzCW0toURXn4+uZdlhsfpzq1cz10lghqq7YY9qtfmWGR77Ja82kVNUsUTW2/Nq/DlkwVYFiM/ZWaVgxB6chLg/rYt17vU3GaFxB90FURp03Pjr3pG1wFv3MIXWdBAcFjF+o1soJ7gH1X3X8vGqihudVHbgEAq278rsnlr46GCv/kDxh8Mrz5VS2WLuStkIza/gIYq8lV6lzTqZ/DchaGI2DMdz0wJRzRe9GziCKw0NBL0GBmMdTh7pLRRst2Jvx9LeCH+2Te4bl3rVYs+SPAIPxzqIlfp0C+MPKNtdJhLcPUnMP2ASU+8bXXrOynMMbv+Ri4LTftCDtvqtmth3/pvdwAgdnlRu2sYcvhWujej21vXCAuUAMfvh3QkOYETIC3uyJFWL0GLXJHkfThZdvmm9NGOFlXwWksrIvoDrRYc3wXblp8C5AadIIrUps+WaBYYgqpd9lt0T9hF4wZzALcDibzU8okRGdhZpTuPvsa1UwA0fP8yfoapJ1yY4xFpwmWC0+7u4Eia3VScP6GDAhi1JEiCiA7Q2FoeuXymJnOd1gdwEz5P0AebKzdEaV7+l+y6N1qgaxP/ltyz0ff1OqoDvABgJb0EGJqY+QaVa6QKCkGqCc5/giehzuSZszhpxy/prvVRvf8cP9Da3BZwWot9uLHojxdUKZwO2pfwKSikXMr5CNKqjdTRVE5mLxBKCQj0vNvXf8jtcRlsa+aC/DnpR7C/PBzqhJQs9YdGnvPR+IMxzmXj7ouFqPDEtOTrGN4ZeD6TDp5VwEAxqQKQYcjH+eKcZjFWv08P4xlPHNtdXtYW2LgGKssUaVl1fu+tcS/rccGNHd1D3t6vyn7VyjbkrU2n+X2953d2m7ON8Dj93xllVBsggaVBCObN9VQEjQYZw4pGp/BruyQ7pTH6+c0OyYrpPWS6duNe1RHIl+xaGQVPvROFQjSxuvnI8eL5cxctQ+T90XEgsEkB8cFcx55EJFp+mkbvef+QqKPAAERh8k1jVhqe3lvducdMgdxMOKpxUDvEgwMpHkVkSp/Hwk7OvzitKN8etkBCLaiZ45veJ92gmLGPmyN4OIWCpirbigvaTP23JMzG4Ruv/mmxbhBq0nyFzq0C40VtAEAW3KHm7I9FrlDf71usq5eKqkCrRb0Vo9skrwgs4GJWPZYWBMLyW01xeUC2qNq6qenTVCpvh9vg5STDaAY7TQ7CbtemyaxLHoFjLlMGBCh/iMX3smhJWanopOLyz+Uh7APRUV7R9xAUGbL4X3jFikHnAn+867arqDi1IA5InuYu3bwHVwWIMhycGJl+TJITKEhed0XbRMOswLIzqidY7q1IPfXn+0fN7OiEcm8KVB05LHkOR67zxZ6aLHRC+P19BBxyVYxk+94HLg127Z';
+const SENT = {
+  positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},
+  neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},
+  negative:{border:'#dc2626',label:'리스크 ⚠️',bg:'#450a0a',text:'#f87171'},
+};
+const SVC = {high:'#f43f5e',medium:'#eab308',low:'#3b82f6'};
+const SVL = {high:'상',medium:'중',low:'하'};
+
+let VIEW = null;
+let ACTIVE_TAB = 'report';
+
+function fmt(s){ return s?`${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}`:''; }
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',2500); }
+
+function toggleEl(id, chevId){
+  const el=document.getElementById(id), ch=document.getElementById(chevId);
+  const open=el.style.display!=='none';
+  el.style.display=open?'none':'block';
+  if(ch)ch.style.transform=open?'rotate(0deg)':'rotate(90deg)';
+}
+
+function switchTab(tab){
+  ACTIVE_TAB=tab;
+  document.getElementById('tab-report').style.display  = tab==='report'  ? '' : 'none';
+  document.getElementById('tab-archive').style.display = tab==='archive' ? '' : 'none';
+  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active', (i===0&&tab==='report')||(i===1&&tab==='archive')));
+  if(tab==='archive') renderArchive();
+}
+
+function openArc(date){ VIEW=date; switchTab('report'); renderReport(); }
+
+// ── 날짜 선택 바 ─────────────────────────────────────────────────────────────
+function renderDateBar(){
+  const dates = Object.keys(ARCHIVE).sort((a,b)=>b.localeCompare(a));
+  const bar = document.getElementById('date-bar');
+  if(!dates.length){ bar.innerHTML=''; return; }
+  if(!VIEW) VIEW = dates[0];
+  bar.innerHTML = dates.map(d=>`
+    <button class="date-chip ${d===VIEW?'active':''}" onclick="setDate('${d}')">${fmt(d)}</button>
+  `).join('');
+}
+
+function setDate(date){
+  VIEW=date;
+  document.querySelectorAll('.date-chip').forEach(el=>{
+    el.classList.toggle('active', el.textContent.trim()===fmt(date));
+  });
+  renderReport();
+}
+
+// ── 리포트 렌더링 ─────────────────────────────────────────────────────────────
+function renderReport(){
+  renderDateBar();
+  const dates = Object.keys(ARCHIVE).sort((a,b)=>b.localeCompare(a));
+  const today = dates[0] || '';
+  const data  = VIEW ? ARCHIVE[VIEW] : null;
+
+  document.getElementById('rep-title').textContent = VIEW && VIEW !== today ? `${fmt(VIEW)} 리포트` : '오늘의 리포트';
+  document.getElementById('rep-sub').textContent   = '최근 14일 기준 리스크 분석';
+  document.getElementById('hdr-meta').textContent  = `업데이트 ${fmt(today)}`;
+
+  const content = document.getElementById('rep-content');
+  const chips   = document.getElementById('rep-chips');
+
+  if(!data){
+    chips.innerHTML = '';
+    content.innerHTML = '<div class="empty">분석 리포트가 없습니다<br><span style="font-size:12px">자동화 스크립트가 실행되면 여기에 표시됩니다</span></div>';
+    return;
+  }
+
+  const names    = Object.keys(data);
+  const riskCnt  = Object.values(data).filter(r=>r.overall_sentiment==='negative').length;
+  const dupCnt   = Object.values(data).filter(r=>r.duplicate).length;
+  chips.innerHTML = `
+    <span style="font-size:11px;color:var(--text3)">🏢 ${names.length}개 기업</span>
+    ${riskCnt?'<span style="font-size:11px;color:#f87171">⚠️ 리스크 '+riskCnt+'건</span>':''}
+    ${dupCnt?'<span style="font-size:11px;color:#a8a29e">♻️ 중복 '+dupCnt+'건</span>':''}
+  `;
+
+  content.innerHTML = Object.entries(data).map(([name,res])=>buildCard(name,res)).join('');
+}
+
+function resolveRes(name, res){
+  if(res.duplicate){
+    const prev = ARCHIVE[res.duplicate.date]?.[name];
+    if(prev && !prev.duplicate) return { res: prev, isDup: true, dupDate: res.duplicate.date, dupScore: res.duplicate.score };
+  }
+  return { res, isDup: false };
+}
+
+function buildCard(name, rawRes){
+  const { res, isDup, dupDate, dupScore } = resolveRes(name, rawRes);
+  const s    = SENT[rawRes.overall_sentiment] || SENT.neutral;
+  const risks = res.risk_factors || [];
+  const srcs  = res.sources || [];
+  const cid   = 'c' + name.replace(/\W/g,'_');
+  const sid   = 's' + name.replace(/\W/g,'_');
+
+  // 리스크 바디
+  let riskHtml = '';
+  if(rawRes.error){
+    riskHtml = `<div style="padding:20px 22px;color:var(--red);font-size:13px">❌ ${esc(rawRes.error)}</div>`;
+  } else if(rawRes.duplicate && !res.risk_factors?.length){
+    riskHtml = `<div style="padding:20px 22px;color:var(--text3);font-size:13px">♻️ 이전 아카이브와 동일 (${fmt(dupDate)})</div>`;
+  } else if(!risks.length){
+    riskHtml = `<div style="padding:44px 24px;text-align:center;color:var(--text3);font-size:14px">최근 14일 내 신규 리스크가 발견되지 않았습니다.</div>`;
+  } else {
+    riskHtml = `<div style="padding:18px 22px 4px">
+      <div class="lbl">핵심 리스크 분석</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+        ${risks.map(rf=>{
+          const c=SVC[rf.severity]||SVC.medium;
+          return `<div class="risk-item" style="border-left-color:${c}">
+            <div class="risk-hdr">
+              <span class="risk-num" style="background:${c}">${rf.rank||''}</span>
+              <span class="risk-title">${esc(rf.title)}</span>
+              <span class="risk-sev" style="color:${c};border-color:${c}">심각도 ${SVL[rf.severity]||'-'}</span>
+            </div>
+            <div class="risk-detail">${esc(rf.detail)}</div>
+          </div>`;
+        }).join('')}
+      </div>
+      ${srcs.length?`
+        <div class="src-toggle" onclick="toggleEl('${sid}','cv${sid}')">
+          <div class="lbl" style="margin:0">검토 기사 (${srcs.length}건)</div>
+          <span id="cv${sid}" style="font-size:11px;color:var(--text3);transition:.3s;display:inline-block">▶</span>
+        </div>
+        <div id="${sid}" style="display:none;padding-bottom:16px">
+          ${srcs.map((s,i)=>`
+            <div class="src-item">
+              <span style="font-size:11px;color:var(--text4);font-weight:800;flex-shrink:0;min-width:18px;padding-top:2px">${i+1}.</span>
+              <div>
+                ${s.url?`<a href="${esc(s.url)}" target="_blank" class="src-link">${esc(s.title)}</a>`:`<span class="src-nourl">${esc(s.title)}</span>`}
+                <div class="src-meta">${esc(s.source||'')}${s.date?' | '+s.date:''}</div>
+              </div>
+            </div>`).join('')}
+        </div>`:''}
+    </div>`;
+  }
+
+  // 중복 뱃지 + 바디
+  const dupBlock = rawRes.duplicate
+    ? `<div style="padding:22px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="font-size:22px;flex-shrink:0">♻️</span>
+          <div>
+            <div style="font-weight:800;font-size:14px;margin-bottom:5px;color:var(--text)">이전 분석과 동일한 리스크입니다</div>
+            <div style="font-size:12px;color:var(--text3);line-height:1.7">
+              <b style="color:var(--gold)">${fmt(dupDate)}</b> 세션과
+              <b style="color:var(--text2)">${Math.round(dupScore*100)}%</b> 일치합니다.
+            </div>
+          </div>
+        </div>
+        <button class="btn-sm" onclick="openArc('${dupDate}')" style="width:fit-content;color:var(--gold);border-color:var(--gold2);font-size:12px">
+          📁 ${fmt(dupDate)} 아카이브 열람 →
+        </button>
+        ${riskHtml}
+      </div>`
+    : riskHtml;
+
+  return `<div class="rcard" style="border:1px solid ${s.border};background:var(--bg3)">
+    <div class="rcard-hdr" onclick="toggleEl('${cid}','cv${cid}')">
+      <div style="font-weight:900;font-size:17px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        ${esc(name)}
+        ${rawRes.error?'<span class="badge" style="background:var(--red-bg);color:var(--red)">실패</span>':''}
+        ${rawRes.duplicate?'<span class="badge" style="background:#1c1917;color:#a8a29e;border:1px solid #44403c">♻️ 중복</span>':''}
+        ${!rawRes.error&&!rawRes.duplicate&&rawRes.skip_reason==='no_new_news'?'<span class="badge" style="background:var(--bg);color:var(--text3)">신규 없음</span>':''}
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <span class="badge" style="background:${s.bg};color:${s.text};border:1px solid ${s.border}">${s.label}</span>
+        ${!rawRes.error&&!rawRes.duplicate&&risks.length?'<span style="font-size:11px;color:var(--text3)">리스크 '+risks.length+'건</span>':''}
+        <span id="cv${cid}" style="color:var(--text3);font-size:11px;display:inline-block;transform:rotate(90deg);transition:.3s">▶</span>
+      </div>
+    </div>
+    <div class="rcard-body" id="${cid}">${dupBlock}</div>
+  </div>`;
+}
+
+// ── 아카이브 탭 렌더링 ────────────────────────────────────────────────────────
+function renderArchive(){
+  const dates = Object.keys(ARCHIVE).sort((a,b)=>b.localeCompare(a));
+  document.getElementById('arc-total').textContent = `총 ${dates.length}개 세션 저장됨`;
+  const list = document.getElementById('arc-list');
+  if(!dates.length){
+    list.innerHTML = '<div class="empty">저장된 리포트가 없습니다</div>';
+    return;
+  }
+  list.innerHTML = dates.map(date=>{
+    const s = ARCHIVE[date];
+    const cl = Object.keys(s);
+    const rc = cl.filter(n=>s[n].overall_sentiment==='negative').length;
+    const dc = cl.filter(n=>s[n].duplicate).length;
+    return `<div class="arc-item">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:900;font-size:15px;margin-bottom:6px">${fmt(date)} 세션</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span style="font-size:11px;color:var(--text3)">${cl.length}개 기업</span>
+            ${rc?'<span style="font-size:11px;color:var(--red)">리스크 감지 '+rc+'건</span>':''}
+            ${dc?'<span style="font-size:11px;color:#a8a29e">♻️ 중복 '+dc+'건</span>':''}
+            <span style="font-size:11px;color:var(--text4)">${cl.join(' · ')}</span>
+          </div>
+        </div>
+        <button class="btn-sm" onclick="openArc('${date}')">열람 →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── 초기화 ─────────────────────────────────────────────────────────────────────
+async function decryptAndInit(password) {
+  try {
+    const buf      = Uint8Array.from(atob(ENCRYPTED), c => c.charCodeAt(0));
+    const salt     = buf.slice(0, 16);
+    const iv       = buf.slice(16, 28);
+    const tag      = buf.slice(28, 44);
+    const cipher   = buf.slice(44);
+    const ctWithTag = new Uint8Array(cipher.length + tag.length);
+    ctWithTag.set(cipher); ctWithTag.set(tag, cipher.length);
+
+    const km  = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey(
+      { name:'PBKDF2', salt, iterations:100000, hash:'SHA-256' },
+      km, { name:'AES-GCM', length:256 }, false, ['decrypt']
+    );
+    const dec = await crypto.subtle.decrypt({ name:'AES-GCM', iv }, key, ctWithTag);
+    window.ARCHIVE = JSON.parse(new TextDecoder().decode(dec));
+    localStorage.setItem('wp_pass', password);          // 영구 저장 (탭 닫아도 유지)
+    history.replaceState(null, '', location.pathname);  // URL에서 #hash 제거
+    document.getElementById('pw-gate').style.display = 'none';
+    renderReport();
+  } catch {
+    const err = document.getElementById('pw-err');
+    err.style.display = 'block';
+    const box = document.getElementById('pw-box');
+    box.style.animation = 'shake .35s';
+    setTimeout(() => box.style.animation = '', 400);
+  }
+}
+
+
+// 비밀번호 자동 시도 순서: URL hash → localStorage → 입력창
+window.addEventListener('DOMContentLoaded', () => {
+  const hash   = location.hash.slice(1);               // #비밀번호 → 비밀번호
+  const stored = localStorage.getItem('wp_pass');
+  if (hash)   { decryptAndInit(decodeURIComponent(hash)); return; }  // 텔레그램 링크
+  if (stored) { decryptAndInit(stored); return; }                     // 재방문
+  // 수동 입력 필요
+  document.getElementById('pw-gate').style.display = 'flex';
+  document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') tryPw(); });
+});
+function tryPw() {
+  const v = document.getElementById('pw-input').value.trim();
+  if (!v) return;
+  document.getElementById('pw-err').style.display = 'none';
+  decryptAndInit(v);
+}
+
+</script>
+</body>
+</html>

@@ -45,7 +45,7 @@ jobs:
           git fetch origin main
           git add watchlist-archive.json docs/index.html
           git diff --cached --quiet || git commit -m "📊 $(date +'%Y-%m-%d') 리포트 업데이트"
-          git push --force-with-lease origin main
+          git push --force origin main
 
       - name: GitHub Pages 배포
         uses: peaceiris/actions-gh-pages@v4

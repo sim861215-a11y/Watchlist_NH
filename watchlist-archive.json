@@ -2,19 +2,49 @@
   "2026-04-28": {
     "JTBC": {
       "company": "JTBC",
-      "risk_factors": [],
-      "sources": [],
+      "error": "기사 수집 JSON 파싱 실패: I am sorry, but I cannot fulfill your request as the provided `google_search` tool does not support `date_start` and `da",
       "overall_sentiment": "neutral",
-      "skip_reason": "no_new_news",
-      "timestamp": 1777361297195
+      "timestamp": 1777417083405
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
-      "risk_factors": [],
-      "sources": [],
-      "overall_sentiment": "neutral",
-      "skip_reason": "no_new_news",
-      "timestamp": 1777361316795
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "회사채 수요예측 미매각 및 고금리 조달 부담",
+          "detail": "SLL중앙은 400억원 규모의 회사채 수요예측에서 140억원의 주문만 확보하며 모집액의 35% 수준에 그치는 흥행 실패를 기록했다. 이는 올해 두 번째 미매각으로, 시장에서 해당 기업에 대한 투자 신뢰도가 지속적으로 낮은 상태임을 보여준다. 최종 발행 금리는 희망 밴드 최상단인 연 8.50%로 확정되어, 향후 이자 비용 부담이 크게 가중될 전망이다. 고금리 조달이 반복될 경우 재무 구조 악화로 이어질 가능성이 높다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "신용등급 추가 하향 가능성",
+          "detail": "현재 SLL중앙의 신용등급은 'BBB'에 '부정적' 전망이 부여된 상태로, 추가적인 등급 하향 가능성이 시장에서 제기되고 있다. 신용등급이 'BB' 이하로 하락할 경우 투기등급으로 분류되어 기관투자자들의 투자 제한이 발생하고, 자금 조달 여건이 더욱 악화될 수 있다. 이는 단순한 조달 비용 상승을 넘어 유동성 위기로 연결될 수 있는 중요한 리스크 요인이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "반복적 자금조달 실패로 인한 유동성 리스크",
+          "detail": "연내 두 차례의 회사채 수요예측 미매각은 SLL중앙의 시장 신뢰도 약화를 반영하며, 향후 필요한 운전자금 및 차환 자금 확보에 어려움이 예상된다. 미매각분에 대한 잔액 인수 부담이 증권사에 전가되거나, 회사가 불리한 조건으로 자금을 조달해야 하는 상황이 반복될 수 있다. 이러한 구조적인 조달 어려움은 중장기적으로 기업 재무 건전성에 부정적인 영향을 미칠 것으로 우려된다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SLL중앙, 회사채 수요예측 미매각…고금리에도 조달 부담 지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGt0jlpmDwFynSKbJWINkLpR5vqZ0yOZqO7YHX5TltAOHyAoDGgGGX7lavJhR_Y5lMEImzujchMUh0KVGVsfLH1dFKL1GarIv6EMUvjcFrnsHkZ1PAupjiblRFtfbNFLdpBy-nPBSS41wSXkm6RtYnpztlh7UPGW57O",
+          "source": "연합인포맥스",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "[IB토마토](Deal클립)SLL중앙, BBB급 한계…회사채 금리 8.5% 확정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEYsnCuY8QypBFZ27AYZV016F8wsBAXlYKlcShh0VNySQ34Q5pdgiOMcFfh2Ej7aFLZwc4eF8DhW0PNUZ6ctQGDVyI505WJeF8tcS2f2BNeJrqiBeI4tQEqqA==",
+          "source": "IB토마토",
+          "date": "2026-04-27"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777417117832
     }
   }
 }

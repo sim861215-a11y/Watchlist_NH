@@ -36,9 +36,9 @@ jobs:
         run: |
           git config user.name  "watchlist-bot"
           git config user.email "watchlist-bot@github-actions"
+          git pull --rebase origin main
           git add watchlist-archive.json docs/index.html
           git diff --cached --quiet || git commit -m "📊 $(date +'%Y-%m-%d') 리포트 업데이트"
-          git pull --rebase origin main
           git push
 
       - name: GitHub Pages 배포

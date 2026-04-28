@@ -2,15 +2,19 @@
   "2026-04-28": {
     "JTBC": {
       "company": "JTBC",
-      "error": "기사 수집 JSON 파싱 실패: I am sorry, but I am unable to fulfill your request. The `date_start` and `date_end` parameters are not supported in the",
+      "risk_factors": [],
+      "sources": [],
       "overall_sentiment": "neutral",
-      "timestamp": 1777417565392
+      "skip_reason": "no_new_news",
+      "timestamp": 1777419352541
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
-      "error": "기사 수집 JSON 파싱 실패: JSON 형식으로 요청하셨지만, 현재 제공된 검색 결과가 없어 기사를 수집할 수 없습니다. 검색 정책에 명시된 기간(2026-04-14 ~ 2026-04-28) 동안 \"에스엘엘중앙\"과 관련된 리스크 기사가 존재하지 ",
+      "risk_factors": [],
+      "sources": [],
       "overall_sentiment": "neutral",
-      "timestamp": 1777417584782
+      "skip_reason": "no_new_news",
+      "timestamp": 1777419371809
     }
   }
 }

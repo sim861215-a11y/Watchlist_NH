@@ -1,0 +1,36 @@
+{
+  "2026-04-28": {
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777349414699
+    },
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777349435822
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777349454260
+    },
+    "고려아연": {
+      "company": "고려아연",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777349470405
+    }
+  }
+}

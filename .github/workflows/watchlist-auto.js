@@ -152,22 +152,26 @@ JSON만 출력하세요.`;
 
 // ── STEP 2: Gemini → 기사 수집 ───────────────────────────────────────────────
 async function collectArticles(policy) {
-  const prompt = `당신은 뉴스 수집 에이전트입니다. 아래 검색 정책을 정확히 따라 기사를 수집하고 JSON으로 반환하세요.
+  // 검색어에 연월을 직접 포함 (Gemini google_search 툴은 날짜 파라미터 미지원)
+  const dateTag = policy.date_from.slice(0, 7).replace('-', '.');
+  const queriesWithDate = policy.search_queries.map(q => q + ' ' + dateTag);
 
-=== 검색 정책 ===
+  const prompt = `당신은 뉴스 수집 에이전트입니다. 아래 검색어로 Google 검색을 실행하고 기사를 수집해서 JSON으로 반환하세요.
+
 기업명: ${policy.company}
-수집 기간: ${policy.date_from} ~ ${policy.date_to}
-검색어: ${policy.search_queries.join(', ')}
+검색어 (반드시 이 검색어 그대로 사용): ${queriesWithDate.join(' / ')}
 우선 수집 주제: ${policy.priority_topics.join(', ')}
 제외 주제: ${policy.exclude_topics.join(', ')}
 최대 기사 수: ${policy.article_limit}개
-수집 지침: ${policy.instructions}
-=================
 
-출력 형식 (코드블록 없이 JSON만):
+수집 기준:
+- 반드시 ${policy.date_from} ~ ${policy.date_to} 범위 기사만 선별 (이 기간 외 기사는 반드시 제외)
+- 우선 주제 기사를 먼저 선별, 제외 주제 기사는 포함하지 말 것
+- 날짜가 불명확하거나 기간 외이면 제외
+
+출력 형식 (코드블록 없이 JSON만, 다른 텍스트 일절 금지):
 {"articles":[{"title":"기사 제목","source":"언론사명","date":"YYYY-MM-DD","summary":"핵심 내용 1-2문장"}]}
-규칙: URL 포함 금지 / 수집 기간 외 제외 / 기사 없으면 {"articles":[]}`;
-
+기사가 없으면: {"articles":[]}`;
   const r = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
     {
@@ -294,12 +298,29 @@ function buildTgMsg(name, res, archive) {
   return t;
 }
 
-async function tgSend(text) {
+async function tgSendChunk(text) {
   const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: false }),
   });
   if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(`Telegram ${r.status}: ${e?.description||''}`); }
+}
+
+async function tgSend(text) {
+  const MAX = 4000;
+  if (text.length <= MAX) { await tgSendChunk(text); return; }
+  // 4000자 초과 시 줄바꿈 기준으로 분할
+  const lines = text.split('\n');
+  let chunk = '';
+  for (const line of lines) {
+    if ((chunk + '\n' + line).length > MAX) {
+      if (chunk) { await tgSendChunk(chunk.trim()); await sleep(300); }
+      chunk = line;
+    } else {
+      chunk = chunk ? chunk + '\n' + line : line;
+    }
+  }
+  if (chunk.trim()) await tgSendChunk(chunk.trim());
 }
 
 // ── HTML 리포트 생성 ──────────────────────────────────────────────────────────

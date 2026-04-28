@@ -5,6 +5,10 @@ on:
     - cron: '0 22 * * *'   # 매일 오후 10시 UTC = 다음날 오전 7시 KST
   workflow_dispatch:
 
+concurrency:
+  group: watchlist-pro
+  cancel-in-progress: false
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -16,6 +20,8 @@ jobs:
     steps:
       - name: 저장소 체크아웃
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Node.js 설정
         uses: actions/setup-node@v4
@@ -36,10 +42,10 @@ jobs:
         run: |
           git config user.name  "watchlist-bot"
           git config user.email "watchlist-bot@github-actions"
-          git pull --rebase origin main
+          git fetch origin main
           git add watchlist-archive.json docs/index.html
           git diff --cached --quiet || git commit -m "📊 $(date +'%Y-%m-%d') 리포트 업데이트"
-          git push
+          git push --force-with-lease origin main
 
       - name: GitHub Pages 배포
         uses: peaceiris/actions-gh-pages@v4

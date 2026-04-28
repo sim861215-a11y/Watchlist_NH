@@ -6,59 +6,15 @@
       "sources": [],
       "overall_sentiment": "neutral",
       "skip_reason": "no_new_news",
-      "timestamp": 1777359327210
+      "timestamp": 1777361297195
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
-      "risk_factors": [
-        {
-          "rank": 1,
-          "title": "신용등급 전망 하향 및 등급 강등 가능성 고조",
-          "detail": "한국신용평가는 SLL중앙의 무보증사채 신용등급 전망을 'BBB(안정적)'에서 'BBB(부정적)'으로 하향 조정하였다. 이는 콘텐츠 투자 확대 및 M&A로 인한 차입금 급증, 연결 기준 누적 손실 지속이 주요 원인으로 지목된다. 중앙그룹 계열 전반의 신용등급 하향 조정이 동시에 진행되며 그룹 리스크가 개별 법인에도 전이되는 양상이다. '부정적' 전망은 향후 실적 개선이 이루어지지 않을 경우 실제 등급 강등으로 이어질 수 있어 조달 비용 추가 상승 및 자금 경색 위험이 존재한다.",
-          "severity": "high"
-        },
-        {
-          "rank": 2,
-          "title": "회사채 수요예측 연속 미매각으로 유동성 조달 위기",
-          "detail": "SLL중앙은 400억 원 규모의 공모 회사채 발행을 위한 수요예측에서 140~160억 원의 주문만 확보하며 올해 들어 두 번째 미매각을 기록하였다. 8.50%에 달하는 높은 금리를 제시했음에도 투자 심리가 회복되지 않아 펀더멘탈 이슈가 시장의 핵심 우려 사항임이 드러났다. 연속적인 미매각은 시장 내 투자자 신뢰 상실을 의미하며, 필요 자금 조달에 차질이 생길 경우 단기 유동성 압박이 심화될 수 있다. 고금리 환경과 신용도 저하가 맞물려 향후 차환 발행 및 신규 자금 조달 모두 난항이 예상된다.",
-          "severity": "high"
-        },
-        {
-          "rank": 3,
-          "title": "콘텐츠 투자 확대 및 M&A에 따른 부채 급증과 누적 적자",
-          "detail": "SLL중앙은 콘텐츠 제작 투자 확대와 인수합병 과정에서 차입 규모가 급격히 늘어났으며, 이로 인해 연결 기준 손실이 누적되고 있다. 그룹 전반의 재무 부담 가중이 계열사 신용도에도 부정적인 영향을 미치는 악순환 구조가 형성되고 있다. 콘텐츠 산업 특성상 투자 회수 기간이 길고 흥행 불확실성이 높아 단기간 내 실적 개선을 기대하기 어려운 상황이다. 이러한 구조적 적자와 레버리지 확대는 재무 안정성을 지속적으로 훼손할 위험이 있다.",
-          "severity": "high"
-        }
-      ],
-      "sources": [
-        {
-          "title": "[마켓인]'적자 늪' SLL중앙, 그룹 리스크에 신용등급 하향 가능성 높아졌다",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0yvhY_rYlF5ssXv04te7MIytJQ1spRE1-ms7vN5VbSvDHjwSLVK2UvTOjloES2ovEHLuwZRkdbgb5IOq1I7xoSY0UqYwhyY60TrSL4_20pwgZjCQiQTHlETVGYBA4XE77",
-          "source": "Daum",
-          "date": "2026-04-15"
-        },
-        {
-          "title": "SLL중앙, 회사채 수요예측 미매각…고금리에도 조달 부담 지속",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG22TDnL2hhVTk8caSPelqDVncKqXIuLhJA6OsOB2Y5vQt7B7LF-azorCyvs5cac-qndbnOfzFINOShfsMkKcrz95tFZcnkJrKBZuUE7aaPVMb4y7yK02qs0nA7kOV10VxsycuLyo3K3rt1TRcBmjrH7cGSP-yFFij-Jg==",
-          "source": "연합인포맥스",
-          "date": "2026-04-22"
-        },
-        {
-          "title": "'8% 금리' 내세운 SLL중앙 회사채, 올해 두번째 미매각 [시그널]",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGS9PEd6j8aci4uwBDRx6P8urbMYo6y79Zp9o6-X27HRoGPg-ag0Y7jOjarCMmuIC9bMy3UbVcWkPjfJSwAoJxHxQWUbPUH6LFK7j5HKU3PqDYQG5Nxqd41pGI=",
-          "source": "Daum",
-          "date": "2026-04-22"
-        },
-        {
-          "title": "'신용등급 비상' 중앙그룹…자금조달도 삐걱 [시그널]",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPmv9w7_o95rxP04I2njvkNvmMvVMQvg16ZtHDhHBy3k5PxV65r28boW0WQtQyxsLcMpkBoLF-Pux4DjktCJb4bEA7E0NVV4MLK-Frm6Jj4H22cECEUSvwdPBUMOui8F7u",
-          "source": "Daum",
-          "date": "2026-04-26"
-        }
-      ],
-      "overall_sentiment": "negative",
-      "skip_reason": null,
-      "timestamp": 1777359375202
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777361316795
     }
   }
 }

@@ -124,13 +124,29 @@ ${usePassword ? `
         <div style="font-weight:900;font-size:20px">📁 아카이브</div>
         <div id="arc-total" style="font-size:12px;color:var(--text3);margin-top:3px"></div>
       </div>
+      <button class="btn-sm" onclick="showResetModal()" style="color:#f87171;border-color:#450a0a;font-size:12px">🗑️ 아카이브 초기화</button>
+    </div>
+    <!-- 초기화 모달 -->
+    <div id="reset-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:24px">
+      <div style="background:#0d1117;border:1px solid #334155;border-radius:16px;padding:32px;width:100%;max-width:420px">
+        <div style="font-weight:900;font-size:16px;margin-bottom:6px">🗑️ 아카이브 초기화</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>GitHub Personal Access Token(PAT)이 필요합니다.</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">GitHub PAT <span style="color:#475569">(repo 권한 필요 · localStorage 저장)</span></div>
+        <input id="pat-input" type="password" placeholder="github_pat_..." style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
+        <div id="pat-err" style="color:#f87171;font-size:12px;margin-bottom:12px;display:none"></div>
+        <div style="display:flex;gap:10px">
+          <button class="btn-sm" onclick="hideResetModal()" style="flex:1">취소</button>
+          <button class="btn-sm" onclick="doReset()" style="flex:1;color:#f87171;border-color:#450a0a" id="reset-btn">초기화 실행</button>
+        </div>
+      </div>
     </div>
     <div id="arc-list"></div>
   </div>
 </div>
 
 <script>
-const ENCRYPTED='xI+fXnemDsWCgzBZTfezNglIJm0I2q2s1IB9RgmJe7L8l7TT17aDFR06tzB1T6fmXHvuDrxgjWWNnDs9S32NFBmuO1B1fOea2UcUD/8NrCqC7NGaB92MBbe0jjgvMFtbdvi4wqLnK8R3UZMAXOXdNeoA32jQx1pL+VQUxPGzPQrpgP7Ucgd5A41rnvElPwy6GA8nencY6CM/XaC6y+yLQz9uHcFza/xilDKsVU5JILcqCfXbpX5p9WbBK1ELLWpKLzMZeRRtDCQaMv9Ml/mB+BU8t1DKtoepdo+SWO0VlYMyjwV0ywiYfZUFs0A6KvWfnJWdEqSyd7WDAyzVK1sM7iGI3Mo8dx86eCzU+H0X7hHT/nOV1F7zQ2Tnj0WQn1TydP5IsRleEY5qyu+QbZy4quBzAP7FdhfVrIcQ8IFMLEcx2GPb2wYrCI9qAnSy22DUeYmZYaMMRgIUOBcC/n87DcYBX/y55e83U4kXWKd+SxzvRw==';
+const ENCRYPTED='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';
+const GH_OWNER='sim861215-a11y',GH_REPO='Watchlist_NH';
 const SENT = {
   positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},
   neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},
@@ -339,6 +355,52 @@ function renderArchive(){
       </div>
     </div>`;
   }).join('');
+}
+
+// ── 아카이브 초기화 ──────────────────────────────────────────────────────────────
+function showResetModal(){
+  const saved = localStorage.getItem('gh_pat');
+  if(saved) document.getElementById('pat-input').value = saved;
+  document.getElementById('reset-modal').style.display='flex';
+  document.getElementById('pat-err').style.display='none';
+}
+function hideResetModal(){ document.getElementById('reset-modal').style.display='none'; }
+
+async function doReset(){
+  const pat = document.getElementById('pat-input').value.trim();
+  const err = document.getElementById('pat-err');
+  const btn = document.getElementById('reset-btn');
+  if(!pat){ err.textContent='PAT를 입력해주세요.'; err.style.display='block'; return; }
+  if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다. PAGES_URL Secret을 확인해주세요.'; err.style.display='block'; return; }
+
+  btn.textContent='초기화 중...'; btn.disabled=true;
+  err.style.display='none';
+
+  try {
+    // 현재 파일 SHA 조회
+    const getRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/watchlist-archive.json`, {
+      headers:{ 'Authorization': `Bearer ${pat}`, 'Accept': 'application/vnd.github+json' }
+    });
+    if(!getRes.ok) throw new Error(`파일 조회 실패 (${getRes.status}) — PAT 권한(repo)을 확인해주세요.`);
+    const { sha } = await getRes.json();
+
+    // 빈 JSON으로 덮어쓰기
+    const putRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/watchlist-archive.json`, {
+      method: 'PUT',
+      headers:{ 'Authorization': `Bearer ${pat}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message:'🗑️ 아카이브 초기화', content: btoa('{}'), sha })
+    });
+    if(!putRes.ok) throw new Error(`파일 업데이트 실패 (${putRes.status})`);
+
+    localStorage.setItem('gh_pat', pat);
+    toast('✅ 아카이브가 초기화되었습니다. 페이지를 새로고침합니다...');
+    setTimeout(()=>location.reload(), 1800);
+  } catch(e) {
+    err.textContent = e.message;
+    err.style.display = 'block';
+    btn.textContent = '초기화 실행';
+    btn.disabled = false;
+  }
 }
 
 // ── 초기화 ─────────────────────────────────────────────────────────────────────

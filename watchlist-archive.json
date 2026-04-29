@@ -16,5 +16,67 @@
       "skip_reason": "no_new_news",
       "timestamp": 1777419371809
     }
+  },
+  "2026-04-29": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777422235019
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "회사채 미매각 반복 및 고금리 조달 부담 가중",
+          "detail": "SLL중앙은 2026년 들어 두 차례의 회사채 수요예측에서 연속 미매각을 기록하며 기관투자자들의 신뢰를 얻지 못하고 있다. 400억원 규모의 회사채 수요예측에서 실제 주문은 140억원에 불과해 모집액의 35% 수준에 그쳤다. 최종 발행 금리는 밴드 최상단인 연 8.50%로 확정되어 BBB급 신용등급의 한계를 여실히 드러냈다. 고금리 조달이 반복될 경우 이자비용 부담이 누적되어 재무구조가 추가로 악화될 위험이 크다. 이는 콘텐츠 제작사로서 지속적인 운영자금 확보가 필수적인 사업 특성상 중장기적으로 심각한 재무 리스크로 이어질 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "유동성 악화 및 현금성 자산 감소",
+          "detail": "SLL중앙은 지난해부터 유동성이 악화되며 현금성 자산이 감소한 상태로 보고되고 있다. 이번 400억원 회사채 발행 목적이 운영자금 및 드라마 제작비 충당임을 고려하면, 자체 창출 현금흐름만으로는 사업 운영이 어려운 상황임을 시사한다. 미매각으로 인해 목표 조달액을 채우지 못할 경우 콘텐츠 제작 일정 및 투자 계획에 차질이 생길 수 있다. 드라마 등 콘텐츠 산업 특성상 선제적 자금 투입이 필수적이어서, 유동성 부족은 경쟁력 저하로 직결될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "시장 신뢰도 저하에 따른 중장기 자금조달 능력 훼손",
+          "detail": "올해만 두 번째 회사채 미매각이 발생하면서 자본시장 내 SLL중앙의 신용도 및 평판이 지속적으로 훼손되고 있다. 기관투자자들의 외면이 이어질 경우 향후 회사채 발행 시 더 높은 금리를 감수하거나 발행 자체가 어려워질 수 있다. BBB급 신용등급은 이미 투자적격 하단에 해당하며, 추가 등급 하락 시 회사채 시장 접근이 사실상 봉쇄될 수 있다. 이는 콘텐츠 제작을 위한 외부 자금 의존도가 높은 사업 모델의 지속 가능성에 근본적인 의문을 제기한다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SLL중앙, BBB급 한계…회사채 금리 8.5% 확정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEllZepsBjynbf_uDSERNgL6d-G5WeSdL78TsuCKyu3cpqtF77IUKzeyY5f9xPrdhRhrH8G1aQZudGoKVKRbq7CATrl-V6DrBz-WFqb0QslgCPju0Ax8vr0ejVyzOep1kC07dAT7F1gj6VopAVE",
+          "source": "IB토마토",
+          "date": "2026-04-27"
+        },
+        {
+          "title": "SLL중앙, 400억 회사채 일부 미매각…올해만 두번째",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF7HcgWPRidsfCF3bjVtjHCmYVpzz-rJhaTRJztzGE6AmXbQO98CHMxVgNULTrdvCBSh3-2w6RHnl3dGcIAYFDYHXk5DAf_xgCWqN8EJUGfxqTvxTWA_iN8taQqvZ5JtLnwZb-YKCTl59I9DnPXBB2J4SRVN9-_5nFb1w==",
+          "source": "이데일리 마켓인",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "(Deal모니터)SLL중앙, 400억 회사채 조달…드라마 제작비 수혈",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUk5zndNYdOTu1Idc3ZFL3YUv1aw6lo9gX2WWMDvp5NKvonyMxpjhwPXpTK9WradH_XRgcOM--yJffp6w7qpJxXMwmYKHZ_1ueOiiH6ZtscjVfUcsD6uP3eY2TT_s=",
+          "source": "IB토마토",
+          "date": "2026-04-21"
+        },
+        {
+          "title": "SLL중앙, 회사채 수요예측 미매각…고금리에도 조달 부담 지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF38uXUETb-rz97mMMklVSi8_vkxU0g28_Oh2BGnVppvdl0CVZxuZ1_OuGk1E-c7d8R8k9hL26aey-9YxNc5Dku4u-5o1kaRcGcoZ-wz9TZWXS3kJXdgRo6yz_m-E69eGKUPfhn9lx4tGG9aXdZm8H7dHml8KInXjWobg==",
+          "source": "KB의 생각",
+          "date": "2026-04-22"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777422296614
+    }
   }
 }

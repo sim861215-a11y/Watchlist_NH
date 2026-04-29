@@ -818,6 +818,7 @@ async function main() {
   log(`🚀 분석 시작 — ${today} / ${COMPANIES.length}개 기업`);
 
   // 헤더 메시지
+  log(`📨 텔레그램 발송 대상 Chat ID: ${TG_CHAT_ID}`);
   await tgSend(`📊 <b>WATCHLIST PRO 리스크 분석</b>\n📅 ${fmt(today)} · 최근 14일\n🏢 ${COMPANIES.length}개 기업\n━━━━━━━━━━━━━━━`);
 
   // 기업별 3단계 파이프라인

@@ -24,35 +24,15 @@
       "sources": [],
       "overall_sentiment": "neutral",
       "skip_reason": "no_new_news",
-      "timestamp": 1777422886417
+      "timestamp": 1777424138522
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
-      "risk_factors": [
-        {
-          "rank": 1,
-          "title": "인수금융 만기 연장에 따른 유동성 리스크",
-          "detail": "프랙시스캐피탈이 SLL중앙 인수금융 만기를 3개월 추가 연장한 것은 모회사 콘텐트리중앙이 재무적투자자(FI) 자금 상환에 어려움을 겪고 있음을 시사한다. 외부 투자 유치 협상이 진행 중이나 아직 확정되지 않아 불확실성이 지속되고 있다. 만기 연장이 반복될 경우 차입 비용 증가 및 신용도 하락으로 이어질 수 있으며, 투자 유치 실패 시 재무적 압박이 심화될 가능성이 있다. 이는 에스엘엘중앙의 경영 안정성과 콘텐츠 투자 역량에도 부정적 영향을 미칠 수 있는 중요한 리스크 요인이다.",
-          "severity": "high"
-        }
-      ],
-      "sources": [
-        {
-          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGA3HVXXtGzeA5p-xOH24BF5wgkos3KsKXiasHrXnxOk8lGKtUH_MuQ_-TpyCq12a8N0RtYAlG8NJ9tsOB5s3oZn9yripI3Gac1xdB9ogLOol8GhYp8aXZN7U2wCihyu_vANpRQVWisABaEo7u8ZdCgRQOypbRHeHAOjLLWMeMh6DOPbnN1JxI=",
-          "source": "인베스트조선",
-          "date": "2026-04-01"
-        },
-        {
-          "title": "【오늘의 법조】 2026년 4월 23일",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGHJorYV3V4f3ucHHB09Q_AFsj5Rmf-f7Kh7U7N1H_IESKRla7l9Plj8sSYKlPngd30J8toe5dcFLufwvp6Sy-K6Rg4JM9GzbnTnxZVOh3JNwwQPvYUDNkYVfWcQJnOo0DR0BKf3t1mRG7YdHuYeSc8jyt5DBPMhQ==",
-          "source": "법률신문",
-          "date": "2026-04-22"
-        }
-      ],
-      "overall_sentiment": "negative",
-      "skip_reason": null,
-      "timestamp": 1777422909339
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777424154726
     }
   }
 }

@@ -24,7 +24,8 @@ const GEMINI_KEY  = process.env.GEMINI_API_KEY;
 const TG_TOKEN    = process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT_ID  = process.env.TELEGRAM_CHAT_ID;
 const PAGES_URL      = (process.env.PAGES_URL || '').replace(/\/$/, '');
-const REPORT_PASSWORD = process.env.REPORT_PASSWORD || '';
+const REPORT_PASSWORD  = process.env.REPORT_PASSWORD  || '';
+const ADMIN_PASSWORD   = process.env.ADMIN_PASSWORD   || '';  // 아카이브 초기화용 별도 비밀번호
 
 // watchlist.txt에서 읽기 (한 줄에 기업명 하나, # 으로 주석 지원)
 const COMPANIES = (() => {
@@ -340,6 +341,19 @@ function buildHtmlReport(archive, GITHUB_OWNER, GITHUB_REPO) {
   const dataBlock     = usePassword
     ? `const ENCRYPTED='${encryptArchive(archiveJson, REPORT_PASSWORD)}';`
     : `const ARCHIVE=${archiveJson};`;
+  const adminEnabled  = !!ADMIN_PASSWORD;
+  // 비밀번호 게이트 HTML 미리 계산 (템플릿 중첩 이슈 방지)
+  const pwGateBlock = usePassword
+    ? \`<div id="pw-gate">
+  <div id="pw-box">
+    <div class="logo-icon" style="margin:0 auto 16px;width:48px;height:48px;font-size:22px">W</div>
+    <div style="font-weight:900;color:var(--gold);font-size:18px;font-family:var(--mono);letter-spacing:1px;margin-bottom:6px">WATCHLIST PRO</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:4px">비밀번호를 입력하세요</div>
+    <input id="pw-input" type="password" placeholder="••••••••" autocomplete="current-password"/>
+    <button id="pw-btn" onclick="tryPw()">열람하기</button>
+    <div id="pw-err">⚠️ 비밀번호가 올바르지 않습니다</div>
+  </div>
+</div>\` : '';
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -415,18 +429,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <body>
 <div id="toast"></div>
 
-\${usePassword ? \`
-<!-- 비밀번호 게이트 -->
-<div id="pw-gate">
-  <div id="pw-box">
-    <div class="logo-icon" style="margin:0 auto 16px;width:48px;height:48px;font-size:22px">W</div>
-    <div style="font-weight:900;color:var(--gold);font-size:18px;font-family:var(--mono);letter-spacing:1px;margin-bottom:6px">WATCHLIST PRO</div>
-    <div style="font-size:12px;color:var(--text3);margin-bottom:4px">비밀번호를 입력하세요</div>
-    <input id="pw-input" type="password" placeholder="••••••••" autocomplete="current-password"/>
-    <button id="pw-btn" onclick="tryPw()">열람하기</button>
-    <div id="pw-err">⚠️ 비밀번호가 올바르지 않습니다</div>
-  </div>
-</div>\` : ''}
+${pwGateBlock}
 
 <div id="hdr">
   <div class="logo">
@@ -473,9 +476,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
     <div id="reset-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:24px">
       <div style="background:#0d1117;border:1px solid #334155;border-radius:16px;padding:32px;width:100%;max-width:420px">
         <div style="font-weight:900;font-size:16px;margin-bottom:6px">🗑️ 아카이브 초기화</div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>GitHub Personal Access Token(PAT)이 필요합니다.</div>
-        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">GitHub PAT <span style="color:#475569">(repo 권한 필요 · localStorage 저장)</span></div>
-        <input id="pat-input" type="password" placeholder="github_pat_..." style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>관리자 비밀번호를 입력해주세요.</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">관리자 비밀번호</div>
+        <input id="pat-input" type="password" placeholder="••••••••" style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
         <div id="pat-err" style="color:#f87171;font-size:12px;margin-bottom:12px;display:none"></div>
         <div style="display:flex;gap:10px">
           <button class="btn-sm" onclick="hideResetModal()" style="flex:1">취소</button>
@@ -490,6 +493,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 <script>
 ${dataBlock}
 const GH_OWNER='${GITHUB_OWNER}',GH_REPO='${GITHUB_REPO}';
+const ADMIN_ENABLED=${adminEnabled};
+const ADMIN_PW_HASH='${ADMIN_PASSWORD ? Buffer.from(ADMIN_PASSWORD, 'utf8').toString('base64') : ''}';
 const SENT = {
   positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},
   neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},
@@ -702,41 +707,52 @@ function renderArchive(){
 
 // ── 아카이브 초기화 ──────────────────────────────────────────────────────────────
 function showResetModal(){
-  const saved = localStorage.getItem('gh_pat');
-  if(saved) document.getElementById('pat-input').value = saved;
+  if(!ADMIN_ENABLED){ toast('관리자 비밀번호가 설정되지 않았습니다'); return; }
+  document.getElementById('pat-input').value = '';
   document.getElementById('reset-modal').style.display='flex';
   document.getElementById('pat-err').style.display='none';
 }
 function hideResetModal(){ document.getElementById('reset-modal').style.display='none'; }
 
 async function doReset(){
-  const pat = document.getElementById('pat-input').value.trim();
+  const inputPw = document.getElementById('pat-input').value.trim();
   const err = document.getElementById('pat-err');
   const btn = document.getElementById('reset-btn');
-  if(!pat){ err.textContent='PAT를 입력해주세요.'; err.style.display='block'; return; }
-  if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다. PAGES_URL Secret을 확인해주세요.'; err.style.display='block'; return; }
+  if(!inputPw){ err.textContent='비밀번호를 입력해주세요.'; err.style.display='block'; return; }
+
+  // 관리자 비밀번호 검증
+  if(btoa(unescape(encodeURIComponent(inputPw))) !== ADMIN_PW_HASH){
+    err.textContent='비밀번호가 올바르지 않습니다.';
+    err.style.display='block'; return;
+  }
+
+  // PAT 확인 (localStorage 저장값 사용, 없으면 입력 요청)
+  let pat = localStorage.getItem('gh_pat') || '';
+  if(!pat){
+    pat = prompt('GitHub PAT (repo 권한)를 입력해주세요:') || '';
+    if(!pat){ err.textContent='PAT가 필요합니다.'; err.style.display='block'; return; }
+  }
+  if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다.'; err.style.display='block'; return; }
 
   btn.textContent='초기화 중...'; btn.disabled=true;
   err.style.display='none';
 
   try {
-    // 현재 파일 SHA 조회
     const getRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
       headers:{ 'Authorization': \`Bearer \${pat}\`, 'Accept': 'application/vnd.github+json' }
     });
-    if(!getRes.ok) throw new Error(\`파일 조회 실패 (\${getRes.status}) — PAT 권한(repo)을 확인해주세요.\`);
+    if(!getRes.ok){ localStorage.removeItem('gh_pat'); throw new Error(\`파일 조회 실패 (\${getRes.status}) — PAT를 다시 입력해주세요.\`); }
     const { sha } = await getRes.json();
 
-    // 빈 JSON으로 덮어쓰기
     const putRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
       method: 'PUT',
       headers:{ 'Authorization': \`Bearer \${pat}\`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message:'🗑️ 아카이브 초기화', content: btoa('{}'), sha })
+      body: JSON.stringify({ message:'\u{1F5D1}\uFE0F 아카이브 초기화', content: btoa('{}'), sha })
     });
-    if(!putRes.ok) throw new Error(\`파일 업데이트 실패 (\${putRes.status})\`);
+    if(!putRes.ok){ localStorage.removeItem('gh_pat'); throw new Error(\`파일 업데이트 실패 (\${putRes.status})\`); }
 
     localStorage.setItem('gh_pat', pat);
-    toast('✅ 아카이브가 초기화되었습니다. 페이지를 새로고침합니다...');
+    toast('\u2705 아카이브가 초기화되었습니다. 페이지를 새로고침합니다...');
     setTimeout(()=>location.reload(), 1800);
   } catch(e) {
     err.textContent = e.message;

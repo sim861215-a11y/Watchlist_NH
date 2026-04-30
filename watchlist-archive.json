@@ -41,86 +41,98 @@
       "risk_factors": [
         {
           "rank": 1,
-          "title": "심각한 재무구조 악화 및 자본잠식 위기",
-          "detail": "JTBC는 2025년 3분기 기준 자본잠식률 95.2%, 부채비율 1739.34%를 기록하며 사실상 완전 자본잠식에 근접한 상태다. 3년 연속 대규모 영업손실이 지속되면서 재무 건전성이 극도로 악화된 상황이다. 신한 등 주요 투자자들은 SLL 상장을 통한 회수를 기대했으나 해당 계획도 불확실성이 높아 투자 손실 현실화 우려가 커지고 있다. 이러한 재무 위기는 단기 유동성 문제로 전이될 가능성이 있으며, 추가 차입 또는 자산 매각 등 긴급 구조조정 조치가 불가피할 수 있다.",
+          "title": "자본잠식 및 신용등급 하락 위기",
+          "detail": "JTBC는 자본잠식률이 95%에 달하는 극도로 취약한 재무 구조를 보이고 있으며, 신용등급은 투기등급 직전 수준인 BBB0(부정적)으로 하향 압력을 받고 있습니다. 3년 연속 대규모 영업손실(2023년 584억 원, 2024년 287억 원)을 기록하였으며, 신한투자증권이 5년 연속 공모 회사채 주관을 맡아 리스크를 떠안고 있는 상황입니다. 신용등급이 추가 하락할 경우 자금 조달 비용 급증 및 투자자 이탈 가능성이 높아 재무 안정성에 심각한 위협이 될 수 있습니다.",
           "severity": "high"
         },
         {
           "rank": 2,
-          "title": "2026 북중미 월드컵 중계권 재판매 협상 결렬로 인한 수백억 비용 부담",
-          "detail": "JTBC는 2026 북중미 월드컵 독점 중계권을 확보했으나, MBC 및 SBS와의 재판매 협상이 최종 결렬되면서 중계권 비용을 단독으로 부담해야 하는 상황에 처했다. 지상파 방송사들과의 협상 일방 종료로 인해 MBC가 공식 유감을 표명하는 등 업계 내 갈등이 표면화됐다. 독점 중계에 따른 광고 수익 극대화 가능성이 있으나, 이미 극도로 취약한 재무구조 하에서 수백억 원대의 비용 선부담은 유동성 위기를 가중시킬 수 있다. 협상 결렬로 인한 업계 관계 훼손은 향후 콘텐츠 협력 사업에도 부정적 영향을 미칠 수 있다.",
+          "title": "월드컵·올림픽 중계권 재판매 협상 난항에 따른 대규모 손실 위험",
+          "detail": "JTBC는 2026 북중미 월드컵 및 밀라노-코르티나 동계올림픽 독점 중계권 확보에 막대한 비용을 투입하였으나, 지상파 방송사들의 구매 포기와 협상 난항으로 중계권 재판매가 사실상 불투명한 상황입니다. 동계올림픽 단독 중계는 이미 저조한 시청률로 흥행에 실패하였으며, 월드컵 중계권도 적자를 감수한 최종안에도 협상이 진전되지 않고 있습니다. 중계권 재판매 실패 시 투입 비용 전액이 손실로 확정되어 이미 취약한 재무 구조에 추가적인 대규모 타격이 불가피합니다. KBS 노동조합 등 외부 이해관계자의 비판도 거세져 협상 타결 가능성을 더욱 낮추고 있습니다.",
           "severity": "high"
         },
         {
           "rank": 3,
-          "title": "SLL 상장 지연에 따른 투자자 신뢰 하락 및 평판 리스크",
-          "detail": "JTBC의 핵심 자회사인 SLL(스튜디오앤뉴)의 상장이 지연되면서 투자자들의 회수 전략이 차질을 빚고 있다. 신한 등 주요 재무적 투자자(FI)들은 5년 이상 장기 베팅한 투자금 회수가 불투명해진 상황으로, 추가 자금 조달 시 협상력 약화가 우려된다. 상장 지연과 맞물린 지속적인 적자 행진은 JTBC 그룹 전반에 대한 시장 신뢰도를 저하시키고 있으며, 이는 향후 콘텐츠 투자 및 사업 파트너십 확보에도 부정적으로 작용할 수 있다.",
+          "title": "2025년 흑자 전환 주장과 실제 재무지표 간의 신뢰성 괴리",
+          "detail": "중앙그룹 홍정도 부회장은 2026년 신년사에서 JTBC가 2025년 흑자 전환에 성공했다고 밝혔으나, 이후 보도되는 자본잠식률 95% 및 BBB0(부정적) 신용등급 유지 등의 객관적 지표와 상당한 괴리가 존재합니다. 월드컵·올림픽 중계권 관련 추가 손실이 2025년 또는 2026년 재무제표에 반영될 경우 흑자 전환 지속 여부도 불확실합니다. 이러한 공식 발표와 실제 재무 현황 간의 괴리는 투자자 및 채권자의 신뢰를 훼손할 수 있는 평판 및 정보 투명성 리스크로 이어질 수 있습니다.",
           "severity": "medium"
         }
       ],
       "sources": [
         {
-          "title": "MBC, JTBC의 월드컵 중계 협상 일방적 종료에 유감 표명",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG3E72lO639MuUAtfF3T39oXDofLd7l1j0uvlPQwHJeJ8CGDt8Dpyaeg15q1JuFzpLCYLncmsJb6wdPeg_qp6HgDz7AXG0XhaGdXRDQflXFjjL2VHLu7NchFhR9R-Q1rD0EBgO0BOYQd0Jq3-yWhZQCbZd6MXz8wDSGvYaVrVEV945S8Lhxk1jwumYWGQ==",
-          "source": "MBC",
-          "date": "2026-04-22"
-        },
-        {
           "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_9-EVuHAegAhceB_CQ-ZJCd3-5jFL-08ploZxykMJmfYR79fmsoJ1o_AmwEr9slWcnmCVWDAmdAaqks3JywzpuPuaRUDPytJG6Y9nkqp6GRv5IPva4JhQHQHRAmDuOP1Y-crLZGOM0WfNBGEjxoL0pfnx7WtgMb2vnw==",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFliMV1xUb7lFpLuOil25cH-ubTIHLbPH1oUJKc_9WZFmkWu5WCHsq-lV-N-9CciPXezrFoZ47dXjYmhvCTwHw6GR_-rWcDXntb4Mll9emSe97ET7tKhCFwwtR9sa2C8DSYMRSmJ0zR9tJkjecpPgzFGV8gT4_7Qhhv",
           "source": "알파경제",
           "date": "2026-04-01"
         },
         {
-          "title": "2026년 제4차 위원회 결과",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZiGxE6WY7veBDv5uFhl0ntkAe5-Mxr_GcjoB6Ep4_ZqZplvSiFYCN1jZ3dO12dByDOueEPWtykUj8DMtq0kUmj5C8S1BVpDmfd4LNREKYJHK0eC8kUTngYcoKKw9ZKJhNiJhit324UlP5mCu_7Rnw2O9UYL3a2h0jXEjXsIn1IJ9aX8tmcPHMZs3yk9FZhyIRNbBg-C2VEFBzMs_jtFOqG07VNxvs4fLo-p5_HCTMw6MswQg=",
-          "source": "PERI AI",
-          "date": "2026-04-27"
+          "title": "JTBC 월드컵 중계권 꼬이자…신한투자증권 '노심초사'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCR_plLUfNnuIf803-q_5-rBZy9XeMe-GJtdwZTsep1JImjVhjfw2P5Znp1pL2z8G_GIwceOCvdYQMLeYnbtUNTSRvZ3ZxRfqlID5ooClJbvPa4-w9C3JdFQsNQ1pcyJvsxEL04X7GvoDzHSSr",
+          "source": "IB토마토",
+          "date": "2026-03-23"
+        },
+        {
+          "title": "JTBC \"적자 감수하며 지상파에 최종안 제시했으나 '난항'…이달 안에 협상 끝나야\"",
+          "url": "",
+          "source": "이데일리",
+          "date": "2026-03-23"
+        },
+        {
+          "title": "KBS노조\"수신료로 JTBC 도박빚 갚을 수 없어\"…월드컵 중계권 협상 진통",
+          "url": "",
+          "source": "조선비즈",
+          "date": "2026-03-19"
+        },
+        {
+          "title": "2년 전 584억 적자 JTBC… \"손익 턴어라운드\"",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLUYA6-rXZewtTudbM7U_gC2Bw6zZ_9SsO82wuI0l9iIVIGf90P6tpq3AwnBlrkT9-4gfGbl4Mls7sARBIN30ctN4OUWInellqhsQ8nJLCMfasZBWSSMcO4g==",
+          "source": "미디어오늘",
+          "date": "2026-01-02"
         }
       ],
       "overall_sentiment": "negative",
       "skip_reason": null,
-      "timestamp": 1777521524664
+      "timestamp": 1777521850015
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
       "risk_factors": [
         {
           "rank": 1,
-          "title": "IPO 상장 기한 만료에 따른 FI 자금 상환 압박",
-          "detail": "SLL중앙은 2021년 3월 프랙시스캐피탈을 대상으로 3000억원 규모의 전환우선주를 발행하며 3년 내 적격상장을 약정하였으나, 증시 부진으로 상장에 실패하며 기한을 반복 연장하고 있습니다. 2026년 4월 기준 인수금융 만기가 재차 3개월 연장되었으며, 이는 중앙그룹이 FI 자금 상환을 위한 외부 투자 유치 협상을 지속하고 있음을 의미합니다. 상장이 재차 불발될 경우 FI에 대한 대규모 자금 상환 의무가 현실화되어 유동성 위기로 이어질 가능성이 높습니다. 만기 연장이 반복될수록 투자자 신뢰도 저하 및 협상력 약화가 심화될 수 있습니다.",
+          "title": "회사채 수요예측 실패 및 고금리 확정",
+          "detail": "에스엘엘중앙은 공모 회사채 발행 과정에서 기관투자자들의 외면을 받아 수요예측 흥행에 실패했다. 최종 회사채 금리가 8.5%로 확정되며 높은 조달 비용 부담이 현실화됐다. 이는 올해 두 번째 미매각 사례로, 시장 신뢰도 하락을 단적으로 보여준다. 고금리 조달은 향후 금융비용 증가로 이어져 재무 부담을 가중시킬 가능성이 높다.",
           "severity": "high"
         },
         {
           "rank": 2,
-          "title": "JTBC 회사채 미매각 및 자본잠식에 따른 계열사 재무 리스크 전이",
-          "detail": "모회사 격인 JTBC는 높은 자본잠식률을 보이고 있으며, 신한투자증권이 5년 연속 회사채 주관을 맡으며 기관 미매각 물량까지 자체 인수하는 상황이 발생하고 있습니다. 이는 JTBC 회사채에 대한 시장의 신뢰도가 낮음을 방증하며, 계열사인 SLL중앙의 신용 환경에도 부정적 영향을 미칠 수 있습니다. JTBC의 재무 악화가 지속될 경우 그룹 차원의 자금 지원 여력이 축소되어 SLL중앙의 독자적 재무 대응 능력이 더욱 제한될 수 있습니다.",
+          "title": "신용등급 전망 하향 조정 및 재무건전성 악화",
+          "detail": "한국신용평가가 에스엘엘중앙의 신용등급 전망을 'BBB0 안정적'에서 'BBB0 부정적'으로 하향 조정했다. 연결 기준 손실 누적과 M&A 및 콘텐츠 투자에 따른 차입 규모 확대가 주요 원인으로 지목됐다. 신용등급 전망 하향은 향후 추가 등급 강등 가능성을 시사하며, 자금 조달 여건이 더욱 악화될 수 있다. 재무건전성 악화가 지속될 경우 BBB 미만 투기등급으로의 강등 리스크도 배제할 수 없다.",
           "severity": "high"
         },
         {
           "rank": 3,
-          "title": "반복적 상장 지연에 따른 기업 평판 및 투자자 신뢰 훼손",
-          "detail": "SLL중앙의 상장 일정이 수차례 연기되면서 기업의 신뢰도와 대외 이미지에 부정적 영향이 누적되고 있습니다. 주관사인 신한투자증권의 리스크 관리 부실 논란이 외부에 부각되면서 SLL중앙의 자본시장 접근성 저하로 이어질 수 있습니다. 향후 추가적인 외부 투자 유치 협상에서도 협상 우위를 확보하기 어려운 환경이 조성되고 있습니다.",
+          "title": "콘텐츠 투자 및 M&A 관련 차입금 증가 부담",
+          "detail": "에스엘엘중앙은 콘텐츠 제작 투자와 인수합병 활동으로 인해 차입 규모가 지속적으로 확대되고 있다. 콘텐츠 산업 특성상 투자 회수 기간이 길고 흥행 불확실성이 높아 재무 리스크가 상존한다. 매출 성장세가 견조하더라도 금융비용 부담이 수익성을 잠식할 가능성이 크다. 이는 중장기적으로 유동성 위기로 이어질 수 있는 잠재적 위험 요인이다.",
           "severity": "medium"
         }
       ],
       "sources": [
         {
-          "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwcHsFmtE1EfYz5TgrpIMoEVy5nLxUGCKAlmidMIw7euGynX4_KD7JXBzePOAum1f90TTg2xcX3fexRuwxRA2FvSwNSBfk9Wru_zk7VkwLg9BZOZpWGFEr15Mkx5Q4XdJOJdP2u-etvRFLzg==",
-          "source": "알파경제",
-          "date": "2026-04-01"
+          "title": "SLL중앙, BBB급 한계…회사채 금리 8.5% 확정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHk7uidg1IJb7dABNhSwpHP4uGqlV9VJ7NWc3XqwbQ9GNxggNaSxWTifqwTny3gWIiCeGRRQkVADHVULCRpeZHsnZk06YO4iJA9BxHprhaMkqBTfjEyxVcs09Ai3KcVi57aICEX4BkBrC2pH4lZ-g==",
+          "source": "IB토마토",
+          "date": "2026-04-27"
         },
         {
-          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECICTKJe8JRj7NUSdm2Vvi9Pm45ih1gH51hENnH15f-JumAPrbzrBi9NOPl3eTU9-OScnB1t7Fhtmiw7kyLCZKfDY1DfE6V5gIKHXSNqCYSfeklDV-lzsox7aX039IdltmM0F108-HHaW4ZCzs62Bl8uymi1hdLgO2ozTMdzdj-8lZWjgBQaA=",
-          "source": "인베스트조선",
-          "date": "2026-04-01"
+          "title": "'8% 금리' 내세운 SLL중앙 회사채, 올해 두번째 미매각 [시그널]",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQg1sB0o0QmJH-EHhsuSkRuEHJoDqVaGAGQe_gTp8jN1dw0kqYUCgRMFtOkWIJnb_Juej6Q-c1ZMKDStTBc2PzoYULLPbBOnhYCtI5FcpDdOlGZ_xt-kymg7lLHKmRiPlVmN4=",
+          "source": "서울경제",
+          "date": "2026-04-22"
         }
       ],
       "overall_sentiment": "negative",
       "skip_reason": null,
-      "timestamp": 1777521560301
+      "timestamp": 1777521884513
     }
   }
 }

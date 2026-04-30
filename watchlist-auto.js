@@ -123,12 +123,51 @@ function getKnownArticleTitles(company, archive) {
   return [...titles];
 }
 
+// ── STEP 0: Gemini → 최근 기사 제목 사전 수집 ──────────────────────────────────
+// Claude가 맞춤형 검색 정책을 만들 수 있도록 기업의 최근 뉴스 현황을 먼저 파악
+async function fetchRecentHeadlines(company) {
+  const query = `${company} 최근 뉴스`;
+  const prompt = `"${company}"의 최근 뉴스 기사 제목을 Google 검색으로 수집해서 JSON으로 반환하세요.
+
+출력 형식 (코드블록 없이 JSON만):
+{"headlines":[{"title":"기사 제목","source":"언론사","date":"YYYY-MM-DD"}]}
+
+규칙:
+- 최대 10개
+- 제목만 수집 (본문 불필요)
+- 기사가 없으면 {"headlines":[]}`;
+
+  try {
+    const r = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          tools: [{ google_search: {} }],
+          generationConfig: { temperature: 0.5, maxOutputTokens: 2048, thinkingConfig: { thinkingBudget: 0 } },
+        }),
+      }
+    );
+    if (!r.ok) return [];
+    const data = await r.json();
+    const parts = data.candidates?.[0]?.content?.parts || [];
+    let raw = parts.filter(p => typeof p.text === 'string' && !p.thought).map(p => p.text).join('').trim();
+    if (!raw) raw = parts.filter(p => typeof p.text === 'string').map(p => p.text).join('').trim();
+    const parsed = extractJSON(raw);
+    return parsed?.headlines || [];
+  } catch { return []; }
+}
+
 // ── STEP 1: Claude → 검색 정책 ───────────────────────────────────────────────
-async function buildSearchPolicy(company, archive) {
+async function buildSearchPolicy(company, archive, headlines = []) {
   const from = dateFrom(), to = todayStr();
   const knownTitles = getKnownArticleTitles(company, archive);
   const knownBlock = knownTitles.length
     ? `\n\n이미 수집된 기사 (제외 필수 — 동일하거나 유사한 기사는 수집하지 말 것):\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
+    : '';
+  const headlinesBlock = headlines.length
+    ? `\n\n최근 기사 현황 (이 제목들을 참고해서 기업 현재 이슈와 업종 특성을 파악하고 맞춤형 검색어를 생성할 것):\n${headlines.map((h,i)=>`${i+1}. [${h.date||''}] ${h.title} (${h.source||''})`).join('\n')}`
     : '';
   const prompt = `당신은 기업 리스크 리서치 디렉터입니다.
 아래 기업에 대해 리스크 중심 뉴스를 수집하도록 검색 에이전트(Gemini)에게 전달할 구조화된 검색 정책을 JSON으로 만드세요.
@@ -144,14 +183,21 @@ async function buildSearchPolicy(company, archive) {
   "search_queries": ["검색어1", "검색어2", "검색어3"],
   "priority_topics": ["우선수집 주제1", "우선수집 주제2"],
   "exclude_topics": ["제외할 주제1"],
-  "article_limit": 5,
+  "article_limit": 9,
   "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지. 이미 수집된 기사와 동일하거나 유사한 기사는 반드시 제외할 것"
 }
 
-search_queries: 리스크 탐지에 최적화된 검색어 3개
+search_queries 작성 규칙 (매우 중요):
+- 검색어는 기업명 + 핵심 키워드 1~2개로만 구성 (예: "JTBC 과징금", "삼성전자 소송")
+- 리스크 키워드를 여러 개 나열하지 말 것 (예: "JTBC 리스크 제재 과징금 손실" → 검색 실패)
+- 실제 구글 검색에서 기사가 나올 법한 자연스러운 검색어 사용
+- 검색어 9개를 아래 3개 영역별로 각각 3개씩 생성할 것
+  · 재무 영역 3개: 해당 기업 업종에 맞는 재무 리스크 (매출, 적자, 부채, 손실 등)
+  · 법률·규제 영역 3개: 소송, 과징금, 수사, 행정처분 등
+  · 경영·사고 영역 3개: 임원 리스크, 사고, 노사갈등, 구조조정 등
 priority_topics: 재무손실, 부채급증, 과징금, 영업정지, 형사기소 등 실질적 리스크 주제
 exclude_topics: 단순 IR 홍보, 채용공고, 제품출시 등 리스크와 무관한 주제
-${knownBlock}\n\nJSON만 출력하세요.`;
+${knownBlock}${headlinesBlock}\n\nJSON만 출력하세요.`;
 
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -851,12 +897,15 @@ async function main() {
     const co = COMPANIES[i];
     log(`\n[${i+1}/${COMPANIES.length}] ${co}`);
     try {
-      log(`  ① Claude: 검색 정책 생성`);
-      const policy = await buildSearchPolicy(co, archive);
-      log(`  ② Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
+      log(`  ① Gemini: 최근 기사 제목 사전 수집`);
+      const headlines = await fetchRecentHeadlines(co);
+      log(`     → 헤드라인 ${headlines.length}건 수집`);
+      log(`  ② Claude: 맞춤형 검색 정책 생성`);
+      const policy = await buildSearchPolicy(co, archive, headlines);
+      log(`  ③ Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
       const articles = await collectArticles(policy);
       log(`     → ${articles.length}건 수집`);
-      log(`  ③ Claude: 리스크 분석`);
+      log(`  ④ Claude: 리스크 분석`);
       const result = await analyzeRisk(co, articles);
       const dup = checkDuplicate(co, result, archive);
       if (dup) {

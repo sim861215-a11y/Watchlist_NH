@@ -843,7 +843,6 @@ async function main() {
     `📊 <b>WATCHLIST PRO 리스크 분석</b>\n` +
     `📅 ${fmt(today)} · 최근 14일\n` +
     `🏢 ${COMPANIES.length}개 기업\n` +
-    (pagesLink ? `📱 <a href="${pagesLink}">더 깔끔하게 보기 →</a>\n` : '') +
     `━━━━━━━━━━━━━━━`
   );
 

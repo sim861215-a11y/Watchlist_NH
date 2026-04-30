@@ -41,92 +41,46 @@
       "risk_factors": [
         {
           "rank": 1,
-          "title": "월드컵·올림픽 중계권 재판매 실패에 따른 대규모 재무손실 위험",
-          "detail": "JTBC는 2026 북중미 월드컵 중계권에 약 2000억원 이상, 올림픽 중계권에 약 3300억원을 투입하여 총 5000억원 이상의 자금을 중계권 확보에 사용한 것으로 추정됩니다. 지상파 3사와의 재판매 협상에서 SBS는 최종 결렬을 선언하였고, MBC와의 협상도 난항이 지속되고 있어 당초 재판매를 통한 비용 회수 전략이 사실상 붕괴될 위기에 처해 있습니다. KBS와 타결이 이루어졌으나 KBS 측도 상당한 적자를 예상하고 있어 JTBC에 유리한 조건으로 체결되었을 가능성은 낮습니다. 자금 조달 파트너인 신한투자증권도 재판매 협상 난항에 따른 리스크를 우려하고 있어 재무 건전성에 대한 외부 신뢰도 또한 저하되고 있습니다. 재판매 협상이 추가 결렬될 경우 수천억원 규모의 손실이 확정될 수 있어 파산 우려까지 제기되는 상황입니다.",
-          "severity": "high"
+          "title": "2026 월드컵 중계권 협상 결렬로 인한 수익 기회 손실 및 관계사 갈등",
+          "detail": "JTBC는 KBS와 2026년 FIFA 월드컵 공동 중계에 합의했으나, MBC 및 SBS와의 재판매 협상은 일방적으로 중단하여 결렬되었다. MBC는 공식적으로 유감을 표명하며 업계 내 갈등이 표면화되었다. 이는 지상파 방송사들과의 관계 악화로 이어질 수 있으며, 향후 콘텐츠 협력이나 공동 제작 등에 부정적 영향을 미칠 가능성이 있다. 또한 월드컵 중계권을 독점적으로 보유함으로써 발생할 수 있는 여론 및 규제 당국의 시선도 리스크 요인이 될 수 있다. 단기적 수익 확보와 장기적 업계 협력 사이의 균형 문제가 제기된다.",
+          "severity": "medium"
         },
         {
           "rank": 2,
-          "title": "중계권 자금 조달 구조의 부채 리스크 및 금융 파트너 신뢰 훼손",
-          "detail": "JTBC는 중계권 확보를 위해 신한투자증권 등 외부 금융기관을 통해 대규모 자금을 조달한 것으로 알려져 있습니다. 재판매 협상이 결렬되면서 조달된 자금의 상환 재원 확보에 차질이 생길 가능성이 높아졌습니다. 신한투자증권이 공개적으로 우려를 표명하고 있다는 점은 JTBC와 금융 파트너 간의 신뢰 관계가 흔들리고 있음을 시사합니다. 차입 구조의 악화는 신용등급 하락이나 추가 차입 비용 증가로 이어질 수 있어 재무 구조 전반에 연쇄적인 부정적 영향을 미칠 수 있습니다.",
-          "severity": "high"
+          "title": "누적 적자 지속 후 흑자 전환의 지속 가능성 불확실",
+          "detail": "JTBC는 2023년 584억 원, 2024년 287억 원의 대규모 영업 적자를 기록한 바 있으며, 2025년에 흑자 전환에 성공했다고 발표했다. 그러나 흑자 전환의 규모와 구체적인 수치가 공개되지 않아 재무 안정성에 대한 검증이 어렵다. 2년간 누적된 800억 원 이상의 적자는 재무 건전성에 상당한 부담을 남겼을 가능성이 높다. 방송·미디어 산업 전반의 광고 수익 감소 및 OTT 경쟁 심화 추세가 지속될 경우 흑자 기조 유지가 불확실하다. 실적 개선의 지속 가능성에 대한 모니터링이 필요하다.",
+          "severity": "medium"
         },
         {
           "rank": 3,
-          "title": "보편적 시청권 훼손 논란 및 규제·여론 리스크",
-          "detail": "JTBC의 중계권 독점 확보 방식은 국민적 관심 행사에 대한 보편적 시청권을 훼손한다는 비판을 받고 있습니다. 지상파 방송사들은 JTBC가 기존 중계 질서를 일방적으로 파괴했다고 주장하며 여론전을 전개하고 있어 JTBC의 브랜드 이미지에 부정적 영향을 미치고 있습니다. 방송통신위원회 등 규제 당국의 보편적 시청권 관련 규정 적용 여부에 따라 행정 제재 가능성도 배제할 수 없습니다. 이 같은 여론 악화는 광고 수익 감소 및 시청자 이탈로 이어져 수익성 회복을 더욱 어렵게 만들 수 있습니다.",
-          "severity": "medium"
+          "title": "MBC·SBS와의 관계 악화로 인한 평판 및 업계 신뢰도 리스크",
+          "detail": "월드컵 중계권 협상의 일방적 중단은 MBC의 공식 유감 표명으로 이어졌으며, 이는 공영·민영 방송사 간 신뢰 관계에 균열을 일으킬 수 있다. 방송 업계 내에서 협력적 파트너가 아닌 경쟁적·비협조적 사업자로 인식될 경우 향후 콘텐츠 수급 및 공동 프로젝트에 불이익이 발생할 수 있다. 시청자 및 광고주 관점에서도 공익적 콘텐츠(스포츠 중계)의 접근성을 제한한다는 비판이 제기될 수 있다.",
+          "severity": "low"
         }
       ],
       "sources": [
         {
-          "title": "JTBC 이제 곧 파산 위기 진짜 이유 (이슈딸깍) - YouTube",
-          "url": "https://www.youtube.com/watch?v=이슈딸깍",
-          "source": "YouTube (이슈딸깍)",
+          "title": "MBC, JTBC의 월드컵 중계 협상 일방적 종료에 유감 표명",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFjWx43E2jDQR1e9iNF3PUIDf5nGwozMk_ntjdKflcjQAPWDFosuu-O3SGcUKR3S3o9jumq-REza1t9wrPw2m3kvcRZowS67dXVF7vGKxffd89Q-pRS6iDFVtjni_-480ilDW616kht4Gv3tb9JQCIYYakdB1qwb4KAtELuuX0wdizHSlLAY0xrvV7ObQ==",
+          "source": "조선일보",
           "date": "2026-04-22"
         },
         {
-          "title": "\"월드컵 중계 안 할래\"…'적자 1000억' 지상파의 속사정 [김소연의 엔터비즈]",
-          "url": "https://www.hankyung.com",
-          "source": "한국경제",
-          "date": "2026-04-11"
-        },
-        {
-          "title": "\"상당한 적자 예상되지만\"…JTBC-KBS, 북중미 월드컵 중계권 최종 타결",
-          "url": "https://www.ilgansports.com",
-          "source": "일간스포츠",
-          "date": "2026-04-20"
-        },
-        {
-          "title": "[IB토마토]JTBC 월드컵 중계권 꼬이자…신한투자증권 '노심초사'",
-          "url": "https://www.ibtomato.com",
-          "source": "IB토마토",
-          "date": "2026-03-23"
-        },
-        {
-          "title": "SBS, JTBC와 2026 월드컵 중계권 협상 결렬 \"최선 다했으나…재무 부담\"",
-          "url": "https://www.news1.kr",
-          "source": "뉴스1",
-          "date": "2026-04-22"
+          "title": "2년 전 584억 적자 JTBC… \"손익 턴어라운드\"",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBAbmODPFgpManYRSPMjAsu-Oc3PbIM_ZUWSAxEvceJn17QfCHPIjd3pz09Hf7kbKPhyouVVD56HOpFUkTDkyKBA7hpjJyg-QQD725XKQiNZsuqECagU7fBEBifNV3TBfimfeCtVvFrQs1YEBRx5TEN9PvWti7Gfbfnw==",
+          "source": "미디어오늘",
+          "date": "2026-01-02"
         }
       ],
-      "overall_sentiment": "negative",
+      "overall_sentiment": "neutral",
       "skip_reason": null,
-      "timestamp": 1777510496220
+      "timestamp": 1777513652934
     },
     "에스엘엘중앙": {
       "company": "에스엘엘중앙",
-      "risk_factors": [
-        {
-          "rank": 1,
-          "title": "인수금융 만기 연장에 따른 유동성 및 재무 리스크",
-          "detail": "프랙시스캐피탈이 SLL중앙 인수금융 만기를 3개월 추가 연장한 것은 중앙그룹의 재무적투자자(FI) 자금 상환 능력에 문제가 있음을 시사합니다. 만기 연장은 외부 투자 유치 협상 시간을 확보하기 위한 조치로, 이는 자체적인 상환 재원 마련이 어려운 상황임을 반영합니다. 외부 투자 유치에 실패할 경우 추가적인 만기 연장 또는 채무불이행(디폴트) 위험이 현실화될 수 있습니다. 인수금융 부채 부담이 지속될 경우 기업 신용도 하락 및 자금 조달 비용 증가로 이어질 가능성이 높습니다.",
-          "severity": "high"
-        },
-        {
-          "rank": 2,
-          "title": "재무적투자자(FI) 자금 상환 지연 리스크",
-          "detail": "중앙그룹이 FI 자금 상환을 위해 외부 투자 유치 협상을 진행 중이라는 점은 상환 기한 내 자력 해결이 어렵다는 것을 의미합니다. FI와의 관계 악화 또는 협상 결렬 시 강제 매각, 지분 희석 등 경영권 관련 리스크가 발생할 수 있습니다. 투자 유치 협상이 장기화될수록 경영 불확실성이 높아져 사업 운영에도 부정적 영향을 미칠 수 있습니다.",
-          "severity": "high"
-        },
-        {
-          "rank": 3,
-          "title": "외부 투자 유치 실패 시 경영권 불안정 리스크",
-          "detail": "외부 투자자 유치를 통한 재원 마련이 성사되지 않을 경우 중앙그룹의 SLL중앙에 대한 지배력이 약화될 수 있습니다. 이는 장기적으로 사업 전략 수립 및 콘텐츠 제작 투자 등 핵심 사업 역량에 부정적인 영향을 줄 수 있습니다. 지속적인 재무 불안 소식은 파트너사 및 광고주와의 신뢰 관계에도 악영향을 미칠 수 있는 평판 리스크로도 작용합니다.",
-          "severity": "medium"
-        }
-      ],
-      "sources": [
-        {
-          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
-          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGdm5V7SGkmAZkrvnwqmQDmeOLgA2MGKkOfpl6do14C3Sj-lQXihU-gQ8ZpyZoq5Yl_4uQE0peWAu_O6uovg1P33sKbSpPJhqJrTNHDRe08KVtzTu_nTYiRl4jkVx5PvE6hLG2cBsPo_3pPR4QOV7M0pq15rctQbJrxW6d8bVgHPTFlffWXGKm8",
-          "source": "인베스트조선",
-          "date": "2026-04-01"
-        }
-      ],
-      "overall_sentiment": "negative",
-      "skip_reason": null,
-      "timestamp": 1777510526051
+      "error": "Gemini: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+      "overall_sentiment": "neutral",
+      "timestamp": 1777513671794
     }
   }
 }

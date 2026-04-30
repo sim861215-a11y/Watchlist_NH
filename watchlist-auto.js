@@ -44,7 +44,7 @@ const ARCHIVE_PATH = path.join(process.cwd(), 'watchlist-archive.json');
 // ── 유틸 ──────────────────────────────────────────────────────────────────────
 const sleep    = ms => new Promise(r => setTimeout(r, ms));
 const todayStr = () => new Date().toISOString().split('T')[0];
-const dateFrom = () => new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+const dateFrom = () => new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 const fmt      = s  => s ? `${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}` : '';
 
 function log(msg) {
@@ -112,9 +112,24 @@ function checkDuplicate(company, result, archive) {
   return bestScore >= 0.66 ? { date: bestDate, score: bestScore } : null;
 }
 
+// ── 아카이브에서 기존 기사 제목 추출 ────────────────────────────────────────────
+function getKnownArticleTitles(company, archive) {
+  const titles = new Set();
+  Object.values(archive).forEach(session => {
+    const res = session[company];
+    if (!res?.sources?.length) return;
+    res.sources.forEach(s => { if (s.title) titles.add(s.title); });
+  });
+  return [...titles];
+}
+
 // ── STEP 1: Claude → 검색 정책 ───────────────────────────────────────────────
-async function buildSearchPolicy(company) {
+async function buildSearchPolicy(company, archive) {
   const from = dateFrom(), to = todayStr();
+  const knownTitles = getKnownArticleTitles(company, archive);
+  const knownBlock = knownTitles.length
+    ? `\n\n이미 수집된 기사 (제외 필수 — 동일하거나 유사한 기사는 수집하지 말 것):\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
+    : '';
   const prompt = `당신은 기업 리스크 리서치 디렉터입니다.
 아래 기업에 대해 리스크 중심 뉴스를 수집하도록 검색 에이전트(Gemini)에게 전달할 구조화된 검색 정책을 JSON으로 만드세요.
 
@@ -130,13 +145,13 @@ async function buildSearchPolicy(company) {
   "priority_topics": ["우선수집 주제1", "우선수집 주제2"],
   "exclude_topics": ["제외할 주제1"],
   "article_limit": 5,
-  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지"
+  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지. 이미 수집된 기사와 동일하거나 유사한 기사는 반드시 제외할 것"
 }
 
 search_queries: 리스크 탐지에 최적화된 검색어 3개
 priority_topics: 재무손실, 부채급증, 과징금, 영업정지, 형사기소 등 실질적 리스크 주제
 exclude_topics: 단순 IR 홍보, 채용공고, 제품출시 등 리스크와 무관한 주제
-JSON만 출력하세요.`;
+${knownBlock}\n\nJSON만 출력하세요.`;
 
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -148,7 +163,7 @@ JSON만 출력하세요.`;
   const raw = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
   const parsed = extractJSON(raw);
   if (!parsed) throw new Error('검색 정책 JSON 파싱 실패');
-  return parsed;
+  return { ...parsed, known_titles: knownTitles };
 }
 
 // ── STEP 2: Gemini → 기사 수집 ───────────────────────────────────────────────
@@ -167,6 +182,7 @@ async function collectArticles(policy) {
 
 수집 기준:
 - 반드시 ${policy.date_from} ~ ${policy.date_to} 범위 기사만 선별 (이 기간 외 기사는 반드시 제외)
+- 아래 이미 수집된 기사와 동일하거나 유사한 기사는 절대 포함하지 말 것:\n${policy.known_titles?.length ? policy.known_titles.map((t,i)=>`  ${i+1}. ${t}`).join('\n') : '  (없음)'}
 - 우선 주제 기사를 먼저 선별, 제외 주제 기사는 포함하지 말 것
 - 날짜가 불명확하거나 기간 외이면 제외
 
@@ -242,7 +258,7 @@ async function analyzeRisk(company, articles) {
 
   const articleText = articles.map((a,i)=>`[${i+1}] ${a.title}\n출처: ${a.source} | 날짜: ${a.date}\n요약: ${a.summary}`).join('\n\n');
   const prompt = `당신은 기업 리스크 전문 애널리스트입니다.
-아래는 "${company}"에 관해 수집된 최근 7일 기사입니다.
+아래는 "${company}"에 관해 수집된 최근 14일 기사입니다.
 
 ${articleText}
 
@@ -292,7 +308,7 @@ function buildTgMsg(name, res, archive) {
   let t = `<b>━━ ${name} ━━</b>\n종합 평가: <b>${sentiment}</b>\n`;
   if (res.error) { t += `❌ ${res.error}`; return t; }
   const risks = res.risk_factors || [];
-  if (!risks.length) { t += '✅ 최근 7일 내 신규 리스크 없음'; return t; }
+  if (!risks.length) { t += '✅ 최근 14일 내 신규 리스크 없음'; return t; }
   t += '\n';
   risks.forEach(rf => {
     t += `${SVE[rf.severity]||'🟡'} <b>[리스크 ${rf.rank}] ${rf.title}</b>  심각도: ${SVL[rf.severity]||''}\n  ${rf.detail}\n\n`;
@@ -553,7 +569,7 @@ function renderReport(){
   const data  = VIEW ? ARCHIVE[VIEW] : null;
 
   document.getElementById('rep-title').textContent = VIEW && VIEW !== today ? \`\${fmt(VIEW)} 리포트\` : '오늘의 리포트';
-  document.getElementById('rep-sub').textContent   = '최근 7일 기준 리스크 분석';
+  document.getElementById('rep-sub').textContent   = '최근 14일 기준 리스크 분석';
   document.getElementById('hdr-meta').textContent  = \`업데이트 \${fmt(today)}\`;
 
   const content = document.getElementById('rep-content');
@@ -600,7 +616,7 @@ function buildCard(name, rawRes){
   } else if(rawRes.duplicate && !res.risk_factors?.length){
     riskHtml = \`<div style="padding:20px 22px;color:var(--text3);font-size:13px">♻️ 이전 아카이브와 동일 (\${fmt(dupDate)})</div>\`;
   } else if(!risks.length){
-    riskHtml = \`<div style="padding:44px 24px;text-align:center;color:var(--text3);font-size:14px">최근 7일 내 신규 리스크가 발견되지 않았습니다.</div>\`;
+    riskHtml = \`<div style="padding:44px 24px;text-align:center;color:var(--text3);font-size:14px">최근 14일 내 신규 리스크가 발견되지 않았습니다.</div>\`;
   } else {
     riskHtml = \`<div style="padding:18px 22px 4px">
       <div class="lbl">핵심 리스크 분석</div>
@@ -825,7 +841,7 @@ async function main() {
   const pagesLink = PAGES_URL ? `${PAGES_URL}${REPORT_PASSWORD ? '/#'+encodeURIComponent(REPORT_PASSWORD) : ''}` : '';
   await tgSend(
     `📊 <b>WATCHLIST PRO 리스크 분석</b>\n` +
-    `📅 ${fmt(today)} · 최근 7일\n` +
+    `📅 ${fmt(today)} · 최근 14일\n` +
     `🏢 ${COMPANIES.length}개 기업\n` +
     (pagesLink ? `📱 <a href="${pagesLink}">더 깔끔하게 보기 →</a>\n` : '') +
     `━━━━━━━━━━━━━━━`
@@ -837,7 +853,7 @@ async function main() {
     log(`\n[${i+1}/${COMPANIES.length}] ${co}`);
     try {
       log(`  ① Claude: 검색 정책 생성`);
-      const policy = await buildSearchPolicy(co);
+      const policy = await buildSearchPolicy(co, archive);
       log(`  ② Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
       const articles = await collectArticles(policy);
       log(`     → ${articles.length}건 수집`);

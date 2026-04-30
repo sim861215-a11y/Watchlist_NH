@@ -1,0 +1,52 @@
+{
+  "2026-04-30": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777525593130
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "FI 인수금융 만기 연장 및 상장 의무 불이행 리스크",
+          "detail": "SLL중앙은 2021년 프랙시스캐피탈로부터 3000억원 규모의 전환우선주를 발행하며 3년 내 적격상장을 약속했으나, 증시 부진으로 상장이 지연되어 약속을 이행하지 못했다. 프랙시스캐피탈은 인수금융 만기를 3개월 추가 연장한 상태로, 이는 근본적 해결이 아닌 시간 확보를 위한 임시방편에 불과하다. 모회사 콘텐트리중앙이 FI 자금 상환을 위한 외부 투자 유치에 나서고 있으나 협상 결과가 불확실하며, 상장 기한 만료로 FI와의 관계에서 법적·재무적 분쟁 가능성이 높아지고 있다. 3000억원 규모의 우선주 상환 압력이 현실화될 경우 유동성 위기로 직결될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "IPO 무산에 따른 자금조달 경로 차단 및 재무 압박",
+          "detail": "SLL중앙의 상장 기한이 만료됨에 따라 공모를 통한 자금조달 계획이 사실상 무산 위기에 처해 있다. 신한투자증권이 상장 주관을 목적으로 무리하게 JTBC 회사채 발행을 주관해왔으나 상장이 지연되면서 해당 구조 전체의 실효성이 의문시되고 있다. IPO를 통한 FI 엑시트 경로가 막히면서 대체 상환 방안 마련이 시급한 상황이며, 이는 모회사 콘텐트리중앙의 재무 부담으로도 전이될 가능성이 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "연관 기관(신한투자증권·JTBC) 리스크 전이 및 평판 훼손",
+          "detail": "신한투자증권이 SLL중앙 상장 주관을 기대하며 JTBC 공모 회사채 미매각 물량을 떠안은 정황이 드러나면서, SLL중앙의 상장 실패가 주요 금융 파트너의 손실로 이어질 수 있다는 우려가 제기되고 있다. JTBC의 대규모 적자와 높은 자본잠식률도 동반 리스크 요인으로 작용하고 있어 에스엘엘중앙을 둘러싼 생태계 전반의 신뢰도가 하락하고 있다. 이러한 상황은 향후 SLL중앙의 추가 자금조달이나 파트너십 체결 시 협상력 약화로 이어질 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEv1U4jEAVasx0wKsghghLWfWXnSSoVM5QYqt6i8rpgJePuVZdj3DZupTxD5NwVfj8DSMsZQYyoDxd1cdyDdJkFkAmDGmjt_1pOYSsptlixSonv8nNo6V7o_2xY5NXPDUeOagTZLsglopW8hA==",
+          "source": "알파경제",
+          "date": "2026-04-01"
+        },
+        {
+          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5L6BiyWmY3Y9spId12obtpSgnzqG6peKo1-wI3fAJYdmuQmAwuyLO1YGQJ1QJP2J79eMyIcP1TjR7v0-ndC69joDmhmrKUM0mPJs4nBMrHIshF8iTbJ8r9Bb19uGultDFTqI9mt2cXA6oReABocInZwnYujRiGKtmFx-dBH832OkS4ddwVLA=",
+          "source": "인베스트조선",
+          "date": "2026-04-01"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777525628261
+    }
+  }
+}

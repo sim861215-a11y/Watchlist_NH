@@ -1,0 +1,230 @@
+{
+  "2026-04-30": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777533403195
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "회사채 반복 미매각 및 자금조달 능력 저하",
+          "detail": "SLL중앙은 2026년 들어 두 차례에 걸쳐 공모 회사채 수요예측에서 미매각을 기록했습니다. 가장 최근인 4월 22일에는 400억원 규모 발행에 140억원만 모집되는 데 그쳤으며, 금리 8.50%라는 고금리 조건을 제시했음에도 불구하고 투자자들의 외면을 받았습니다. 이는 BBB 등급 회사채에 대한 시장 신뢰가 현저히 낮아졌음을 의미하며, 향후 차환 및 신규 자금조달에 심각한 제약이 발생할 수 있습니다. 콘텐츠 제작비 상승, 미국 자회사 Wiip Production 부진, 방송광고 시장 침체가 복합적으로 작용하고 있어 단기간 내 개선이 어려울 것으로 판단됩니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "신용등급 하향 가능성 및 그룹 전반 재무 리스크 확대",
+          "detail": "SLL중앙은 지속적인 당기순손실과 누적 차입금 부담으로 인해 현재 BBB 등급에서 추가 하향 조정 가능성이 높아지고 있습니다. IPO 불발로 인해 모회사 콘텐트리중앙이 SLL중앙 주식 일부를 재취득해야 하는 상황이 발생하였고, 이는 그룹 전체의 재무 부담을 가중시키고 있습니다. 또한 프랙시스캐피탈의 인수금융 만기가 3개월 연장된 것은 재무적투자자(FI) 자금 상환 협상이 난항을 겪고 있음을 시사합니다. 신용등급이 추가 하향될 경우 자금조달 비용 급등 및 기존 차입금 조기상환 조항 발동 가능성도 배제할 수 없습니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "IPO 지연 및 재무적투자자 상환 압박",
+          "detail": "SLL중앙의 기업공개(IPO)는 지속적으로 난항을 겪으며 상장 시한이 연장되고 있는 상황입니다. 프랙시스캐피탈의 인수금융 만기 3개월 연장은 외부 투자 유치 협상을 위한 시간 확보 차원이지만, 근본적인 해결책이 되지 못하고 있습니다. IPO가 계속 지연될 경우 재무적투자자에 대한 상환 의무가 모회사로 전가될 가능성이 높으며, 이는 중앙그룹 전체의 유동성 위기로 이어질 수 있습니다. IBK기업은행과의 업무협약 체결이 일부 긍정적 신호를 주고 있으나, 구조적 재무 문제를 단기간에 해소하기에는 역부족으로 평가됩니다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SLL중앙, 400억 회사채 일부 미매각…올해만 두번째",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0t17Sc72p_VcZRtzQeTgGRw1cvVqMbm9Z39DQ9gGZSXZoL4CQkewoCPmZBmWL1Io876ZJpqpFUfyCkJqw2BIECmXFjYmBg-tKaqgwnj4sfmoIDyJjsp2lJ0TMbz-e04zST51FZdKJ0dCec5OTOgHVFVzQ4ldMiXq7YI8=",
+          "source": "이데일리",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "SLL중앙, 회사채 수요예측 미매각…고금리에도 조달 부담 지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEDwu35IKy6foMHP3BfHnTJElfRCrSD-3HdJ1NQ1uNJNyCZ8wcaRN28aLP0_s3jEWFXfV5Cvlx7t8jveEVLyYvkR2Ek2fsNkbTYrOX6DijiTKbrHvkAKDN6DSq6hubzL52x0JrqLBRYXHm4rM2D62JGLMdMfqg-ocbM2Q==",
+          "source": "연합인포맥스",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "'8% 금리' 내세운 SLL중앙 회사채, 올해 두번째 미매각 [시그널]",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFLTvBclIEobS-6csX5mWEzldDOlXIz3-PKn_9yWB9j3KpTE9H320b7fSUGrP86aFZuvJ0cjMZvgk3JeJYCwHNks8JBnIdc9Gnx6laUWvYH8yMlPas3pvB5wwVOrUzDaxBym0u",
+          "source": "서울경제",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "[마켓인]'적자 늪' SLL중앙, 그룹 리스크에 신용등급 하향 가능성 높아졌다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKjv7Tz7LdNTnyZgDp6TS5TVhs7lDxokp2GNi1tmebFMJlJkWkOTJbYMxhcV7e9JaI9poSSjyCCsDwVD4r3WRyzOtng5q0XspPgz11lRDz7NvjhdzDcFaLBqA1aBLy4SIy",
+          "source": "Daum",
+          "date": "2026-04-15"
+        },
+        {
+          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEhqlDl3aCa_yRrmKxTOrATbrrkt2Zvhb00BjFrSJtV7qMjBKe4Q26C9PX8mc8Bh1mSLuPz9MlE4D6vkVGvryxciEj4m2TI6bZgHvN2mqHg8kKbPGOrMsnKoJPfmBKbJBuJJYzkXJ-tg1H3HMeXhTI66nFOavt98RqBl2c5QG2brz57VirPUu5z",
+          "source": "인베스트조선",
+          "date": "2026-04-01"
+        },
+        {
+          "title": "기업은행-SLL중앙, K콘텐츠 협력 사업 위한 업무 협약 체결",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ1iVxdL7dHJRxEu9vdGk21QZCaZX7LjEI3qR2B-EyCC42KL25sCHNkNO9imnC5OOahq9cURLDgb5K0pT_N1UG8A7ScZ2yfb7QoRJcBYO9259MdpdB5Vw-AdwvVKdAA52mfhMxiJ-AmEU3vzbRp_i5aOabYG0X",
+          "source": "THE Biz(더비즈)",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "IBK기업은행-SLL중앙, K-콘텐츠 제작 및 협력 사업을 위한 업무 협약 체결",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGm_gMbSrAemCKvKHA8BNLk1YlK1KYOaCNF8xawaBVQnfKeyXFkpj-oqMm1HPorMN0ow_dyYfhlG6KF0UO4l8iUy9_unvzfuxD8QRn2eaRgDVWKNFLCm4EMizEZChLkr_UmNn8Ex-HNaOVZEDWly8uWfhKj7d7U95ey",
+          "source": "내외일보",
+          "date": "2026-04-28"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777533449414
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "2조원대 무형자산 손상 가능성",
+          "detail": "한온시스템은 전기차 수요 둔화로 인해 제품 공급 시기가 지연되는 어려움을 겪고 있다. 지난해 포드의 전기차 사업 구조조정 여파로 2천237억원의 무형자산 손상차손을 기록하였고, 이로 인해 1천973억원의 당기순손실이 발생했다. 현재 장부상 2조원대에 달하는 무형자산이 여전히 남아 있어, 전기차 시장 침체가 지속될 경우 추가적인 대규모 손상차손이 발생할 위험이 상존한다. 이는 향후 재무 건전성에 심각한 타격을 줄 수 있는 잠재적 고위험 요인으로 분류된다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "모회사 인수 부담에 따른 재무 레버리지 확대",
+          "detail": "한국타이어앤테크놀로지는 한온시스템 인수 및 미국 공장 증설 투자로 인해 이자 비용이 7배 급증하는 재무 부담을 안고 있다. 모회사의 차입금 증가는 한온시스템 그룹 전반의 재무 안정성에 간접적인 압박 요인으로 작용할 수 있다. 한온시스템 자체도 2천200억원 규모의 회사채를 증액 발행하며 외부 자금 조달을 확대하고 있어 부채 수준 관리에 유의가 필요하다. 다만 회사채 수요예측에서 약 10배의 초과 청약이 몰리는 등 자본시장의 신뢰는 유지되고 있는 점은 긍정적이다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "불성실공시법인 지정에 따른 지배구조·평판 리스크",
+          "detail": "한온시스템은 횡령 및 배임 사실을 하루 늦게 공시하여 한국거래소로부터 불성실공시법인으로 지정되고 800만원의 제재금을 부과받았다. 제재금 자체의 금액은 크지 않으나, 횡령·배임이라는 내부 통제 결함이 존재했다는 사실 자체가 지배구조 신뢰도에 부정적 영향을 미친다. 불성실공시법인 지정은 기관투자자 및 채권 투자자들의 신용 평가 시 부정적 요소로 작용할 수 있으며, 향후 추가적인 내부 통제 이슈가 드러날 경우 리스크가 확대될 가능성이 있다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "비용 줄이니 이익 터졌다… 한온시스템 체질 개선 효과",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbAWU1MxOszpx7peGf8gUfiRc39P-Hq6lZWqV8vNg2rNsoL7JO9ZZP1QmunWF5KpFAatwRUtlOIjuw45oTQeDiuW9i0Tl4taB8xhj0JspXdyl3X_jVRCILI29BBiUGN9rwIJBUUutLOLPIRRWf9BR0xJFY9ICAuuPNSYA6",
+          "source": "핀포인트뉴스",
+          "date": "2026-04-25"
+        },
+        {
+          "title": "횡령·배임 지연공시 한온시스템, 불성실공시법인 지정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBG3jxoWltsdsEiPRLmwOz2dD0BJQiuoz58iTjWxwZfKwA-5g8_NcfeHtCpG4hKPbl3KGsAt--kyspEemzbQeqKqmKSXlJpFiENWfus1q0xH7Sv1CwiNQEayOsrvYzup2Az1hYA8KYIJ79_OVqdrpbUX6zTKiw",
+          "source": "뉴스로드",
+          "date": "2026-04-10"
+        },
+        {
+          "title": "한온시스템, 회사채 수요예측 흥행 및 증액 발행…자본시장 신뢰 재확인",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFT4lEn9MUdCHnTKEXecTPsWGzdSkH83tRHMSiR-DoRff5JRj-eUH10kSSwhLcPiv79Ew9L8RXGFfhhRvD6aKyyyrtmaR4w3sVUCbxRMPuEzQZPibUgkVcvBgdx-XOBqaO-byaj1WOxaG0=",
+          "source": "한국경제",
+          "date": "2026-04-20"
+        },
+        {
+          "title": "한국타이어앤테크놀로지, 美 공장증설 투자·한온시스템 인수 부담…이자비용 7배 치솟아",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHWAjqQ8nPHFhDWvOTYtjUPKimMeZLF3XcFjGHHF5UfEev3k-Lesm9Ul0hBr8Sor9mh50qhGsOLapSAhSjkThZPE5LZfjMrBO45wFN6RyeR2vCi3F8VEww7xB5M-Vxn",
+          "source": "뉴스퀘스트",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "[IB토마토]한온시스템, 포드 쇼크는 예고편?…2.2조 무형자산 '경고등'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuUsbbwiqzTIWJ3LmfuL5oIlKNf3DrIMs_32p5pkRovxLrVpZRRzkqEORadYmSZwa8taHzv2M1xxIoJ9KnXK2l1cQsl1w3MNsCMcRpQqVuLwrlmFb-BIbZR4t0PdUCEWEoL1ELqvxObuo9bt9my2Bwswh-AYu910-u",
+          "source": "IB토마토",
+          "date": "2026-03-30"
+        }
+      ],
+      "overall_sentiment": "neutral",
+      "skip_reason": null,
+      "timestamp": 1777533489232
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "4년 연속 영업적자 지속 및 적자 확대",
+          "detail": "솔루스첨단소재는 2026년 1분기 매출 1926억 원을 기록했음에도 불구하고 영업손실 220억 원을 기록하며 적자가 지속되었다. 전년 동기 대비 영업손실이 43.8% 확대되었으며, 이는 전지박 생산 물량의 완전한 회복 지연과 고정비 및 전력단가 부담이 복합적으로 작용한 결과다. 4년 연속 적자 상태가 이어지고 있어 재무 건전성에 대한 우려가 높아지고 있다. 2분기 가동률 상승 및 고객사 물량 확대에 대한 기대가 있으나, 실질적인 턴어라운드 시점은 불확실한 상황이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "전지박 증설로 인한 차입 부담 및 부채비율 급증",
+          "detail": "솔루스첨단소재는 전지박 생산 능력 확대를 위한 대규모 설비 증설을 강행하면서 차입 부담이 크게 증가하고 부채비율이 상승하였다. 적자가 지속되는 상황에서 대규모 투자를 병행하고 있어 재무 레버리지 리스크가 높아지고 있다. 동박 자회사 CFL 매각을 통해 3014억 원의 유동성을 확보했으나, 이 자금을 전지박 사업에 집중 투자할 계획으로 사업 포트폴리오 집중에 따른 리스크도 존재한다. 전기차 수요 회복이 지연될 경우 투자 회수 기간이 길어지면서 재무 부담이 더욱 가중될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "동박 사업 매각 후 전지박 단일 사업 집중에 따른 사업 리스크",
+          "detail": "솔루스첨단소재는 룩셈부르크 동박 자회사 CFL을 스카이레이크 펀드에 3014억 원에 매각하며 사업 구조를 전지박 중심으로 재편하였다. 당초 중국 기업 매각이 룩셈부르크 정부의 불허로 무산되는 등 매각 과정에서도 불확실성이 존재했다. 동박 사업이라는 안정적 수익원을 제거하고 전지박 사업에 전적으로 의존하게 됨으로써 전방산업인 전기차 시장의 수요 변동에 대한 취약성이 증가하였다. 2분기 공급량이 두 배로 확대될 것으로 기대되지만, 고객사 확대와 가동률 정상화가 실현되지 않을 경우 적자 탈출이 더욱 어려워질 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "솔루스첨단소재, 전지박 회복에도 적자… 매출은 1926억",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHJt4GCg3F4HL2U3PC53PyP8sQU-V-KzrMnH5QvYyqodE7fnpXgl70Y8WDxt8Df6SRzpv4V42fX0ptkwWBoNKrOTcTT7kv91cchVG2xme7rXLvn6rhSRWEIirqH8C2MPSE0Mt0_JOtOJvemg==",
+          "source": "스카이데일리",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억...전년비 43.8% 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEoG_a5PPaLW-QeJ8qx_-0i8Ur-voDV6b64rGoQ6lbyZDZWVd8DFDmjKQ3JQjnhqfxEq8ozP6FcAuM6rcYrLvpXSsbJ0TCb010-AJbKZYDUiC0vX1dTl4RWiAqOXBFa-GImbwwmFe06uVgBbxouIh1I94eLIu5nckmvkY0",
+          "source": "디지털투데이 (DigitalToday)",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억원…적자 지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEoG_a5PPaLW-QeJ8qx_-0i8Ur-voDV6b64rGoQ6lbyZDZWVd8DFDmjKQ3JQjnhqfxEq8ozP6FcAuM6rcYrLvpXSsbJ0TCb010-AJbKZYDUiC0vX1dTl4RWiAqOXBFa-GImbwwmFe06uVgBbxouIh1I94eLIu5nckmvkY0",
+          "source": "전자신문",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "[IB토마토]솔루스첨단소재, 차입 부담에도 전지박 증설 강행…턴어라운드 기대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZu_w4HANcAPHGD7AKLh9lpo3fiani6ZYt_q_Rf-v9vVU_Y6X67uY83dIGbzla-6jXh5GheGncUwtfS7oY7LtQ-9jDmoZyERQLwSkx1uqq9xHriuG57mDgnDFVi8GgGYRvrw7ndigmFX5UgmVXfrY=",
+          "source": "IB토마토",
+          "date": "2026-04-22"
+        },
+        {
+          "title": "솔루스첨단소재, 3000억 원 동박 매각으로 전지박 승부수∙∙∙4년 적자 탈출할 수 있을까",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGziBV9xuq4u9-LdbYf3m0pWte9QeEyiEH3QO73S_qLsoV6i2TRTNus0fsHbuTh2sSyjZMaYa_oU0d-ebItPDZbxgH8l_Sia5NMIowDBx8z5CD4WGpfi1u-abtOthzsKU_F0J7vthq8r0A8tHm--ZqYKp2JchM=",
+          "source": "한국M&A경제",
+          "date": "2026-04-29"
+        },
+        {
+          "title": "[단독] 솔루스첨단소재 동박 사업 매각 마무리...실탄 3천억 확보",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEeqgP0ipUvsfWtxEAmLUBezGCWbWkZQeyoLUxxnfEzvaDo0BnAS5vrmEY37letoqSz7SSDSi5-YehPp8KceH-IyvwK6mlwQImXJ0J3yHwOf0rs-JrOETPcupTlkISrZaTV",
+          "source": "Daum",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 배터리용 동박 고객사 확대...2분기 공급 2배",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwiJuJ3-_ciEql-wZMyMzIknhV_F3_Ok39QU1jw8kxd13lR9lUxo7t09uKFq6k9_HFwpjnpaNLGtK9RlByJhemiqzc7lbwoQVKcXYYXsy0A7zHCa7JSlqWhVNl9z17jBbRs_c8Km9Ot9Xr2OB5HfU8RX0=",
+          "source": "디일렉",
+          "date": "2026-04-29"
+        },
+        {
+          "title": "솔루스첨단소재, 전지박 성장에도 적자 지속...2분기 가동률 상승 '반등 기대'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEHJt4GCg3F4HL2U3PC53PyP8sQU-V-KzrMnH5QvYyqodE7fnpXgl70Y8WDxt8Df6SRzpv4V42fX0ptkwWBoNKrOTcTT7kv91cchVG2xme7rXLvn6rhSRWEIirqH8C2MPSE0Mt0_JOtOJvemg==",
+          "source": "중앙이코노미뉴스",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기에도 220억 적자 벗어나지 못해",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGEoG_a5PPaLW-QeJ8qx_-0i8Ur-voDV6b64rGoQ6lbyZDZWVd8DFDmjKQ3JQjnhqfxEq8ozP6FcAuM6rcYrLvpXSsbJ0TCb010-AJbKZYDUiC0vX1dTl4RWiAqOXBFa-GImbwwmFe06uVgBbxouIh1I94eLIu5nckmvkY0",
+          "source": "나남뉴스",
+          "date": "2026-04-28"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777533531278
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777533551639
+    }
+  }
+}

@@ -44,7 +44,7 @@ const ARCHIVE_PATH = path.join(process.cwd(), 'watchlist-archive.json');
 // ── 유틸 ──────────────────────────────────────────────────────────────────────
 const sleep    = ms => new Promise(r => setTimeout(r, ms));
 const todayStr = () => new Date().toISOString().split('T')[0];
-const dateFrom = () => new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+const dateFrom = () => new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 const fmt      = s  => s ? `${s.slice(0,4)}.${s.slice(5,7)}.${s.slice(8,10)}` : '';
 
 function log(msg) {
@@ -97,11 +97,11 @@ function extractJSON(raw) {
 // ── 중복 감지 ─────────────────────────────────────────────────────────────────
 function checkDuplicate(company, result, archive) {
   if (!result.risk_factors?.length) return null;
-  const today = todayStr(), cutoff = dateFrom();
+  const today = todayStr();
   const titles = new Set(result.risk_factors.map(r => r.title));
   let bestDate = null, bestScore = 0;
   Object.entries(archive).forEach(([date, session]) => {
-    if (date >= today || date < cutoff) return;
+    if (date >= today) return;
     const prev = session[company];
     if (!prev?.risk_factors?.length) return;
     const prevTitles = prev.risk_factors.map(r => r.title);
@@ -242,7 +242,7 @@ async function analyzeRisk(company, articles) {
 
   const articleText = articles.map((a,i)=>`[${i+1}] ${a.title}\n출처: ${a.source} | 날짜: ${a.date}\n요약: ${a.summary}`).join('\n\n');
   const prompt = `당신은 기업 리스크 전문 애널리스트입니다.
-아래는 "${company}"에 관해 수집된 최근 14일 기사입니다.
+아래는 "${company}"에 관해 수집된 최근 7일 기사입니다.
 
 ${articleText}
 
@@ -292,7 +292,7 @@ function buildTgMsg(name, res, archive) {
   let t = `<b>━━ ${name} ━━</b>\n종합 평가: <b>${sentiment}</b>\n`;
   if (res.error) { t += `❌ ${res.error}`; return t; }
   const risks = res.risk_factors || [];
-  if (!risks.length) { t += '✅ 최근 14일 내 신규 리스크 없음'; return t; }
+  if (!risks.length) { t += '✅ 최근 7일 내 신규 리스크 없음'; return t; }
   t += '\n';
   risks.forEach(rf => {
     t += `${SVE[rf.severity]||'🟡'} <b>[리스크 ${rf.rank}] ${rf.title}</b>  심각도: ${SVL[rf.severity]||''}\n  ${rf.detail}\n\n`;
@@ -341,7 +341,8 @@ function buildHtmlReport(archive, GITHUB_OWNER, GITHUB_REPO) {
   const dataBlock     = usePassword
     ? `const ENCRYPTED='${encryptArchive(archiveJson, REPORT_PASSWORD)}';`
     : `const ARCHIVE=${archiveJson};`;
-  const adminEnabled  = !!ADMIN_PASSWORD;
+  // 관리자 비밀번호는 HTML에서 직접 입력받아 PAT 검증 전에 사용
+  // ADMIN_PASSWORD Secret 대신 초기화 시 PAT 입력으로 인증
   // 비밀번호 게이트 HTML 미리 계산 (템플릿 중첩 이슈 방지)
   const pwGateBlock = usePassword
     ? '<div id="pw-gate"><div id="pw-box">'
@@ -475,9 +476,9 @@ ${pwGateBlock}
     <div id="reset-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;align-items:center;justify-content:center;padding:24px">
       <div style="background:#0d1117;border:1px solid #334155;border-radius:16px;padding:32px;width:100%;max-width:420px">
         <div style="font-weight:900;font-size:16px;margin-bottom:6px">🗑️ 아카이브 초기화</div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>관리자 비밀번호를 입력해주세요.</div>
-        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">관리자 비밀번호</div>
-        <input id="pat-input" type="password" placeholder="••••••••" style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:20px;line-height:1.7">GitHub의 <code style="background:#1e293b;padding:2px 6px;border-radius:4px">watchlist-archive.json</code> 파일이 비워집니다.<br>GitHub PAT (repo 권한)를 입력하세요.</div>
+        <div style="font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:700">GitHub PAT <span style="color:#475569;font-weight:400">(Settings → Developer settings → PAT)</span></div>
+        <input id="pat-input" type="password" placeholder="github_pat_..." style="background:#060a10;border:1px solid #334155;border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;width:100%;font-family:var(--font);margin-bottom:12px"/>
         <div id="pat-err" style="color:#f87171;font-size:12px;margin-bottom:12px;display:none"></div>
         <div style="display:flex;gap:10px">
           <button class="btn-sm" onclick="hideResetModal()" style="flex:1">취소</button>
@@ -492,8 +493,7 @@ ${pwGateBlock}
 <script>
 ${dataBlock}
 const GH_OWNER='${GITHUB_OWNER}',GH_REPO='${GITHUB_REPO}';
-const ADMIN_ENABLED=${adminEnabled};
-const ADMIN_PW_HASH='${ADMIN_PASSWORD ? Buffer.from(ADMIN_PASSWORD, 'utf8').toString('base64') : ''}';
+
 const SENT = {
   positive:{border:'#059669',label:'긍정 📈',bg:'#064e3b',text:'#6ee7b7'},
   neutral:{border:'#475569',label:'중립 ➖',bg:'#1e293b',text:'#94a3b8'},
@@ -553,7 +553,7 @@ function renderReport(){
   const data  = VIEW ? ARCHIVE[VIEW] : null;
 
   document.getElementById('rep-title').textContent = VIEW && VIEW !== today ? \`\${fmt(VIEW)} 리포트\` : '오늘의 리포트';
-  document.getElementById('rep-sub').textContent   = '최근 14일 기준 리스크 분석';
+  document.getElementById('rep-sub').textContent   = '최근 7일 기준 리스크 분석';
   document.getElementById('hdr-meta').textContent  = \`업데이트 \${fmt(today)}\`;
 
   const content = document.getElementById('rep-content');
@@ -600,7 +600,7 @@ function buildCard(name, rawRes){
   } else if(rawRes.duplicate && !res.risk_factors?.length){
     riskHtml = \`<div style="padding:20px 22px;color:var(--text3);font-size:13px">♻️ 이전 아카이브와 동일 (\${fmt(dupDate)})</div>\`;
   } else if(!risks.length){
-    riskHtml = \`<div style="padding:44px 24px;text-align:center;color:var(--text3);font-size:14px">최근 14일 내 신규 리스크가 발견되지 않았습니다.</div>\`;
+    riskHtml = \`<div style="padding:44px 24px;text-align:center;color:var(--text3);font-size:14px">최근 7일 내 신규 리스크가 발견되지 않았습니다.</div>\`;
   } else {
     riskHtml = \`<div style="padding:18px 22px 4px">
       <div class="lbl">핵심 리스크 분석</div>
@@ -706,31 +706,19 @@ function renderArchive(){
 
 // ── 아카이브 초기화 ──────────────────────────────────────────────────────────────
 function showResetModal(){
-  if(!ADMIN_ENABLED){ toast('관리자 비밀번호가 설정되지 않았습니다'); return; }
   document.getElementById('pat-input').value = '';
-  document.getElementById('reset-modal').style.display='flex';
   document.getElementById('pat-err').style.display='none';
+  document.getElementById('reset-modal').style.display='flex';
+  setTimeout(()=>document.getElementById('pat-input').focus(), 100);
 }
 function hideResetModal(){ document.getElementById('reset-modal').style.display='none'; }
 
 async function doReset(){
-  const inputPw = document.getElementById('pat-input').value.trim();
+  const inputPat = document.getElementById('pat-input').value.trim();
   const err = document.getElementById('pat-err');
   const btn = document.getElementById('reset-btn');
-  if(!inputPw){ err.textContent='비밀번호를 입력해주세요.'; err.style.display='block'; return; }
-
-  // 관리자 비밀번호 검증
-  if(btoa(unescape(encodeURIComponent(inputPw))) !== ADMIN_PW_HASH){
-    err.textContent='비밀번호가 올바르지 않습니다.';
-    err.style.display='block'; return;
-  }
-
-  // PAT 확인 (localStorage 저장값 사용, 없으면 입력 요청)
-  let pat = localStorage.getItem('gh_pat') || '';
-  if(!pat){
-    pat = prompt('GitHub PAT (repo 권한)를 입력해주세요:') || '';
-    if(!pat){ err.textContent='PAT가 필요합니다.'; err.style.display='block'; return; }
-  }
+  if(!inputPat){ err.textContent='GitHub PAT를 입력해주세요.'; err.style.display='block'; return; }
+  let pat = inputPat;
   if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다.'; err.style.display='block'; return; }
 
   btn.textContent='초기화 중...'; btn.disabled=true;
@@ -834,7 +822,14 @@ async function main() {
 
   // 헤더 메시지
   log(`📨 텔레그램 Chat ID 앞3자리: ${String(TG_CHAT_ID).slice(0,3)} / 전체길이: ${String(TG_CHAT_ID).length}자리`);
-  await tgSend(`📊 <b>WATCHLIST PRO 리스크 분석</b>\n📅 ${fmt(today)} · 최근 14일\n🏢 ${COMPANIES.length}개 기업\n━━━━━━━━━━━━━━━`);
+  const pagesLink = PAGES_URL ? `${PAGES_URL}${REPORT_PASSWORD ? '/#'+encodeURIComponent(REPORT_PASSWORD) : ''}` : '';
+  await tgSend(
+    `📊 <b>WATCHLIST PRO 리스크 분석</b>\n` +
+    `📅 ${fmt(today)} · 최근 7일\n` +
+    `🏢 ${COMPANIES.length}개 기업\n` +
+    (pagesLink ? `📱 <a href="${pagesLink}">더 깔끔하게 보기 →</a>\n` : '') +
+    `━━━━━━━━━━━━━━━`
+  );
 
   // 기업별 3단계 파이프라인
   for (let i = 0; i < COMPANIES.length; i++) {
@@ -865,8 +860,7 @@ async function main() {
 
   // 아카이브 저장
   archive[today] = results;
-  const cutoff = dateFrom();
-  Object.keys(archive).forEach(d => { if (d < cutoff) delete archive[d]; });
+  // 아카이브는 초기화 전까지 전체 보관 (자동 삭제 없음)
   saveArchive(archive);
   log(`\n💾 아카이브 저장 완료`);
 
@@ -897,7 +891,7 @@ async function main() {
     `✅ 분석 완료`,
     riskCount ? `⚠️ 리스크 감지: ${riskCount}개 기업` : `✅ 전 기업 이상 없음`,
     dupCount  ? `♻️ 이전 아카이브 동일: ${dupCount}개 기업` : '',
-    PAGES_URL ? `\n📱 더 깔끔하게 보기\n${PAGES_URL}${REPORT_PASSWORD ? '/#'+encodeURIComponent(REPORT_PASSWORD) : ''}` : '',
+    pagesLink ? `📱 <a href="${pagesLink}">더 깔끔하게 보기 →</a>` : '',
   ].filter(Boolean).join('\n');
   await tgSend(footer);
 

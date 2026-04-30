@@ -1,0 +1,124 @@
+{
+  "2026-04-30": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777531699298
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "IPO 상장 기한 만료 및 재무적투자자(FI) 자금 상환 리스크",
+          "detail": "SLL중앙은 2021년 프랙시스캐피탈을 대상으로 전환우선주를 발행하며 3년 내 적격상장을 약속했으나, 증시 부진으로 상장이 지연되어 약정 기한이 만료된 상태다. 프랙시스캐피탈은 인수금융 만기를 3개월 추가 연장하며 협상 시간을 확보했으나, 이는 근본적인 해결이 아닌 임시방편에 불과하다. 중앙그룹이 FI 자금 상환을 위한 외부 투자 유치에 실패할 경우 상환 압박이 현실화되어 재무적 부담이 급격히 가중될 수 있다. 상장 지연이 장기화될수록 FI와의 분쟁 가능성 및 추가 자금 조달 리스크도 함께 커지는 구조다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "모회사 JTBC 대규모 적자 및 고부채 구조에 따른 연쇄 리스크",
+          "detail": "JTBC는 대규모 적자와 높은 부채비율을 기록하고 있으며, 이는 SLL중앙의 모회사 그룹 전반의 재무 건전성에 부정적인 영향을 미치고 있다. 신한투자증권이 5년 연속 JTBC 공모 회사채 발행을 주관하며 미매각 물량까지 인수한 상황은 그룹 전반의 자금 조달 여건이 시장에서 우호적이지 않음을 방증한다. 모회사의 재무 악화가 지속될 경우 SLL중앙의 독자적 IPO 추진력 및 신용도에도 부정적인 영향이 불가피하다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "주관사 신한투자증권의 리스크 관리 논란에 따른 IPO 신뢰도 훼손",
+          "detail": "신한투자증권이 SLL중앙 IPO 주관권 확보를 위한 '관계 금융' 차원에서 JTBC 회사채를 지속 인수한 것으로 지적되면서, 시장 내 SLL중앙 상장 추진의 신뢰성에 의문이 제기되고 있다. SLL중앙의 상장 기한 만료로 주관사의 리스크 관리 부실 논란까지 불거져, 향후 IPO 재추진 시 시장 참여자들의 신뢰 확보가 어려울 수 있다. 이는 직접적인 재무 손실은 아니나, 자본시장 내 평판 훼손으로 이어져 중장기 상장 가능성을 낮추는 간접적 리스크로 작용한다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVLdtk7nA4GH1PX761KWUHoqNY-_e6M-ls4QaIh8KVhW-yof3U30xAd4MLHR75K1Gi0BuLEG-zx1LYhRB7atXfNpTn4Nr_NB89CyCWNzCwGceg0ZLTF5JIVnyyVUjToFqc4OLdwzqMsWKcIw==",
+          "source": "알파경제",
+          "date": "2026-04-01"
+        },
+        {
+          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFSVX41nFDAGppjmIUq3zUlv6nANKyrlkCWmvLXLVMKdjKAVnVIx2-6g6FeJoMapazHNMkumn5IMlUsLzgTPtIpmUrGghIhQaLxiZzIdVkyhBUCDSX4C8Kh78LEoepXtKJ8K67Uexfa2XspSAw6fWQ5OMUKtQr5yVdhkFD4pLhrh2ydQ2lYQLI=",
+          "source": "인베스트조선",
+          "date": "2026-04-01"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777531735985
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777531753146
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "영업손실 지속 및 적자 폭 확대",
+          "detail": "솔루스첨단소재는 2026년 1분기 영업손실 220억원을 기록하며 적자가 지속되고 있다. 매출은 전년 동기 대비 22.2% 증가한 1926억원을 달성했음에도 불구하고, 영업손실 규모는 전년 동기 대비 43.8% 확대되었다. 이는 전지박 생산 물량 회복 지연과 고정비 및 전력 단가 상승 부담이 복합적으로 작용한 결과이다. 매출 성장에도 수익성 개선이 따라오지 못하는 구조적 문제가 지속되고 있어, 손익분기점 달성 시점이 불확실한 상황이다. 적자 누적은 재무 건전성 악화로 이어질 수 있어 고위험 요인으로 분류된다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "전지박 생산 가동률 회복 지연 리스크",
+          "detail": "전지박 부문의 생산 물량 회복이 계획 대비 지연되고 있으며, 이는 고정비 부담을 심화시키는 주요 원인으로 작용하고 있다. 회사는 2분기부터 전지박 공급 확대 및 가동률 상승을 통한 수익성 개선을 전망하고 있으나, 이는 아직 확정되지 않은 사항이다. 전기차 수요 회복 속도와 주요 고객사의 발주 동향에 따라 가동률 회복이 추가 지연될 가능성이 존재한다. 글로벌 전기차 시장의 불확실성이 여전히 높아 단기 개선 전망에 대한 신중한 접근이 필요하다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "전력 단가 및 고정비 구조적 부담",
+          "detail": "전력 단가 상승과 고정비 부담이 영업손실의 주요 원인으로 반복적으로 지목되고 있어 비용 구조 개선이 시급한 과제로 떠오르고 있다. 가동률이 낮은 상황에서 고정비 레버리지 효과가 부정적으로 작용하며 수익성을 압박하고 있다. 전력 단가는 외부 환경 요인으로 단기간 내 통제가 어려워 지속적인 원가 부담으로 이어질 수 있다. 이러한 비용 구조가 개선되지 않을 경우 매출 증가에도 불구하고 흑자 전환이 지연될 위험이 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억원…적자 지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeqmRVs9efLVxptqCmbz3Ec3KXGM2aswGIpGoNDkhdZ816IeizJQ81-OsJ1C8w9Kzu52zugJKe0j8MEvZqtiFI6kmYRn_cQ7f4vmazNZRWVq8MwPRT4Nnedq6J26E4aQ==",
+          "source": "전자신문",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 매출 22%↑에도 적자 지속…순손실은 대폭 축소",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUahcCJrzFw9srqzdNnjwITu5vspQiBUsf8AjFhndwieO3bUONw0AL1VhPFC3nsKOM3JWwFiLyiukwlb5T0cJzUqmTni29ZJUH6dyvE76S3d6iJ2m9F4rPDqhaMFs1MX4mkzzggPtKpQ==",
+          "source": "파이낸셜뉴스",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 2026년 1분기 영업 손실 220억원",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNz8RQoIZ8HTDifCxLiIEurYjqcbhAqggUo39nRQYcLWBu2HEUGaf9YvOYlTN9lobsLonJQd7aRJWkddpViS_Q79dWDdhpS19Vxu6GWr97xWRpctr7ByrUyQ==",
+          "source": "BatteryDive - 배터리다이브",
+          "date": "2026-04-29"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억원…적자지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeqmRVs9efLVxptqCmbz3Ec3KXGM2aswGIpGoNDkhdZ816IeizJQ81-OsJ1C8w9Kzu52zugJKe0j8MEvZqtiFI6kmYRn_cQ7f4vmazNZRWVq8MwPRT4Nnedq6J26E4aQ==",
+          "source": "연합뉴스",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억…적자폭 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeqmRVs9efLVxptqCmbz3Ec3KXGM2aswGIpGoNDkhdZ816IeizJQ81-OsJ1C8w9Kzu52zugJKe0j8MEvZqtiFI6kmYRn_cQ7f4vmazNZRWVq8MwPRT4Nnedq6J26E4aQ==",
+          "source": "서울경제TV",
+          "date": "2026-04-28"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777531790348
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "error": "Gemini: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+      "overall_sentiment": "neutral",
+      "timestamp": 1777531805898
+    }
+  }
+}

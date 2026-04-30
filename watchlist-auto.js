@@ -344,16 +344,15 @@ function buildHtmlReport(archive, GITHUB_OWNER, GITHUB_REPO) {
   const adminEnabled  = !!ADMIN_PASSWORD;
   // 비밀번호 게이트 HTML 미리 계산 (템플릿 중첩 이슈 방지)
   const pwGateBlock = usePassword
-    ? \`<div id="pw-gate">
-  <div id="pw-box">
-    <div class="logo-icon" style="margin:0 auto 16px;width:48px;height:48px;font-size:22px">W</div>
-    <div style="font-weight:900;color:var(--gold);font-size:18px;font-family:var(--mono);letter-spacing:1px;margin-bottom:6px">WATCHLIST PRO</div>
-    <div style="font-size:12px;color:var(--text3);margin-bottom:4px">비밀번호를 입력하세요</div>
-    <input id="pw-input" type="password" placeholder="••••••••" autocomplete="current-password"/>
-    <button id="pw-btn" onclick="tryPw()">열람하기</button>
-    <div id="pw-err">⚠️ 비밀번호가 올바르지 않습니다</div>
-  </div>
-</div>\` : '';
+    ? '<div id="pw-gate"><div id="pw-box">'
+      + '<div class="logo-icon" style="margin:0 auto 16px;width:48px;height:48px;font-size:22px">W</div>'
+      + '<div style="font-weight:900;color:var(--gold);font-size:18px;margin-bottom:6px">WATCHLIST PRO</div>'
+      + '<div style="font-size:12px;color:var(--text3);margin-bottom:4px">비밀번호를 입력하세요</div>'
+      + '<input id="pw-input" type="password" placeholder="········" autocomplete="current-password"/>'
+      + '<button id="pw-btn" onclick="tryPw()">열람하기</button>'
+      + '<div id="pw-err">⚠️ 비밀번호가 올바르지 않습니다</div>'
+      + '</div></div>'
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="ko">

@@ -226,5 +226,155 @@
       "skip_reason": "no_new_news",
       "timestamp": 1777533551639
     }
+  },
+  "2026-05-01": {
+    "JTBC": {
+      "company": "JTBC",
+      "error": "기사 수집 JSON 파싱 실패: {\"articles\":[{\"title\":\"JTBC 독점중계 경기, 지상파 한곳과 의무 방송 법으로 강제?\",\"source\":\"미디어오늘\",\"date\":\"2026-04-29\",\"summary\":\"JTBC가 2032년까",
+      "overall_sentiment": "neutral",
+      "timestamp": 1777620250632
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "신용등급 전망 하향 및 회사채 미매각에 따른 유동성 위기",
+          "detail": "한국신용평가는 SLL중앙의 무보증사채 신용등급 전망을 '안정적'에서 '부정적'으로 하향 조정하였으며, 이는 콘텐츠 투자 확대와 계열 전반의 재무 부담 가중이 주요 원인입니다. 400억 원 규모의 공모 회사채 수요예측에서 140억 원의 주문만 확보하여 대규모 미매각이 발생했고, 금리는 8.5%로 확정되어 차입 부담이 가중되었습니다. BBB급 신용등급 한계와 투자심리 악화가 맞물리면서 향후 추가 자금 조달 여건도 악화될 가능성이 높습니다. 중앙그룹 전반의 신용등급 하향 및 합병·매각 지연과 맞물려 그룹 차원의 유동성 위기로 확산될 우려가 있습니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "IPO 지연 및 대규모 적자 지속으로 인한 재무건전성 악화",
+          "detail": "SLL중앙의 IPO 기한이 만료되면서 상장을 통한 자본 확충 계획이 사실상 무산될 위기에 처해 있습니다. JTBC의 대규모 적자 지속과 함께 SLL중앙 자체도 콘텐츠 투자 확대로 인한 적자 구조에서 벗어나지 못하고 있습니다. 신한투자증권 등 기관 투자자들의 관계 금융이 물거품이 될 위험이 제기되고 있으며, 이는 향후 외부 자금 조달 신뢰도를 추가로 저하시킬 수 있습니다. 상장 무산 시 재무 구조 개선을 위한 대안적 수단이 제한적이어서 재무건전성 회복에 상당한 시일이 소요될 전망입니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "사모대출 협상 난항 및 고금리 차입 의존 심화",
+          "detail": "아레스매니지먼트와의 사모대출 협상이 난항을 겪는 가운데, 미래에셋증권을 통한 500억 원 규모의 대출 협의를 진행하는 등 자금 조달 다변화를 시도하고 있습니다. 그러나 공모채 미매각과 높은 조달 금리(8.5%)는 향후 이자 부담 급증으로 이어질 가능성이 높습니다. 드라마 등 콘텐츠 제작비 수혈을 위한 고금리 차입 의존 구조가 고착화될 경우 수익성 개선이 더욱 어려워질 수 있습니다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[마켓인]'적자 늪' SLL중앙, 그룹 리스크에 신용등급 하향 가능성 높아졌다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGekI8nRJLpyvdAN6pLWrUPmQ0YLW7crCc343yYN8s_h7KH3B4haS8XhsJsyY067NHRpt3HazPStBryef7bcEe_sCa3i5KTRuQK3PQVr7rJol3SjeiEmgProMCoXyATYAPKBXDvaiHh",
+          "source": "Daum",
+          "date": "2026-04-15"
+        },
+        {
+          "title": "[IB토마토](Deal클립)SLL중앙, BBB급 한계…회사채 금리 8.5% 확정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8LwvXyH8W4Fy4VsoepODUKTqp0OkA9bdm9tYxyQQvzSYecW8gFKprp-nGr5kvY4pjjLOyTaz9O6i-ntkuy6vOsLB8dJdj8yjV9kIRioN4qI4gfBJnM7fEHwoSbBg18s0=",
+          "source": "IB토마토",
+          "date": "2026-04-27"
+        },
+        {
+          "title": "(Deal모니터)SLL중앙, 400억 회사채 조달…드라마 제작비 수혈",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXLJOxzxOS8qnYNyEySl5e84HUVOnYm_obgxnvi_Ktnc3VBewdnV_PBlIomZfzyKRhMn5hr6jqkPPBpumhqrOuALELSoxZRovVBa6zO5INNLCEDFI1FD-UQ8AVtrQ3OfI1wOWPdN0=",
+          "source": "Daum",
+          "date": "2026-04-21"
+        },
+        {
+          "title": "신용 강등·자금조달 삐걱…중앙그룹 유동성 비상등 [시그널]",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9tml30Q9s6S24-hg5sJzDRkMt9jLgb4AdQISraUp_mN0mit35O_jeBoRZT607dLLOnPSa_jzt4_iBILm4jnv8e_CC-aCHs77Y-BmLcqV60PRbS1DYZ9zTFWYpcLdHkHpNPjiOV7MWJlF-UcXO",
+          "source": "Daum",
+          "date": "2026-04-26"
+        },
+        {
+          "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuaerPH6wRNod6_-Gi-r2mVaIKhLf_Yq0Dyyz_78Ym1ww5F19FMh00bfyQj5iMDXZoJctsGmOsUTYWXcRw7mSwcSU6SxOdmJ5ExQYox7fKvxijB5QYk-m4XA==",
+          "source": "알파경제",
+          "date": "2026-04-01"
+        },
+        {
+          "title": "미래에셋증권, SLL중앙에 500억 대출 협의 중",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoLFdRwH9zm7MlnDXyzT1heS6eF-2aEcJQm82O4JXGjlZYSjE7pPWFKkvWYYr3_f7VJsa4z9YO2U1qx49n3xkAryTRqYNe-ADgf2Yrvhah8dWYGRXfTkS1rScnVgo3hRE=",
+          "source": "조선비즈",
+          "date": "2026-04-06"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777620304350
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "2.2조원 무형자산 추가 손상차손 위험",
+          "detail": "한온시스템은 포드의 전기차 사업 속도 조절 여파로 지난해 2천억원대 무형자산 손상차손을 이미 기록하였다. 현재 잔존 무형자산 규모가 2.2조원에 달해 글로벌 완성차 고객사의 EV 전략 변화에 따른 추가 손상차손 리스크가 상존한다. GM 등 여타 고객사의 전기차 프로젝트 상각도 일회성 비용으로 반영된 바 있어 동일한 위험이 반복될 가능성이 있다. 대규모 무형자산 손상은 재무제표상 순자산 훼손과 신용등급 하락으로 이어질 수 있어 재무 건전성에 직접적 위협이 된다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "횡령·배임 지연공시에 따른 불성실공시법인 지정 및 거버넌스 리스크",
+          "detail": "한온시스템은 횡령·배임 사실을 확인한 후 제때 공시하지 않아 한국거래소로부터 불성실공시법인으로 지정되고 800만원의 공시위반제재금을 부과받았다. 검찰의 혐의없음 결정에 대해 항고를 제기한 상태로, 법적 불확실성이 지속되고 있다. 내부 통제 시스템의 미흡함이 드러나 투자자 신뢰 훼손 및 기관투자자 이탈 가능성이 우려된다. 불성실공시법인 지정은 주가 변동성 확대 및 자본시장에서의 평판 손상으로 이어질 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "공정위 과징금 부과 및 행정소송에 따른 법적·비용 리스크",
+          "detail": "한온시스템은 하청 대금 지연 지급을 이유로 공정거래위원회로부터 14억원의 과징금을 부과받았으며, 이에 불복하여 행정소송을 예고한 상태이다. 소송 장기화 시 법적 비용 증가와 경영진 주의 분산이 불가피하며, 패소 시 과징금 확정 및 추가 제재 가능성도 배제할 수 없다. 하청업체와의 관계 악화는 부품 공급망 안정성에도 부정적 영향을 미칠 수 있다. 공정위 제재 이력은 향후 정부 조달 참여 및 대외 신인도 측면에서도 리스크 요인으로 작용할 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "한온시스템, 포드 쇼크는 예고편?…2.2조 무형자산 '경고등'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjG5n_ARDNwfqysvRtlYipehlPegpEFS5k0uJiKkqTGgxKKDJM0DScOFD0YyIoBqGHR-Dmu0bFdSJah-TEpsfhwuO8r0sJLIB8Uy__MlwH6QMu0PcXQvtij3V_Y9wIISk=",
+          "source": "Daum",
+          "date": "2026-04-02"
+        },
+        {
+          "title": "횡령·배임 지연공시 한온시스템, 불성실공시법인 지정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzkB6CUK7r8cKudm8dJFF42TGiKqvqnsltf7hAXIJQS3vFJ778dmXxxh3Z6mkuEYDrFsA_wwv0btgHCjgR6twG8KwKcNGNqH3anFlCb4ej2UiaGkb02FZAOtNOcPfkrDqJhxwHjgVv58-VH6oC",
+          "source": "뉴스로드",
+          "date": "2026-04-10"
+        },
+        {
+          "title": "[한온시스템] [정정]횡령ㆍ배임사실확인",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHMGJ0toa3tozhymOCiaFO4DVdtNThNZsw_ZxpSAyK5t-pkvWTZUX3cd40Wt7cASYQdHGF6LDIAk6hfvq4p_vlJsO8_aW4uZhDyO586Sab89g5mBHK05cy0gp4ztPQYOmGgMLpoVTUFIqpSWC4vr8a",
+          "source": "KRX 공시 - 한국거래소",
+          "date": "2026-04-06"
+        },
+        {
+          "title": "'하청 대금 지연 지급' 14억 과징금…한온시스템, 공정위 상대 취소 소송",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRYDaczVDJ-hZ3BBFtrUUjPY1Tey-N-rpuceUgioRxCVKQDRkZPK3TKc7CBpkg37awPLDWefpizlYw5EP9QFFRZL3gVK3EzC7n3Waug0VhkPp2SRnUK2DhW-6I83jb8qC6ly_d2-dKD4BBYcLrpweh10sMHZk=",
+          "source": "뉴시스",
+          "date": "2026-03-31"
+        },
+        {
+          "title": "한온시스템, 공정위 제재에 행정소송 예고…\"합리적 기준 확인 필요\"",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRYDaczVDJ-hZ3BBFtrUUjPY1Tey-N-rpuceUgioRxCVKQDRkZPK3TKc7CBpkg37awPLDWefpizlYw5EP9QFFRZL3gVK3EzC7n3Waug0VhkPp2SRnUK2DhW-6I83jb8qC6ly_d2-dKD4BBYcLrpweh10sMHZk=",
+          "source": "마켓인",
+          "date": "2026-03-02"
+        },
+        {
+          "title": "한온시스템, 구조 조정으로 수익성 개선 가시화",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzqWXoZqip-c_xi4oZ7Ri4abs_d5STboj2vOm9SVCyh6wdU8LfJV8Ih6Pih5YktIWZI1Gin_EsbiSiSqVGiEDY5k04inO2TB0HmOlMred_qDV2hUx_3DdnnK-xWw==",
+          "source": "한국증권",
+          "date": "2026-02-04"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1777620355482
+    },
+    "솔루션첨단소재": {
+      "company": "솔루션첨단소재",
+      "error": "기사 수집 JSON 파싱 실패: {\"articles\":[{\"title\":\"4월 30일 개장 전 주요 공시 - 서울파이낸스\",\"source\":\"서울파이낸스\",\"date\":\"2026-04-29\",\"summary\":\"솔루스첨단소재의 종속회사인 Volta",
+      "overall_sentiment": "neutral",
+      "timestamp": 1777620382465
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1777620404659
+    }
   }
 }

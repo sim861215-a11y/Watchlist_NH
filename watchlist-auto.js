@@ -163,8 +163,8 @@ async function searchAndScreen(company, knownTitles) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 4000,
+      model: 'claude-sonnet-4-6',
+      max_tokens: 5000,
       tools: [{ type: 'web_search_20250305', name: 'web_search' }],
       messages: [{ role: 'user', content: prompt }],
     }),
@@ -801,7 +801,7 @@ async function main() {
       log(`  ❌ 오류: ${e.message}`);
       results[co] = { company: co, error: e.message, overall_sentiment: 'neutral', timestamp: Date.now() };
     }
-    if (i < COMPANIES.length - 1) await sleep(3000);
+    if (i < COMPANIES.length - 1) await sleep(5000);
   }
 
   // 아카이브 저장

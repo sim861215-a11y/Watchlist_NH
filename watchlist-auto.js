@@ -123,178 +123,68 @@ function getKnownArticleTitles(company, archive) {
   return [...titles];
 }
 
-// ── STEP 0: Gemini → 최근 기사 제목 사전 수집 ──────────────────────────────────
-// Claude가 맞춤형 검색 정책을 만들 수 있도록 기업의 최근 뉴스 현황을 먼저 파악
-async function fetchRecentHeadlines(company) {
-  const query = `${company} 최근 뉴스`;
-  const prompt = `"${company}"의 최근 뉴스 기사 제목을 Google 검색으로 수집해서 JSON으로 반환하세요.
-
-출력 형식 (코드블록 없이 JSON만):
-{"headlines":[{"title":"기사 제목","source":"언론사","date":"YYYY-MM-DD"}]}
-
-규칙:
-- 최대 10개
-- 제목만 수집 (본문 불필요)
-- 기사가 없으면 {"headlines":[]}`;
-
-  try {
-    const r = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
-      {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: prompt }] }],
-          tools: [{ google_search: {} }],
-          generationConfig: { temperature: 0.5, maxOutputTokens: 2048, thinkingConfig: { thinkingBudget: 0 } },
-        }),
-      }
-    );
-    if (!r.ok) return [];
-    const data = await r.json();
-    const parts = data.candidates?.[0]?.content?.parts || [];
-    let raw = parts.filter(p => typeof p.text === 'string' && !p.thought).map(p => p.text).join('').trim();
-    if (!raw) raw = parts.filter(p => typeof p.text === 'string').map(p => p.text).join('').trim();
-    const parsed = extractJSON(raw);
-    return parsed?.headlines || [];
-  } catch { return []; }
-}
-
-// ── STEP 1: Claude → 검색 정책 ───────────────────────────────────────────────
-async function buildSearchPolicy(company, archive, headlines = []) {
+// ── STEP 1: Claude 검색 + 제목 스크리닝 ──────────────────────────────────────────
+// ① Claude가 웹검색으로 기사 제목+스니펫 수집
+// ② 아카이브 기존 기사와 비교해 새 리스크 후보만 선별
+// ③ 선별된 기사를 분석용으로 반환
+async function searchAndScreen(company, knownTitles) {
   const from = dateFrom(), to = todayStr();
-  const knownTitles = getKnownArticleTitles(company, archive);
   const knownBlock = knownTitles.length
-    ? `\n\n이미 수집된 기사 (제외 필수 — 동일하거나 유사한 기사는 수집하지 말 것):\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
+    ? `\n\n[이미 수집된 기사 — 동일/유사 제목은 반드시 제외]\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
     : '';
-  const headlinesBlock = headlines.length
-    ? `\n\n최근 기사 현황 (이 제목들을 참고해서 기업 현재 이슈와 업종 특성을 파악하고 맞춤형 검색어를 생성할 것):\n${headlines.map((h,i)=>`${i+1}. [${h.date||''}] ${h.title} (${h.source||''})`).join('\n')}`
-    : '';
-  const prompt = `당신은 기업 리스크 리서치 디렉터입니다.
-아래 기업에 대해 리스크 중심 뉴스를 수집하도록 검색 에이전트(Gemini)에게 전달할 구조화된 검색 정책을 JSON으로 만드세요.
 
-기업명: ${company}
-수집 기간: ${from} ~ ${to}
+  const prompt = `당신은 기업 리스크 모니터링 전문 애널리스트입니다.
 
-출력 JSON 형식 (이 형식 그대로만 출력):
-{
-  "company": "${company}",
-  "date_from": "${from}",
-  "date_to": "${to}",
-  "search_queries": ["검색어1", "검색어2", "검색어3"],
-  "priority_topics": ["우선수집 주제1", "우선수집 주제2"],
-  "exclude_topics": ["제외할 주제1"],
-  "article_limit": 9,
-  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지. 이미 수집된 기사와 동일하거나 유사한 기사는 반드시 제외할 것"
-}
+"${company}"의 최근 14일(${from} ~ ${to}) 리스크 관련 기사를 웹 검색으로 수집하세요.
 
-search_queries 작성 규칙 (매우 중요):
-- 검색어는 기업명 + 핵심 키워드 1~2개로만 구성 (예: "JTBC 과징금", "삼성전자 소송")
-- 리스크 키워드를 여러 개 나열하지 말 것 (예: "JTBC 리스크 제재 과징금 손실" → 검색 실패)
-- 실제 구글 검색에서 기사가 나올 법한 자연스러운 검색어 사용
-- 검색어 9개를 아래 3개 영역별로 각각 3개씩 생성할 것
-  · 재무 영역 3개: 해당 기업 업종에 맞는 재무 리스크 (매출, 적자, 부채, 손실 등)
-  · 법률·규제 영역 3개: 소송, 과징금, 수사, 행정처분 등
-  · 경영·사고 영역 3개: 임원 리스크, 사고, 노사갈등, 구조조정 등
-priority_topics: 재무손실, 부채급증, 과징금, 영업정지, 형사기소 등 실질적 리스크 주제
-exclude_topics: 단순 IR 홍보, 채용공고, 제품출시 등 리스크와 무관한 주제
-${knownBlock}${headlinesBlock}\n\nJSON만 출력하세요.`;
+[검색 전략 — 반드시 아래 순서로 진행]
+1단계 — 제목 스크리닝: 아래 3개 영역에서 각 3개씩 검색 (총 9회)
+  · 재무: "${company} 적자", "${company} 손실", "${company} 부채" (기업 성격에 맞게 조정)
+  · 법률·규제: "${company} 과징금", "${company} 소송", "${company} 수사" (기업 성격에 맞게 조정)
+  · 경영·사고: "${company} 구조조정", "${company} 분쟁", "${company} 사고" (기업 성격에 맞게 조정)
+
+2단계 — 스크리닝 기준으로 필터링:
+  · ${from} ~ ${to} 범위 외 기사 제외
+  · 아래 기존 수집 기사와 동일/유사한 내용 제외
+  · 홍보·채용·신제품 출시 등 리스크 무관 기사 제외
+  · 리스크성 있어 보이는 기사만 선별${knownBlock}
+
+3단계 — 선별된 기사 상세 확인: 리스크성이 있는 기사는 내용을 더 읽고 요약
+
+최종 출력 (JSON만, 코드블록 없이, 최대 5개):
+{"articles":[{"title":"기사 제목","source":"언론사명","date":"YYYY-MM-DD","url":"URL","summary":"핵심 내용 1-2문장 (수치 포함)"}]}
+기사 없으면: {"articles":[]}`;
 
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': CLAUDE_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] }),
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': CLAUDE_KEY,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 4000,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      messages: [{ role: 'user', content: prompt }],
+    }),
   });
-  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(e?.error?.message || `Claude HTTP ${r.status}`); }
-  const data = await r.json();
-  const raw = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
-  const parsed = extractJSON(raw);
-  if (!parsed) throw new Error('검색 정책 JSON 파싱 실패');
-  return { ...parsed, known_titles: knownTitles };
-}
 
-// ── STEP 2: Gemini → 기사 수집 ───────────────────────────────────────────────
-async function collectArticles(policy) {
-  // 검색어에 연월을 직접 포함 (Gemini google_search 툴은 날짜 파라미터 미지원)
-  const dateTag = policy.date_from.slice(0, 7).replace('-', '.');
-  const queriesWithDate = policy.search_queries.map(q => q + ' ' + dateTag);
-
-  const prompt = `당신은 뉴스 수집 에이전트입니다. 아래 검색어로 Google 검색을 실행하고 기사를 수집해서 JSON으로 반환하세요.
-
-기업명: ${policy.company}
-검색어 (반드시 이 검색어 그대로 사용): ${queriesWithDate.join(' / ')}
-우선 수집 주제: ${policy.priority_topics.join(', ')}
-제외 주제: ${policy.exclude_topics.join(', ')}
-최대 기사 수: ${policy.article_limit}개
-
-수집 기준:
-- 반드시 ${policy.date_from} ~ ${policy.date_to} 범위 기사만 선별 (이 기간 외 기사는 반드시 제외)
-- 아래 이미 수집된 기사와 동일하거나 유사한 기사는 절대 포함하지 말 것:\n${policy.known_titles?.length ? policy.known_titles.map((t,i)=>`  ${i+1}. ${t}`).join('\n') : '  (없음)'}
-- 우선 주제 기사를 먼저 선별, 제외 주제 기사는 포함하지 말 것
-- 날짜가 불명확하거나 기간 외이면 제외
-
-출력 형식 (코드블록 없이 JSON만, 다른 텍스트 일절 금지):
-{"articles":[{"title":"기사 제목","source":"언론사명","date":"YYYY-MM-DD","summary":"핵심 내용 1-2문장"}]}
-기사가 없으면: {"articles":[]}`;
-  const r = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
-    {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        tools: [{ google_search: {} }],
-        generationConfig: { temperature: 1.0, maxOutputTokens: 8192, thinkingConfig: { thinkingBudget: 0 } },
-      }),
-    }
-  );
-  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(`Gemini: ${e?.error?.message || r.status}`); }
-
-  const data = await r.json();
-  const parts = data.candidates?.[0]?.content?.parts || [];
-  let raw = parts.filter(p=>typeof p.text==='string'&&!p.thought).map(p=>p.text).join('').trim();
-  if (!raw) raw = parts.filter(p=>typeof p.text==='string').map(p=>p.text).join('').trim();
-  if (!raw) throw new Error('Gemini 응답이 비어있습니다');
-
-  let articles = [];
-  const parsed = extractJSON(raw);
-  if (parsed) { articles = parsed.articles || []; }
-  else {
-    const m = raw.match(/\{\s*"articles"\s*:\s*(\[[\s\S]*)/);
-    if (m) {
-      try {
-        let s = m[1].replace(/,\s*\{[^}]*$/, '').replace(/,\s*$/, '');
-        if (!s.endsWith(']')) s += ']';
-        const rec = JSON.parse(`{"articles":${s}}`);
-        if (rec.articles?.length) articles = rec.articles;
-      } catch {}
-    }
-    if (!articles.length) {
-      // Gemini가 JSON 대신 "기사 없음" 설명을 텍스트로 반환한 경우 → 빈 배열로 처리
-      const noArticleKeywords = ['없습니다', '없어', '찾을 수 없', '수집할 수 없', 'no article', 'not found', '검색 결과가 없', 'i am sorry', 'unable to fulfill', 'not supported', 'cannot fulfill', 'i cannot'];
-      const isNoArticle = noArticleKeywords.some(k => raw.toLowerCase().includes(k));
-      if (isNoArticle) {
-        log(`     → Gemini: 해당 기간 기사 없음 (정상 처리)`);
-        articles = [];
-      } else {
-        throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
-      }
-    }
+  if (!r.ok) {
+    const e = await r.json().catch(()=>({}));
+    throw new Error(e?.error?.message || `Claude search HTTP ${r.status}`);
   }
 
-  const chunks = data.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
-  const realUrls = chunks.filter(c=>c.web?.uri).map(c=>({ url: c.web.uri, title: (c.web.title||'').toLowerCase() }));
+  const data  = await r.json();
+  const raw   = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
+  if (!raw) return [];
 
-  articles = articles.map(article => {
-    const words = (article.title||'').toLowerCase().split(/\s+/).filter(w=>w.length>1);
-    let best=null, bestScore=0;
-    realUrls.forEach(ru => { const score=words.filter(w=>ru.title.includes(w)).length; if(score>bestScore){bestScore=score;best=ru;} });
-    return { ...article, url: best?.url||'' };
-  });
-
-  const used = new Set(articles.map(a=>a.url).filter(Boolean));
-  const unused = realUrls.filter(ru=>!used.has(ru.url));
-  let idx = 0;
-  articles = articles.map(a => { if(!a.url&&idx<unused.length) return {...a, url:unused[idx++].url}; return a; });
-  return articles;
+  // "기사 없음" 텍스트 응답 처리
+  const noArticleKeywords = ['없습니다','없어','찾을 수 없','수집할 수 없','no article','not found','검색 결과가 없','i am sorry','unable to fulfill','not supported','cannot fulfill','i cannot'];
+  const parsedResult = extractJSON(raw);
+  if (parsedResult) return parsedResult.articles || [];
+  if (noArticleKeywords.some(k=>raw.toLowerCase().includes(k))) return [];
+  throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
 }
 
 // ── STEP 3: Claude → 리스크 분석 ─────────────────────────────────────────────
@@ -345,29 +235,26 @@ const SENT_LABEL = { positive:'긍정 📈', neutral:'중립 ➖', negative:'리
 const SVL = { high:'상', medium:'중', low:'하' };
 const SVE = { high:'🔴', medium:'🟡', low:'🔵' };
 
-function buildTgMsg(name, res, archive) {
+function buildTgMsg(name, res, archive, pagesLink) {
   if (res.duplicate) {
     const prev = archive[res.duplicate.date]?.[name];
-    if (prev && !prev.duplicate) return buildTgMsg(name, prev, archive);
+    if (prev && !prev.duplicate) return buildTgMsg(name, prev, archive, pagesLink);
   }
   const sentiment = SENT_LABEL[res.overall_sentiment] || '중립 ➖';
   let t = `<b>━━ ${name} ━━</b>\n종합 평가: <b>${sentiment}</b>\n`;
   if (res.error) { t += `❌ ${res.error}`; return t; }
   const risks = res.risk_factors || [];
   if (!risks.length) { t += '✅ 최근 14일 내 신규 리스크 없음'; return t; }
+  // 리스크 헤드라인 — 제목 + 핵심 한 문장 요약
   t += '\n';
   risks.forEach(rf => {
-    t += `${SVE[rf.severity]||'🟡'} <b>[리스크 ${rf.rank}] ${rf.title}</b>  심각도: ${SVL[rf.severity]||''}\n  ${rf.detail}\n\n`;
+    // detail에서 첫 문장만 추출 (마침표/개행 기준)
+    const firstSentence = (rf.detail||'').split(/[.!?\n]/)[0].trim();
+    const summary = firstSentence.length > 10 ? firstSentence + '.' : '';
+    t += `${SVE[rf.severity]||'🟡'} <b>${rf.title}</b>  <i>심각도 ${SVL[rf.severity]||'-'}</i>\n`;
+    if (summary) t += `  └ ${summary}\n`;
+    t += '\n';
   });
-  const srcs = res.sources || [];
-  if (srcs.length) {
-    t += '📰 <b>검토 기사</b>\n';
-    srcs.forEach((s,i) => {
-      t += s.url
-        ? `  ${i+1}. <a href="${s.url}">${s.title}</a> — ${s.source||''} (${s.date||''})\n`
-        : `  ${i+1}. ${s.title} — ${s.source||''}\n`;
-    });
-  }
   return t;
 }
 
@@ -869,7 +756,6 @@ function tryPw() {
 async function main() {
   const missing = [
     !CLAUDE_KEY       && 'ANTHROPIC_API_KEY',
-    !GEMINI_KEY       && 'GEMINI_API_KEY',
     !TG_TOKEN         && 'TELEGRAM_BOT_TOKEN',
     !TG_CHAT_ID       && 'TELEGRAM_CHAT_ID',
     !COMPANIES.length && 'watchlist.txt (비어있음)',
@@ -897,15 +783,11 @@ async function main() {
     const co = COMPANIES[i];
     log(`\n[${i+1}/${COMPANIES.length}] ${co}`);
     try {
-      log(`  ① Gemini: 최근 기사 제목 사전 수집`);
-      const headlines = await fetchRecentHeadlines(co);
-      log(`     → 헤드라인 ${headlines.length}건 수집`);
-      log(`  ② Claude: 맞춤형 검색 정책 생성`);
-      const policy = await buildSearchPolicy(co, archive, headlines);
-      log(`  ③ Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
-      const articles = await collectArticles(policy);
-      log(`     → ${articles.length}건 수집`);
-      log(`  ④ Claude: 리스크 분석`);
+      log(`  ① Claude: 기사 검색 + 스크리닝`);
+      const knownTitles = getKnownArticleTitles(co, archive);
+      const articles = await searchAndScreen(co, knownTitles);
+      log(`     → ${articles.length}건 선별`);
+      log(`  ② Claude: 리스크 분석`);
       const result = await analyzeRisk(co, articles);
       const dup = checkDuplicate(co, result, archive);
       if (dup) {
@@ -943,7 +825,7 @@ async function main() {
 
   // 텔레그램: 기업별 발송
   for (const [name, res] of Object.entries(results)) {
-    await tgSend(buildTgMsg(name, res, archive));
+    await tgSend(buildTgMsg(name, res, archive, pagesLink));
     await sleep(500);
   }
 
@@ -955,7 +837,9 @@ async function main() {
     `✅ 분석 완료`,
     riskCount ? `⚠️ 리스크 감지: ${riskCount}개 기업` : `✅ 전 기업 이상 없음`,
     dupCount  ? `♻️ 이전 아카이브 동일: ${dupCount}개 기업` : '',
-    pagesLink ? `📱 <a href="${pagesLink}">더 깔끔하게 보기 →</a>` : '',
+    pagesLink
+      ? `\n📋 리스크 상세 내용 및 출처 기사는 아래에서 확인하세요\n<a href="${pagesLink}">${pagesLink}</a>`
+      : '',
   ].filter(Boolean).join('\n');
   await tgSend(footer);
 

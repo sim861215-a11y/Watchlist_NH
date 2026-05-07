@@ -138,10 +138,11 @@ async function searchAndScreen(company, knownTitles) {
 "${company}"의 최근 14일(${from} ~ ${to}) 리스크 관련 기사를 웹 검색으로 수집하세요.
 
 [검색 전략 — 반드시 아래 순서로 진행]
-1단계 — 제목 스크리닝: 아래 3개 영역에서 각 3개씩 검색 (총 9회)
-  · 재무: "${company} 적자", "${company} 손실", "${company} 부채" (기업 성격에 맞게 조정)
-  · 법률·규제: "${company} 과징금", "${company} 소송", "${company} 수사" (기업 성격에 맞게 조정)
-  · 경영·사고: "${company} 구조조정", "${company} 분쟁", "${company} 사고" (기업 성격에 맞게 조정)
+1단계 — 제목 스크리닝: 아래 3개 영역에서 각 1~2개씩 검색 (총 5회 이내)
+  · 재무: "${company} 적자" 또는 "${company} 손실" (기업 성격에 맞게 1개 선택)
+  · 법률·규제: "${company} 과징금" 또는 "${company} 소송" (기업 성격에 맞게 1개 선택)
+  · 경영·사고: "${company} 리스크" (기업 성격에 맞게 조정, 최근 뉴스 중심)
+  · 추가 필요 시 1~2개 보완 검색 (총 5회 초과 금지)
 
 2단계 — 스크리닝 기준으로 필터링:
   · ${from} ~ ${to} 범위 외 기사 제외
@@ -801,7 +802,7 @@ async function main() {
       log(`  ❌ 오류: ${e.message}`);
       results[co] = { company: co, error: e.message, overall_sentiment: 'neutral', timestamp: Date.now() };
     }
-    if (i < COMPANIES.length - 1) await sleep(5000);
+    if (i < COMPANIES.length - 1) await sleep(65000);  // 65초 대기 (rate limit 리셋)
   }
 
   // 아카이브 저장

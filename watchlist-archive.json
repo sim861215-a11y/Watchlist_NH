@@ -1,0 +1,240 @@
+{
+  "2026-05-07": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "누적 적자 및 수익성 회복 불확실성",
+          "detail": "JTBC는 2023년 584억 원, 2024년 287억 원의 영업적자를 기록하며 2년 연속 대규모 손실을 냈다. 2025년 흑자 전환에 성공했다고 밝혀졌으나, 누적된 재무 손실의 규모가 상당하여 재무 건전성 회복까지는 시간이 소요될 것으로 보인다. 전통 방송 광고 시장 자체가 구조적 침체 국면에 있어 흑자 기조의 지속 가능성이 불확실하다. 미디어 산업 전반의 광고 의존 구조 한계가 지속되고 있어 새로운 수익원 확보가 핵심 과제로 남아 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "미디어 산업 구조적 수익성 악화 및 신성장동력 부재 위험",
+          "detail": "지상파 및 종편 방송사 전반에 걸쳐 광고 수익 감소와 OTT 플랫폼 경쟁 심화로 전통 미디어 수익 모델이 한계에 직면하고 있다. JTBC 역시 이 같은 산업 구조적 압박에서 자유롭지 못하며, 신성장동력 발굴이 시급한 상황이다. 디지털 전환 및 콘텐츠 다각화에 대한 투자 수요가 높아지고 있으나, 재무 여력이 제한적이어서 투자 확대에 어려움이 있다. 경쟁 심화와 광고 단가 하락이 지속될 경우 흑자 전환 이후에도 수익성 개선폭이 제한될 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "방통위 시정명령 취소 관련 규제 환경 불확실성",
+          "detail": "법원이 방통위의 JTBC에 대한 시정명령 처분을 취소하라는 판결을 내려 단기적으로는 JTBC에 유리한 결과가 도출되었다. 그러나 방통위 '2인 체제' 의결 정족수 문제로 인한 규제 처분들이 줄줄이 취소되면서 향후 규제 당국의 재처분 가능성 등 규제 환경의 불확실성이 잔존한다. 정치적·제도적 환경 변화에 따라 방송 규제 리스크가 재부상할 가능성을 배제하기 어렵다. 현재로서는 직접적 제재가 해소된 상태이나 평판 및 규제 리스크의 간접적 영향이 지속될 수 있다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "법원 'JTBC 시정명령 취소'…尹 방통위 제재 줄줄이 취소",
+          "url": "",
+          "source": "중앙일보",
+          "date": "2025-07-28"
+        },
+        {
+          "title": "수익성 악화 속 신성장동력 압박 가중…미디어산업 환경 '대격변'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEmUl-u9KyVTyVmkTUsTIa4LzPGyNQkEqryFWNc_FLw91_tPEWx0hHyHWE7f4s3nRzF5zURYlMy4bDg0uQpOrI8Ta72VvxE1QThap5XolYFCvVw1I0JhJVTBSk3iOjbwje3D6rb1tyEzRoUwwUU7H-0Og==",
+          "source": "일요신문",
+          "date": "2025-04-25"
+        },
+        {
+          "title": "2년 전 584억 적자 JTBC… '손익 턴어라운드'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDDxK3-zNU4v5-0XVnUT1m_mHChItpuAVXWyney8XSq5gJPRY9HLrb7InxPPG7_13jKmRPzmKWodezrF64PuCAaVK3Y69VfQsqqTgnzArQ3ZgwIVOLzTSgSen4Ah45_SCw3te7",
+          "source": "Daum",
+          "date": "2026-01-02"
+        }
+      ],
+      "overall_sentiment": "neutral",
+      "skip_reason": null,
+      "timestamp": 1778128122791
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "인수금융 만기 연장에 따른 유동성 리스크",
+          "detail": "프랙시스캐피탈이 SLL중앙의 인수금융 만기를 3개월 추가 연장하여 오는 6월 말로 유예되었으나, 근본적인 상환 문제는 해결되지 않은 상태다. 모회사 콘텐트리중앙은 재무적 투자자(FI) 자금 상환을 위해 외부 투자 유치 협상을 진행 중이나 성사 여부가 불확실하다. 2021년 전환우선주 발행 시 약속한 3년 내 상장이 증시 부진으로 이행되지 못한 상황으로, 6월 말 만기 내 해결책을 마련하지 못할 경우 채무불이행(디폴트) 위험이 현실화될 수 있다. 이는 기업 전반의 재무 안정성에 심각한 위협 요인으로 작용할 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "IPO 무산 및 자본 조달 실패 리스크",
+          "detail": "SLL중앙은 2021년 프랙시스캐피탈을 대상으로 전환우선주를 발행하며 3년 내 기업공개(IPO)를 조건으로 투자를 유치하였으나, 증시 부진으로 상장이 지연된 상태다. IPO 이행 조건 불충족은 FI와의 계약 위반으로 이어질 수 있으며, 투자 자금 조기 상환 요구 등 추가적인 재무 압박 요인이 될 수 있다. 외부 투자 유치 협상도 아직 진행 중인 단계로, 대체 자본 조달 수단 확보 여부가 불투명하다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "모회사 콘텐트리중앙의 재무 지원 불확실성",
+          "detail": "SLL중앙의 FI 자금 상환 문제가 모회사인 콘텐트리중앙 차원에서 외부 투자 유치를 통해 해결을 시도하고 있으나, 협상 진행 경과 및 결과가 불투명하다. 모회사의 자체 재무 여력 및 신용도에 따라 SLL중앙의 자금 지원 가능성이 제한될 수 있으며, 그룹 전반의 재무 리스크가 연쇄적으로 확대될 가능성도 배제할 수 없다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "프랙시스캐피탈, SLL중앙 인수금융 만기 3개월 연장",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFW-BpPJYV3yw8PK_3qilt-ZkmVJg4WDLyq9j5jVMdZUoZ-a3flWnYl8Y4Z5DYBS_7X0OMU805qLLAVQqB0ffSWSV5oQwlnqPZJcCfAwj75_0dydd7U-mwpR-MBrJt4e4LnXdSLLunPNeDx7ExiEYWWL5WRsOhuA25JQZDHUjXITJxdfwctEgQy",
+          "source": "인베스트조선",
+          "date": "2026-04-01"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1778128152214
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "횡령·배임 지연공시로 인한 불성실공시법인 지정",
+          "detail": "한온시스템은 2026년 4월 10일 한국거래소로부터 불성실공시법인으로 지정되었으며, 800만원의 공시위반제재금을 부과받았다. 횡령 및 배임 사실을 내부적으로 확인하고도 하루 늦게 공시한 것이 그 원인으로 지목되었다. 불성실공시법인 지정은 투자자 신뢰 훼손 및 기관투자자 이탈 등 자본시장 내 평판 리스크를 수반한다. 또한 횡령·배임 자체가 내부통제 시스템의 취약성을 드러내는 것으로, 향후 추가적인 규제 조사나 법적 조치로 이어질 가능성을 배제할 수 없다. 한국앤컴퍼니그룹 인수 이후 지배구조 안정화 노력과 상반되는 사건으로 중장기 신뢰도 관리에 부담이 될 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 2,
+          "title": "전동화(xEV) 매출 의존도 확대에 따른 시장 변동성 노출",
+          "detail": "한온시스템의 1분기 xEV 부문 매출 비중이 29%에 달하며 30% 돌파를 목전에 두고 있어, 전동화 시장 성장에 대한 의존도가 높아지고 있다. 글로벌 전기차 수요 둔화 또는 완성차 업체들의 전동화 전환 속도 조절 시 매출 성장세가 꺾일 수 있는 구조적 리스크가 존재한다. 특히 주요 고객사인 현대기아차 및 글로벌 OEM들의 EV 생산 계획 변경은 수주 물량에 직접적 영향을 줄 수 있다. 전동화 집중 전략이 단기 수익 개선에 기여하고 있으나, 내연기관 부문 축소와 맞물려 포트폴리오 다변화 측면의 취약성도 함께 증가하고 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "영업이익률 회복세 지속 가능성에 대한 불확실성",
+          "detail": "1분기 영업이익률은 3.5%로 전년 동기 대비 크게 개선되었으나, 절대적 수준은 여전히 업계 평균 대비 낮은 편에 속한다. 원가율 조정과 운영 효율화가 단기 수익성 회복을 견인했으나, 이 같은 비용 절감 효과가 구조적으로 지속될 수 있을지는 불확실하다. 글로벌 원자재 가격 변동, 환율 리스크, 물류비 상승 등 외부 요인이 하반기 수익성을 압박할 가능성이 있다. 또한 체질 개선 과정에서 발생할 수 있는 일회성 비용이나 인력 구조조정 관련 비용도 향후 실적에 변수로 작용할 수 있다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "한온시스템, 수익 구조 안정화 들어섰다…1분기 매출 2조7482억·영업익 972억",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4sB7H8SA0DddkzT8FEJHDQ7P0ZO91xOSEwTD8xerE0Nka5K1onN_pM1vVv4fGIgZrI-Q6rsZQu42J2qliNBghe3T7v6yv6zLDX0JX3-RbAAN_qXQ4IZWYl2QbESPqOC_auNvSLne_Ywmywlxjn2geqL9-Fw==",
+          "source": "테크월드",
+          "date": "2026-04-30"
+        },
+        {
+          "title": "한온시스템, 1분기 영업익 972억···한국앤컴퍼니 품고 체질 개선 박차",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZ2hhj9-3eA1jq-4gv7gCoBeU4gbXAIIRRNojFXeVd-b7P8C5tAv6_OKqQkEpetEw2EFF7wq8feSQeSM1DhPVajzg2vOTvKxxg0cvWqimCFgaI4skCeVV40lqxbEtW2LCK56EtkpjCNvDXLZ29gQ99r1L2sTyzJpu5gg==",
+          "source": "이뉴스투데이",
+          "date": "2026-04-30"
+        },
+        {
+          "title": "한온시스템, 2026년 1분기 실적 발표…수익 구조 안정화 달성",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGq4tcgwMoWWXxgupZ_sStWSdEtJTT_lTi2QI76upbPe66dkqWlZ18xKYu4-TiGc1_1JdGdXAccMlgZUkxanMYh8GOeYWv0Ww2BvUO0Z-glPVgGUFyTKm7Y2KdfH2OZlACD8UoTwOxQT1sqeKbJhT63qAc=",
+          "source": "카매거진 CARMGZ",
+          "date": "2026-04-30"
+        },
+        {
+          "title": "횡령·배임 지연공시 한온시스템, 불성실공시법인 지정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEOVsVMNIIUuFe52QHkrZeI3x64eoLXuI7ofTYvkcVhqBv6fqz0utdMzeEAFqiHsOC2olb1ktPWri_mTUAXF99H0yRhufhV1O8hfyM2cWjUwx7iBnZaRqrAoSJuh72r7oRxhzGLGD6Mgi3_QPXX1nkNdSuud9l",
+          "source": "뉴스로드",
+          "date": "2026-04-10"
+        },
+        {
+          "title": "한온시스템, 1분기 영업이익 972억원 3.6배 급증",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFZ2hhj9-3eA1jq-4gv7gCoBeU4gbXAIIRRNojFXeVd-b7P8C5tAv6_OKqQkEpetEw2EFF7wq8feSQeSM1DhPVajzg2vOTvKxxg0cvWqimCFgaI4skCeVV40lqxbEtW2LCK56EtkpjCNvDXLZ29gQ99r1L2sTyzJpu5gg==",
+          "source": "서울타임즈뉴스",
+          "date": "2026-04-30"
+        }
+      ],
+      "overall_sentiment": "neutral",
+      "skip_reason": null,
+      "timestamp": 1778128187121
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "영업손실 지속 및 적자 폭 확대",
+          "detail": "솔루스첨단소재는 2026년 1분기 영업손실 220억원을 기록하며 적자가 지속되고 있다. 전년 동기 대비 영업손실 규모가 43.8% 확대되어 수익성 악화 추세가 심화되고 있다. 매출은 1926억원으로 전년 동기 대비 22.2% 증가했음에도 불구하고 손실 폭이 오히려 커진 점은 구조적 문제를 시사한다. 매출 성장이 수익성 개선으로 이어지지 않는 '외형 성장-실적 역행' 패턴이 반복될 경우 재무 건전성에 심각한 위협이 될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "고정비 부담 및 생산 차질로 인한 원가 구조 악화",
+          "detail": "매출 증가에도 불구하고 영업손실이 확대된 주요 원인으로 고정비 부담과 생산 차질이 지목되고 있다. 이는 설비 투자 대비 가동률이 충분히 확보되지 못한 상황을 반영하며, 손익분기점 달성이 단기간 내 어려울 수 있음을 의미한다. 생산 차질이 지속될 경우 납기 지연 및 고객사 이탈 리스크도 동반될 수 있다. 원가 구조 개선 없이는 매출 증가가 오히려 손실 확대로 귀결되는 악순환이 반복될 가능성이 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "'성장 속 적자' 경영 논란에 따른 평판 및 투자자 신뢰 리스크",
+          "detail": "매출 성장에도 적자가 확대되는 경영 패턴에 대해 시장 및 언론에서 경영 논란이 제기되고 있다. 이러한 비판은 투자자 신뢰 하락 및 주가 하방 압력으로 이어질 수 있다. 지속적인 적자 기록은 향후 자금 조달 시 조건 악화나 신용등급 하락 위험도 내포하고 있다. 경영진의 실적 개선 로드맵이 구체적으로 제시되지 않을 경우 시장 불신이 심화될 수 있다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억원…적자지속",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhLJ7hHHorFgmUxIX8zzJfOXB7ZksbPvIlKeX3IVuWM04mHxA2Y-xgm1Au0fvpKERlgik1IO07XrNPR-cvHbGA1HvU9feyomdxn9vdMi3trTwrsDw5Isd4UJeaBMa9TBh9dhvy56PXSak=",
+          "source": "연합뉴스",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1Q 영업손실 220억…전년비 적자 폭 44% 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhLJ7hHHorFgmUxIX8zzJfOXB7ZksbPvIlKeX3IVuWM04mHxA2Y-xgm1Au0fvpKERlgik1IO07XrNPR-cvHbGA1HvU9feyomdxn9vdMi3trTwrsDw5Isd4UJeaBMa9TBh9dhvy56PXSak=",
+          "source": "지디넷코리아",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억…적자폭 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhLJ7hHHorFgmUxIX8zzJfOXB7ZksbPvIlKeX3IVuWM04mHxA2Y-xgm1Au0fvpKERlgik1IO07XrNPR-cvHbGA1HvU9feyomdxn9vdMi3trTwrsDw5Isd4UJeaBMa9TBh9dhvy56PXSak=",
+          "source": "서울경제TV",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "솔루스첨단소재, 1분기 영업손실 220억...전년비 43.8% 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhLJ7hHHorFgmUxIX8zzJfOXB7ZksbPvIlKeX3IVuWM04mHxA2Y-xgm1Au0fvpKERlgik1IO07XrNPR-cvHbGA1HvU9feyomdxn9vdMi3trTwrsDw5Isd4UJeaBMa9TBh9dhvy56PXSak=",
+          "source": "디지털투데이 (DigitalToday)",
+          "date": "2026-04-28"
+        },
+        {
+          "title": "올해 1분기 영업손실 220억, 매출 늘고 적자는 커졌다... 솔루스첨단소재, '성장 속 적자' 경영 논란",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH89Hf68aEM40hZruJM5u_JbZ1GU4_zIa5sl2fmdPjgXr_36sX3yUzKEXVgUp3EJMLdIhKim6_WU1xVpXrY6KPP1OBTg-9lXxmltTCAXbBTInPzaoo3QDarWibDX4zp1Dknr3r2cebwwX8Go1mh2UgH7Gnde-1YRXbFXAs=",
+          "source": "STN NEWS",
+          "date": "2026-05-01"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1778128222256
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "브랜드 의존도 집중 및 단일 제품 라인 론칭 리스크",
+          "detail": "마제스티골프는 '프레스티지오 14' 신제품 론칭을 중심으로 고객 커뮤니케이션 활동을 집중하고 있어, 해당 제품의 시장 반응에 따라 브랜드 전체 성과가 영향을 받을 수 있다. 특정 제품에 대한 마케팅 자원 집중은 다른 라인업의 상대적 노출 감소로 이어질 수 있다. 또한 계절성 이벤트(가정의 달) 중심의 단기 마케팅 전략은 중장기적 브랜드 충성도 구축에 한계가 있을 수 있다.",
+          "severity": "low"
+        },
+        {
+          "rank": 2,
+          "title": "스포츠 마케팅 인플루언서 의존 리스크",
+          "detail": "마제스티골프는 김영 프로를 '팀 마제스티'에 합류시키며 선수 중심의 마케팅 전략을 강화하고 있다. 그러나 특정 선수에 대한 브랜드 이미지 의존은 해당 선수의 성적 부진, 부상, 또는 평판 문제 발생 시 브랜드에 간접적인 부정적 영향을 미칠 수 있다. 이는 고급 골프 브랜드 특성상 이미지 관리가 중요한 마제스티골프에게 잠재적 평판 리스크 요인으로 작용할 수 있다.",
+          "severity": "low"
+        },
+        {
+          "rank": 3,
+          "title": "고가 프리미엄 골프 시장 내 경쟁 심화 가능성",
+          "detail": "가정의 달을 겨냥한 이벤트 및 신제품 론칭은 업계 전반의 계절적 마케팅 집중 시기와 겹쳐 경쟁사 대비 차별화가 어려울 수 있다. 프리미엄 골프 장비 시장에서의 소비 심리 위축 또는 경기 둔화 시, 고가 제품 중심의 포트폴리오를 보유한 마제스티골프는 수요 감소에 상대적으로 취약할 수 있다. 다만 현재 수집된 기사에서 실적 둔화나 재무 이상 징후는 확인되지 않는다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "마제스티골프, 가정의 달 맞아 고객 접점 강화..김영 프로 만남도 마련",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWpAKyap3_IkCtYipgi9D7AOiOysT265C-R7dP1j16ZBIhEeRalqmhu-ijo0Duw7YiFTTWI07taRSFtRjMSl1vQe_TEmJ310jzmABr9TOZ1LICB823f6i453JWFDPTGSu0oot_zGA=",
+          "source": "헤럴드경제",
+          "date": "2026-04-29"
+        },
+        {
+          "title": "성공적인 프레스티지오 14 론칭+김영 '팀 마제스티' 합류…고객 접점 강화 나선 마제스티골프",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF85BkGA2UgFKoYaQibnOaa1ZE_MNpujKPKvuqkW-UGfz4ZDml0-MYS8JcAv737LwN6byaxuBwaiRcpZ26Pe9QY6ktPi-_6kvQb9HTrg_v5iVD2sxZDXcWtfRE=",
+          "source": "마제스티골프",
+          "date": "2026-04-28"
+        }
+      ],
+      "overall_sentiment": "positive",
+      "skip_reason": null,
+      "timestamp": 1778128251464
+    }
+  }
+}

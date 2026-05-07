@@ -157,7 +157,7 @@ function recordSuccessfulFix(errors, originalPolicy, fixedPolicy, history) {
   }
 
   saveErrorHistory(history);
-  log(`     📚 에러 히스토리 업데이트 (총 ${history.patterns.length}개 패턴)`);
+  log(`     📚 에러 히스토리가 업데이트되었습니다 (총 ${history.patterns.length}개 패턴)`);
 }
 
 // 히스토리 기반으로 정책 즉시 수정
@@ -340,7 +340,7 @@ ${policy.known_titles?.length ? policy.known_titles.map((t,i)=>`  ${i+1}. ${t}`)
     if (!articles.length) {
       const noKeywords = ['없습니다','없어','찾을 수 없','수집할 수 없','no article','not found','검색 결과가 없','i am sorry','unable to fulfill','not supported','cannot fulfill','i cannot'];
       if (noKeywords.some(k=>raw.toLowerCase().includes(k))) {
-        log(`     → Gemini: 해당 기간 기사 없음 (정상 처리)`);
+        log(`     → Gemini: 해당 기간 내 기사가 없습니다 (정상 처리)`);
         articles = [];
       } else {
         throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
@@ -424,7 +424,7 @@ async function collectArticles(policy) {
   // ① 히스토리에서 유사 오류 해결책 검색
   const matched = findMatchingFix(errors, errorHistory);
   if (matched) {
-    log(`     📚 히스토리 매칭! (과거 성공 ${matched.success_count}회) → 저장된 해결책 적용`);
+    log(`     📚 히스토리에서 유사 오류가 발견되었습니다 (과거 성공 ${matched.success_count}회) → 저장된 해결책을 적용합니다`);
     const historyFixedPolicy = applyHistoryFix(policy, matched);
     try {
       const result = await collectArticlesOnce(historyFixedPolicy);
@@ -432,18 +432,18 @@ async function collectArticles(policy) {
       matched.success_count++;
       matched.last_used = todayStr();
       saveErrorHistory(errorHistory);
-      log(`     ✅ 히스토리 해결책 적용 성공`);
+      log(`     ✅ 히스토리 해결책 적용에 성공하였습니다`);
       return result;
     } catch (e) {
-      log(`     ⚠️ 히스토리 해결책 실패 → Claude 재판단으로 전환`);
+      log(`     ⚠️ 히스토리 해결책 적용에 실패하였습니다 → Claude 재판단으로 전환합니다`);
       errors.push(`히스토리 적용 후 재시도: ${e.message}`);
     }
   }
 
   // ② 히스토리 없거나 실패 → Claude에게 오류 분석 + 정책 수정 요청
-  log(`     🤖 Claude: 오류 분석 후 검색 정책 자동 수정 중...`);
+  log(`     🤖 Claude가 오류를 분석하여 검색 정책을 자동 수정하고 있습니다...`);
   const fixedPolicy = await fixPolicyWithClaude(policy, errors, errorHistory);
-  log(`     🔄 수정된 정책으로 Gemini 재시도 (최종)`);
+  log(`     🔄 수정된 정책으로 Gemini 최종 재시도를 진행합니다`);
   const finalResult = await collectArticlesOnce(fixedPolicy);
   // Claude 해결책도 성공 시 히스토리에 기록 (이미 fixPolicyWithClaude 내부에서 처리)
   return finalResult;
@@ -506,7 +506,7 @@ function buildTgMsg(name, res, archive, pagesLink) {
   let t = `<b>━━ ${name} ━━</b>\n종합 평가: <b>${sentiment}</b>\n`;
   if (res.error) { t += `❌ ${res.error}`; return t; }
   const risks = res.risk_factors || [];
-  if (!risks.length) { t += '✅ 최근 14일 내 신규 리스크 없음'; return t; }
+  if (!risks.length) { t += '✅ 최근 14일 내 신규 리스크가 없습니다'; return t; }
   // 리스크 헤드라인 — 제목 + 핵심 한 문장 요약
   t += '\n';
   risks.forEach(rf => {
@@ -887,7 +887,7 @@ function buildCard(name, rawRes){
 // ── 아카이브 탭 렌더링 ────────────────────────────────────────────────────────
 function renderArchive(){
   const dates = Object.keys(ARCHIVE).sort((a,b)=>b.localeCompare(a));
-  document.getElementById('arc-total').textContent = \`총 \${dates.length}개 세션 저장됨\`;
+  document.getElementById('arc-total').textContent = \`총 \${dates.length}개 세션이 저장되어 있습니다\`;
   const list = document.getElementById('arc-list');
   if(!dates.length){
     list.innerHTML = '<div class="empty">저장된 리포트가 없습니다</div>';
@@ -928,7 +928,7 @@ async function doReset(){
   const inputPat = document.getElementById('pat-input').value.trim();
   const err = document.getElementById('pat-err');
   const btn = document.getElementById('reset-btn');
-  if(!inputPat){ err.textContent='GitHub PAT를 입력해주세요.'; err.style.display='block'; return; }
+  if(!inputPat){ err.textContent='GitHub PAT를 입력해 주세요.'; err.style.display='block'; return; }
   let pat = inputPat;
   if(!GH_OWNER||!GH_REPO){ err.textContent='저장소 정보를 확인할 수 없습니다.'; err.style.display='block'; return; }
 
@@ -939,7 +939,7 @@ async function doReset(){
     const getRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
       headers:{ 'Authorization': \`Bearer \${pat}\`, 'Accept': 'application/vnd.github+json' }
     });
-    if(!getRes.ok){ localStorage.removeItem('gh_pat'); throw new Error(\`파일 조회 실패 (\${getRes.status}) — PAT를 다시 입력해주세요.\`); }
+    if(!getRes.ok){ localStorage.removeItem('gh_pat'); throw new Error(\`파일 조회 실패 (\${getRes.status}) — PAT를 다시 입력해 주세요.\`); }
     const { sha } = await getRes.json();
 
     const putRes = await fetch(\`https://api.github.com/repos/\${GH_OWNER}/\${GH_REPO}/contents/watchlist-archive.json\`, {
@@ -1030,7 +1030,7 @@ async function main() {
   const archive = loadArchive();
   const results = {};
 
-  log(`🚀 분석 시작 — ${today} / ${COMPANIES.length}개 기업`);
+  log(`🚀 분석을 시작합니다 — ${today} / ${COMPANIES.length}개 기업`);
 
   // 헤더 메시지
   log(`📨 텔레그램 Chat ID 앞3자리: ${String(TG_CHAT_ID).slice(0,3)} / 전체길이: ${String(TG_CHAT_ID).length}자리`);
@@ -1047,13 +1047,13 @@ async function main() {
     const co = COMPANIES[i];
     log(`\n[${i+1}/${COMPANIES.length}] ${co}`);
     try {
-      log(`  ① Claude: 검색 정책 생성`);
+      log(`  ① Claude: 검색 정책을 생성합니다`);
       const knownTitles = getKnownArticleTitles(co, archive);
       const policy = await buildSearchPolicy(co, knownTitles);
-      log(`  ② Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
+      log(`  ② Gemini: 기사를 수집합니다 (${policy.search_queries?.join(', ')})`);
       const articles = await collectArticles(policy);
-      log(`     → ${articles.length}건 수집`);
-      log(`  ③ Claude: 리스크 분석`);
+      log(`     → ${articles.length}건 수집되었습니다`);
+      log(`  ③ Claude: 리스크를 분석합니다`);
       const result = await analyzeRisk(co, articles);
       const dup = checkDuplicate(co, result, archive);
       if (dup) {
@@ -1074,7 +1074,7 @@ async function main() {
   archive[today] = results;
   // 아카이브는 초기화 전까지 전체 보관 (자동 삭제 없음)
   saveArchive(archive);
-  log(`\n💾 아카이브 저장 완료`);
+  log(`\n💾 아카이브가 저장되었습니다`);
 
   // HTML 리포트 생성
   // GitHub owner/repo 추출 (초기화 API 호출용)
@@ -1087,7 +1087,7 @@ async function main() {
   const reportPath = path.join(process.cwd(), 'docs', 'index.html');
   fs.mkdirSync(path.dirname(reportPath), { recursive: true });
   fs.writeFileSync(reportPath, html, 'utf8');
-  log(`📄 HTML 리포트 생성 완료`);
+  log(`📄 HTML 리포트가 생성되었습니다`);
 
   // 텔레그램: 기업별 발송
   for (const [name, res] of Object.entries(results)) {
@@ -1100,16 +1100,16 @@ async function main() {
   const dupCount  = Object.values(results).filter(r => r.duplicate).length;
   const footer = [
     `━━━━━━━━━━━━━━━`,
-    `✅ 분석 완료`,
-    riskCount ? `⚠️ 리스크 감지: ${riskCount}개 기업` : `✅ 전 기업 이상 없음`,
+    `✅ 분석이 완료되었습니다`,
+    riskCount ? `⚠️ 리스크 감지: ${riskCount}개 기업` : `✅ 전 기업 이상 없습니다`,
     dupCount  ? `♻️ 이전 아카이브 동일: ${dupCount}개 기업` : '',
     pagesLink
-      ? `\n📋 리스크 상세 내용 및 출처 기사는 아래에서 확인하세요\n<a href="${pagesLink}">${pagesLink}</a>`
+      ? `\n📋 리스크 상세 내용 및 출처 기사는 아래에서 확인하실 수 있습니다\n<a href="${pagesLink}">${pagesLink}</a>`
       : '',
   ].filter(Boolean).join('\n');
   await tgSend(footer);
 
-  log(`\n🎉 완료 — 리스크 ${riskCount}건 / 중복 ${dupCount}건`);
+  log(`\n🎉 분석이 완료되었습니다 — 리스크 ${riskCount}건 / 중복 ${dupCount}건`);
 }
 
 main().catch(e => { console.error('Fatal:', e.message); process.exit(1); });

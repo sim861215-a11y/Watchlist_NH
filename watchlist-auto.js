@@ -64,6 +64,107 @@ function saveArchive(archive) {
   fs.writeFileSync(ARCHIVE_PATH, JSON.stringify(archive, null, 2), 'utf8');
 }
 
+// ── 에러 히스토리 (케이스 기반 자가 학습) ────────────────────────────────────────
+const ERROR_HISTORY_PATH = path.join(process.cwd(), 'error-history.json');
+
+function loadErrorHistory() {
+  try {
+    if (fs.existsSync(ERROR_HISTORY_PATH))
+      return JSON.parse(fs.readFileSync(ERROR_HISTORY_PATH, 'utf8'));
+  } catch {}
+  return { patterns: [] };
+}
+
+function saveErrorHistory(history) {
+  fs.writeFileSync(ERROR_HISTORY_PATH, JSON.stringify(history, null, 2), 'utf8');
+}
+
+// 오류 메시지에서 핵심 시그니처 추출 (비교용)
+function extractErrorSignature(errorMsg) {
+  return errorMsg.toLowerCase()
+    .replace(/\d+/g, '#')          // 숫자 → #
+    .replace(/['"]/g, '')           // 따옴표 제거
+    .replace(/https?:\/\/\S+/g, '') // URL 제거
+    .trim()
+    .slice(0, 120);
+}
+
+// 유사 오류 히스토리 검색 (키워드 매칭)
+function findMatchingFix(errors, history) {
+  const errorText = errors.join(' ').toLowerCase();
+  let bestMatch = null, bestScore = 0;
+
+  history.patterns.forEach(p => {
+    const keywords = p.error_keywords || [];
+    const score = keywords.filter(k => errorText.includes(k.toLowerCase())).length;
+    if (score > 0 && score > bestScore && p.success_count > 0) {
+      bestScore = score;
+      bestMatch = p;
+    }
+  });
+
+  return bestMatch;
+}
+
+// 히스토리에 성공 사례 기록/업데이트
+function recordSuccessfulFix(errors, originalPolicy, fixedPolicy, history) {
+  const keywords = [...new Set(
+    errors.join(' ').toLowerCase()
+      .match(/[a-z가-힣]{3,}/g) || []
+  )].slice(0, 8);
+
+  const sig = extractErrorSignature(errors[0] || '');
+
+  // 기존 패턴 업데이트 or 새 패턴 추가
+  const existing = history.patterns.find(p =>
+    (p.error_keywords||[]).some(k => keywords.includes(k)) && p.signature === sig
+  );
+
+  if (existing) {
+    existing.success_count = (existing.success_count || 0) + 1;
+    existing.last_used = todayStr();
+    existing.policy_fix = {
+      search_queries: fixedPolicy.search_queries,
+      instructions: fixedPolicy.instructions,
+      article_limit: fixedPolicy.article_limit,
+    };
+  } else {
+    history.patterns.push({
+      signature: sig,
+      error_keywords: keywords,
+      sample_error: errors[0]?.slice(0, 200) || '',
+      policy_fix: {
+        search_queries: fixedPolicy.search_queries,
+        instructions: fixedPolicy.instructions,
+        article_limit: fixedPolicy.article_limit,
+      },
+      success_count: 1,
+      created: todayStr(),
+      last_used: todayStr(),
+    });
+  }
+
+  // 최대 50개 패턴 유지 (오래된 것부터 제거)
+  if (history.patterns.length > 50) {
+    history.patterns.sort((a, b) => (b.last_used||'').localeCompare(a.last_used||''));
+    history.patterns = history.patterns.slice(0, 50);
+  }
+
+  saveErrorHistory(history);
+  log(`     📚 에러 히스토리 업데이트 (총 ${history.patterns.length}개 패턴)`);
+}
+
+// 히스토리 기반으로 정책 즉시 수정
+function applyHistoryFix(policy, matchedPattern) {
+  const fix = matchedPattern.policy_fix;
+  return {
+    ...policy,
+    search_queries: fix.search_queries || policy.search_queries,
+    instructions: fix.instructions || policy.instructions,
+    article_limit: fix.article_limit || policy.article_limit,
+  };
+}
+
 // ── AES-256-GCM 암호화 ────────────────────────────────────────────────────────
 // REPORT_PASSWORD Secret이 설정된 경우 아카이브 데이터를 암호화해서 HTML에 삽입.
 // 소스 보기를 해도 암호화된 blob만 보이며, 비밀번호 없이는 복호화 불가.
@@ -123,69 +224,223 @@ function getKnownArticleTitles(company, archive) {
   return [...titles];
 }
 
-// ── STEP 1: Claude 검색 + 제목 스크리닝 ──────────────────────────────────────────
-// ① Claude가 웹검색으로 기사 제목+스니펫 수집
-// ② 아카이브 기존 기사와 비교해 새 리스크 후보만 선별
-// ③ 선별된 기사를 분석용으로 반환
-async function searchAndScreen(company, knownTitles) {
+// ── STEP 1: Claude → 검색 정책 생성 ─────────────────────────────────────────────
+async function buildSearchPolicy(company, knownTitles) {
   const from = dateFrom(), to = todayStr();
   const knownBlock = knownTitles.length
-    ? `\n\n[이미 수집된 기사 — 동일/유사 제목은 반드시 제외]\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
+    ? `\n\n이미 수집된 기사 (제외 필수 — 동일하거나 유사한 기사는 수집하지 말 것):\n${knownTitles.map((t,i)=>`${i+1}. ${t}`).join('\n')}`
     : '';
 
-  const prompt = `당신은 기업 리스크 모니터링 전문 애널리스트입니다.
+  const prompt = `당신은 기업 리스크 리서치 디렉터입니다.
+아래 기업에 대해 리스크 중심 뉴스를 수집하도록 Gemini에게 전달할 검색 정책을 JSON으로 만드세요.
 
-"${company}"의 최근 14일(${from} ~ ${to}) 리스크 관련 기사를 웹 검색으로 수집하세요.
+기업명: ${company}
+수집 기간: ${from} ~ ${to}
 
-[검색 전략 — 반드시 아래 순서로 진행]
-1단계 — 제목 스크리닝: 아래 3개 영역에서 각 1~2개씩 검색 (총 5회 이내)
-  · 재무: "${company} 적자" 또는 "${company} 손실" (기업 성격에 맞게 1개 선택)
-  · 법률·규제: "${company} 과징금" 또는 "${company} 소송" (기업 성격에 맞게 1개 선택)
-  · 경영·사고: "${company} 리스크" (기업 성격에 맞게 조정, 최근 뉴스 중심)
-  · 추가 필요 시 1~2개 보완 검색 (총 5회 초과 금지)
+출력 JSON 형식 (이 형식 그대로만 출력):
+{
+  "company": "${company}",
+  "date_from": "${from}",
+  "date_to": "${to}",
+  "search_queries": ["검색어1", "검색어2", "검색어3"],
+  "priority_topics": ["우선수집 주제1", "우선수집 주제2"],
+  "exclude_topics": ["제외할 주제1"],
+  "article_limit": 5,
+  "instructions": "Gemini에게 전달할 수집 지침 (한국어, 3-4문장). date_start, date_end 등 날짜 파라미터는 절대 언급 금지. 이미 수집된 기사와 동일하거나 유사한 기사는 반드시 제외할 것"
+}
 
-2단계 — 스크리닝 기준으로 필터링:
-  · ${from} ~ ${to} 범위 외 기사 제외
-  · 아래 기존 수집 기사와 동일/유사한 내용 제외
-  · 홍보·채용·신제품 출시 등 리스크 무관 기사 제외
-  · 리스크성 있어 보이는 기사만 선별${knownBlock}
+search_queries 작성 규칙 (매우 중요):
+- 검색어는 기업명 + 핵심 키워드 1~2개로만 구성 (예: "JTBC 과징금", "삼성전자 소송")
+- 리스크 키워드를 여러 개 나열하지 말 것 (예: "JTBC 리스크 제재 과징금 손실" → 검색 실패)
+- 실제 구글 검색에서 기사가 나올 법한 자연스러운 검색어 사용
+- 검색어 3개를 아래 영역별로 각각 1개씩 생성할 것
+  · 재무 영역 1개: 해당 기업 업종에 맞는 재무 리스크
+  · 법률·규제 영역 1개: 소송, 과징금, 수사, 행정처분 등
+  · 경영·사고 영역 1개: 임원 리스크, 사고, 노사갈등, 구조조정 등
+priority_topics: 재무손실, 부채급증, 과징금, 영업정지, 형사기소 등 실질적 리스크 주제
+exclude_topics: 단순 IR 홍보, 채용공고, 제품출시 등 리스크와 무관한 주제${knownBlock}
 
-3단계 — 선별된 기사 상세 확인: 리스크성이 있는 기사는 내용을 더 읽고 요약
-
-최종 출력 (JSON만, 코드블록 없이, 최대 5개):
-{"articles":[{"title":"기사 제목","source":"언론사명","date":"YYYY-MM-DD","url":"URL","summary":"핵심 내용 1-2문장 (수치 포함)"}]}
-기사 없으면: {"articles":[]}`;
+JSON만 출력하세요.`;
 
   const r = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': CLAUDE_KEY,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 5000,
-      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-      messages: [{ role: 'user', content: prompt }],
-    }),
+    headers: { 'Content-Type': 'application/json', 'x-api-key': CLAUDE_KEY, 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] }),
   });
+  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(e?.error?.message || `Claude HTTP ${r.status}`); }
+  const data   = await r.json();
+  const raw    = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
+  const parsed = extractJSON(raw);
+  if (!parsed) throw new Error('검색 정책 JSON 파싱 실패');
+  return { ...parsed, known_titles: knownTitles };
+}
 
-  if (!r.ok) {
-    const e = await r.json().catch(()=>({}));
-    throw new Error(e?.error?.message || `Claude search HTTP ${r.status}`);
-  }
+// ── STEP 2: Gemini → 기사 수집 ───────────────────────────────────────────────
+async function collectArticlesOnce(policy) {
+  const dateTag = policy.date_from.slice(0, 7).replace('-', '.');
+  const queriesWithDate = policy.search_queries.map(q => q + ' ' + dateTag);
+
+  const prompt = `당신은 뉴스 수집 에이전트입니다. 아래 검색어로 Google 검색을 실행하고 기사를 수집해서 JSON으로 반환하세요.
+
+기업명: ${policy.company}
+검색어 (반드시 이 검색어 그대로 사용): ${queriesWithDate.join(' / ')}
+우선 수집 주제: ${policy.priority_topics.join(', ')}
+제외 주제: ${policy.exclude_topics.join(', ')}
+최대 기사 수: ${policy.article_limit}개
+
+수집 기준:
+- 반드시 ${policy.date_from} ~ ${policy.date_to} 범위 기사만 선별 (이 기간 외 기사는 반드시 제외)
+- 아래 이미 수집된 기사와 동일하거나 유사한 기사는 절대 포함하지 말 것:
+${policy.known_titles?.length ? policy.known_titles.map((t,i)=>`  ${i+1}. ${t}`).join('\n') : '  (없음)'}
+- 우선 주제 기사를 먼저 선별, 제외 주제 기사는 포함하지 말 것
+- 날짜가 불명확하거나 기간 외이면 제외
+
+출력 형식 (코드블록 없이 JSON만, 다른 텍스트 일절 금지):
+{"articles":[{"title":"기사 제목","source":"언론사명","date":"YYYY-MM-DD","summary":"핵심 내용 1-2문장"}]}
+기사가 없으면: {"articles":[]}`;
+
+  const r = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`,
+    {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        tools: [{ google_search: {} }],
+        generationConfig: { temperature: 1.0, maxOutputTokens: 8192, thinkingConfig: { thinkingBudget: 0 } },
+      }),
+    }
+  );
+  if (!r.ok) { const e = await r.json().catch(()=>({})); throw new Error(`Gemini: ${e?.error?.message || r.status}`); }
 
   const data  = await r.json();
-  const raw   = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
-  if (!raw) return [];
+  const parts = data.candidates?.[0]?.content?.parts || [];
+  let raw = parts.filter(p=>typeof p.text==='string'&&!p.thought).map(p=>p.text).join('').trim();
+  if (!raw) raw = parts.filter(p=>typeof p.text==='string').map(p=>p.text).join('').trim();
+  if (!raw) throw new Error('Gemini 응답이 비어있습니다');
 
-  // "기사 없음" 텍스트 응답 처리
-  const noArticleKeywords = ['없습니다','없어','찾을 수 없','수집할 수 없','no article','not found','검색 결과가 없','i am sorry','unable to fulfill','not supported','cannot fulfill','i cannot'];
-  const parsedResult = extractJSON(raw);
-  if (parsedResult) return parsedResult.articles || [];
-  if (noArticleKeywords.some(k=>raw.toLowerCase().includes(k))) return [];
-  throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
+  let articles = [];
+  const parsed = extractJSON(raw);
+  if (parsed) { articles = parsed.articles || []; }
+  else {
+    const m = raw.match(/\{\s*"articles"\s*:\s*(\[[\s\S]*)/);
+    if (m) {
+      try {
+        let s = m[1].replace(/,\s*\{[^}]*$/, '').replace(/,\s*$/, '');
+        if (!s.endsWith(']')) s += ']';
+        const rec = JSON.parse(`{"articles":${s}}`);
+        if (rec.articles?.length) articles = rec.articles;
+      } catch {}
+    }
+    if (!articles.length) {
+      const noKeywords = ['없습니다','없어','찾을 수 없','수집할 수 없','no article','not found','검색 결과가 없','i am sorry','unable to fulfill','not supported','cannot fulfill','i cannot'];
+      if (noKeywords.some(k=>raw.toLowerCase().includes(k))) {
+        log(`     → Gemini: 해당 기간 기사 없음 (정상 처리)`);
+        articles = [];
+      } else {
+        throw new Error(`기사 수집 JSON 파싱 실패: ${raw.slice(0,120)}`);
+      }
+    }
+  }
+
+  // groundingMetadata URL 매칭
+  const chunks   = data.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
+  const realUrls = chunks.filter(c=>c.web?.uri).map(c=>({ url: c.web.uri, title: (c.web.title||'').toLowerCase() }));
+  articles = articles.map(article => {
+    const words = (article.title||'').toLowerCase().split(/\s+/).filter(w=>w.length>1);
+    let best=null, bestScore=0;
+    realUrls.forEach(ru => { const score=words.filter(w=>ru.title.includes(w)).length; if(score>bestScore){bestScore=score;best=ru;} });
+    return { ...article, url: best?.url||'' };
+  });
+  const used=new Set(articles.map(a=>a.url).filter(Boolean));
+  const unused=realUrls.filter(ru=>!used.has(ru.url));
+  let idx=0;
+  articles=articles.map(a => { if(!a.url&&idx<unused.length) return {...a,url:unused[idx++].url}; return a; });
+  return articles;
+}
+
+// ── Claude 오류 분석 + 검색 정책 자동 수정 ──────────────────────────────────────
+async function fixPolicyWithClaude(policy, errors, errorHistory) {
+  const prompt = `Gemini가 아래 검색 정책으로 기사 수집을 3번 시도했지만 모두 실패했습니다.
+
+원래 검색 정책:
+${JSON.stringify({ company: policy.company, search_queries: policy.search_queries, instructions: policy.instructions }, null, 2)}
+
+발생한 오류 목록:
+${errors.map((e,i)=>`${i+1}회차: ${e}`).join('\n')}
+
+오류 원인을 분석하고 아래 기준으로 검색 정책을 수정해서 JSON으로 반환하세요:
+- JSON 파싱 오류 → 더 단순한 검색어로 변경, instructions 간소화
+- date 파라미터 오류 → instructions에서 날짜 관련 파라미터 언급 완전 제거
+- 빈 응답/기사 없음 → 검색어를 더 일반적이고 광범위하게 변경
+- 서버 과부하 오류 → 검색어 수를 2개로 줄이고 단순화
+
+수정된 JSON만 출력 (형식 동일):
+{"company":"...","date_from":"...","date_to":"...","search_queries":["검색어1","검색어2"],"priority_topics":[...],"exclude_topics":[...],"article_limit":5,"instructions":"..."}`;
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': CLAUDE_KEY, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] }),
+    });
+    const data   = await r.json();
+    const raw    = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
+    const parsed = extractJSON(raw);
+    if (parsed) {
+      const fixed = { ...parsed, known_titles: policy.known_titles };
+      // Claude가 성공적으로 수정한 케이스를 히스토리에 기록
+      recordSuccessfulFix(errors, policy, fixed, errorHistory);
+      return fixed;
+    }
+  } catch {}
+  return policy;  // 수정 실패 시 원본 정책 그대로
+}
+
+// ── collectArticles 재시도 래퍼 (3회) + Claude 자가 치유 (1회 추가) ─────────────
+async function collectArticles(policy) {
+  const MAX_RETRY = 3;
+  const errors = [];
+  const errorHistory = loadErrorHistory();
+
+  for (let attempt = 1; attempt <= MAX_RETRY; attempt++) {
+    try {
+      return await collectArticlesOnce(policy);
+    } catch (e) {
+      errors.push(e.message);
+      if (attempt < MAX_RETRY) {
+        const wait = attempt * 5000;
+        log(`     ⚠️ Gemini 오류 (${attempt}/${MAX_RETRY}회): ${e.message.slice(0,60)} — ${wait/1000}초 후 재시도`);
+        await sleep(wait);
+      }
+    }
+  }
+
+  // ① 히스토리에서 유사 오류 해결책 검색
+  const matched = findMatchingFix(errors, errorHistory);
+  if (matched) {
+    log(`     📚 히스토리 매칭! (과거 성공 ${matched.success_count}회) → 저장된 해결책 적용`);
+    const historyFixedPolicy = applyHistoryFix(policy, matched);
+    try {
+      const result = await collectArticlesOnce(historyFixedPolicy);
+      // 히스토리 해결책 성공 → 성공 횟수 업데이트
+      matched.success_count++;
+      matched.last_used = todayStr();
+      saveErrorHistory(errorHistory);
+      log(`     ✅ 히스토리 해결책 적용 성공`);
+      return result;
+    } catch (e) {
+      log(`     ⚠️ 히스토리 해결책 실패 → Claude 재판단으로 전환`);
+      errors.push(`히스토리 적용 후 재시도: ${e.message}`);
+    }
+  }
+
+  // ② 히스토리 없거나 실패 → Claude에게 오류 분석 + 정책 수정 요청
+  log(`     🤖 Claude: 오류 분석 후 검색 정책 자동 수정 중...`);
+  const fixedPolicy = await fixPolicyWithClaude(policy, errors, errorHistory);
+  log(`     🔄 수정된 정책으로 Gemini 재시도 (최종)`);
+  const finalResult = await collectArticlesOnce(fixedPolicy);
+  // Claude 해결책도 성공 시 히스토리에 기록 (이미 fixPolicyWithClaude 내부에서 처리)
+  return finalResult;
 }
 
 // ── STEP 3: Claude → 리스크 분석 ─────────────────────────────────────────────
@@ -757,6 +1012,7 @@ function tryPw() {
 async function main() {
   const missing = [
     !CLAUDE_KEY       && 'ANTHROPIC_API_KEY',
+    !GEMINI_KEY       && 'GEMINI_API_KEY',
     !TG_TOKEN         && 'TELEGRAM_BOT_TOKEN',
     !TG_CHAT_ID       && 'TELEGRAM_CHAT_ID',
     !COMPANIES.length && 'watchlist.txt (비어있음)',
@@ -784,11 +1040,13 @@ async function main() {
     const co = COMPANIES[i];
     log(`\n[${i+1}/${COMPANIES.length}] ${co}`);
     try {
-      log(`  ① Claude: 기사 검색 + 스크리닝`);
+      log(`  ① Claude: 검색 정책 생성`);
       const knownTitles = getKnownArticleTitles(co, archive);
-      const articles = await searchAndScreen(co, knownTitles);
-      log(`     → ${articles.length}건 선별`);
-      log(`  ② Claude: 리스크 분석`);
+      const policy = await buildSearchPolicy(co, knownTitles);
+      log(`  ② Gemini: 기사 수집 (${policy.search_queries?.join(', ')})`);
+      const articles = await collectArticles(policy);
+      log(`     → ${articles.length}건 수집`);
+      log(`  ③ Claude: 리스크 분석`);
       const result = await analyzeRisk(co, articles);
       const dup = checkDuplicate(co, result, archive);
       if (dup) {
@@ -802,7 +1060,7 @@ async function main() {
       log(`  ❌ 오류: ${e.message}`);
       results[co] = { company: co, error: e.message, overall_sentiment: 'neutral', timestamp: Date.now() };
     }
-    if (i < COMPANIES.length - 1) await sleep(65000);  // 65초 대기 (rate limit 리셋)
+    if (i < COMPANIES.length - 1) await sleep(3000);
   }
 
   // 아카이브 저장

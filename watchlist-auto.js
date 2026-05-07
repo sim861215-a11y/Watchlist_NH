@@ -79,6 +79,12 @@ function saveErrorHistory(history) {
   fs.writeFileSync(ERROR_HISTORY_PATH, JSON.stringify(history, null, 2), 'utf8');
 }
 
+// 파일이 없으면 빈 구조로 초기화 (워크플로우 커밋 오류 방지)
+function ensureErrorHistoryExists() {
+  if (!fs.existsSync(ERROR_HISTORY_PATH))
+    saveErrorHistory({ patterns: [] });
+}
+
 // 오류 메시지에서 핵심 시그니처 추출 (비교용)
 function extractErrorSignature(errorMsg) {
   return errorMsg.toLowerCase()
@@ -1019,6 +1025,7 @@ async function main() {
   ].filter(Boolean);
   if (missing.length) { console.error(`❌ 누락된 환경변수: ${missing.join(', ')}`); process.exit(1); }
 
+  ensureErrorHistoryExists();  // error-history.json 없으면 빈 파일 생성
   const today   = todayStr();
   const archive = loadArchive();
   const results = {};

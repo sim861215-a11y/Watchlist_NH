@@ -2,7 +2,7 @@ name: 📊 WATCHLIST PRO 일일 분석
 
 on:
   schedule:
-    - cron: '0 22 * * 4'   # 매일 오후 10시 UTC = 다음날 오전 7시 KST
+    - cron: '0 22 * * *'   # 매일 오후 10시 UTC = 다음날 오전 7시 KST
   workflow_dispatch:
 
 concurrency:
@@ -42,7 +42,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📊 아카이브 업데이트"
-          file_pattern: "watchlist-archive.json docs/index.html"
+          file_pattern: "watchlist-archive.json docs/index.html error-history.json"
           push_options: '--force'
 
       - name: GitHub Pages 배포

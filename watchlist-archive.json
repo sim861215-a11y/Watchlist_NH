@@ -236,5 +236,137 @@
       "skip_reason": null,
       "timestamp": 1778128251464
     }
+  },
+  "2026-05-11": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "극심한 재무구조 악화 및 자본잠식 위기",
+          "detail": "JTBC는 3년 연속 대규모 적자를 기록하며 자본잠식률 95%, 부채비율 1739~2000% 이상에 달하는 극도로 취약한 재무구조를 보이고 있다. 신용등급은 BBB0(부정적)으로 투기등급 직전 수준에 머물러 있어 추가 신용등급 하락 시 자금조달 비용이 급등할 위험이 있다. 방송 광고시장 위축이 지속되는 가운데 실적 개선의 뚜렷한 전망이 없어 재무 부담이 가중되고 있다. 2025년에만 두 차례 500억원 규모의 공모 회사채 발행을 시도하는 등 유동성 확보에 어려움을 겪고 있는 상황이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "SLL중앙 IPO 무산에 따른 자금조달 계획 차질",
+          "detail": "JTBC의 주요 재무 개선 수단으로 기대되던 자회사 SLL중앙의 상장 기한이 만료되면서 핵심 유동성 확보 계획이 사실상 무산되었다. 신한투자증권은 SLL중앙 IPO를 기대하며 5년 연속 JTBC 공모채 발행을 주관해왔으나 해당 전제가 붕괴됨에 따라 JTBC의 차환 리스크가 현실화될 가능성이 높아졌다. IPO 무산은 외부 투자자들의 신뢰도에도 부정적 영향을 미치며 향후 회사채 수요 확보를 더욱 어렵게 만들 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "규제 리스크 및 방송 환경 불확실성",
+          "detail": "류희림 전 방심위원장 재임 시절 의결된 JTBC 과징금이 법원에서 취소되는 등 규제 기관과의 관계에서 불확실성이 지속되고 있다. 방송 광고시장의 구조적 위축과 OTT 경쟁 심화로 인해 JTBC의 영업환경은 단기간 내 개선이 어려운 상황이다. 이러한 외부 환경 악화는 중장기적으로 수익성 회복을 제한하는 요인으로 작용할 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[심층] SLL 상장만 믿고 JTBC '총대' 멘 신한…5년 베팅 물거품 위기",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHC0SnYQjHffw-1Geq2Dyiumrb3qMNw5C99ZXJ6DVnvZ0vwlzyJtPSSYUg9V61OtJAgVOGNxVegSWdeN8suSmJZgjGDcnYTcjDxDPVoxJf8L2cTJH0Hm2toryrxSY7LrzW-NNAAqlsFfULZYb-IWwDUjQkHWDmz1vRH2A==",
+          "source": "알파경제",
+          "date": "2026-04-01"
+        },
+        {
+          "title": "'23전23패' 류희림 방심위 '尹 수사무마 의혹' JTBC 과징금도 취소",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF_9XvmLm5JgQy-_AmTiXlNEfdiKCNTHt0mUHVVN628jz_5VrUkV_WUA6xPONwPYZEk2tGjLdN_NEAVojd_QYHnVQolX8XmwbeV-EnQKz9fYr_RQzkwizh9j8ysBt2ol6umAteWVeOCK-HXXISGp9yGVUjidjyVPcvqbA==",
+          "source": "미디어오늘",
+          "date": "2025-08-29"
+        },
+        {
+          "title": "[마켓인]BBB급 JTBC, 500억 회사채 발행…수요확보 가능할까",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJr5CLeTGb8jgPyw4oxSu5aZT1PCCr0dzBH-UO1IlMHQBsEPnpb4annG3NVaUHplk6PS4kkz_P1aeO_GDotZkI0aPLVR1bUX9F5ftkdyefHuiNQaS7y6_Mfh7w9b9ocxSN",
+          "source": "이데일리",
+          "date": "2025-07-23"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1778496411048
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1778496423045
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "회사채 발행 자금의 부채 상환 전용 및 현금흐름 악화",
+          "detail": "한온시스템은 최근 회사채 발행을 통해 2200억원을 조달하였으나, 해당 자금의 대부분이 신사업 투자나 운전자본 확충이 아닌 기존 부채 상환에 사용된 것으로 확인됐다. 이는 외부 자금 조달이 사업 성장보다 부채 돌려막기 성격에 가깝다는 점에서 재무 구조의 취약성을 시사한다. 영업이익은 증가세를 보였음에도 불구하고 실질적인 현금흐름이 뒷걸음질치고 있어 수익의 질(Quality of Earnings)에 대한 우려가 존재한다. 반복적인 차환 발행이 지속될 경우 금리 상승 국면에서 이자 부담이 가중되고 재무 유연성이 더욱 제한될 수 있다. 중장기적으로 신용등급 하향 압력 및 자금 조달 비용 상승 리스크가 잠재한다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "영업이익 증가와 현금흐름 간의 괴리로 인한 실적 신뢰성 우려",
+          "detail": "영업이익이 개선되었음에도 현금흐름이 악화되는 현상은 회계적 이익과 실제 현금 창출력 사이의 괴리를 나타낸다. 이는 매출채권 증가, 재고자산 확대, 또는 일회성 이익 반영 등 다양한 원인에서 비롯될 수 있으며 실적의 지속 가능성에 의문을 제기한다. 투자자 및 채권단 입장에서는 이익 수치보다 현금흐름을 더 중요한 재무 건전성 지표로 판단할 가능성이 높아 신뢰도 하락으로 이어질 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "전기차 전환 둔화에 따른 주력 사업 성장성 불확실성",
+          "detail": "한온시스템은 자동차 열관리 시스템 전문기업으로 전기차 확대에 따른 수혜가 기대되었으나, 글로벌 전기차 수요 성장 둔화 흐름은 중장기 수주 전망에 부정적 영향을 미칠 수 있다. 내연기관 차량 비중이 예상보다 오래 유지될 경우 제품 포트폴리오 전환 비용 대비 수익화 시점이 지연될 수 있다. 현금흐름 압박이 지속되는 상황에서 미래 투자 여력이 제한되면 경쟁사 대비 기술 격차 확보에도 어려움이 생길 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "한온시스템, 회사채 발행해 빚갚기 허덕인다…영업이익 늘었지만 현금흐름 '뒷걸음질'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFip-EfUSw8eXzf9hGmJPT1G0F9b4-d_4ZAYYec3kc3qGp-dWcXgi27rlObvlIOtw84khihdlj9jfL8YcujoyYiNSO6oTMjsccpJr8bizNfi9RBSuuOo4pkKzJ57P4u1bb1VaP9wUv8ab-2hoKxCnbZeKwPuZ5qIP52",
+          "source": "뉴스퀘스트",
+          "date": "2026-04-24"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1778496458606
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "4년 연속 영업손실 및 누적 적자 심화",
+          "detail": "솔루스첨단소재는 지난해까지 4년 연속 영업손실을 기록하며 재무 건전성이 지속적으로 악화된 상태입니다. 전지박 사업 부진과 대규모 해외 설비투자가 맞물리면서 순손실 규모가 확대되어 왔습니다. 이러한 누적 적자는 기업의 자금 조달 능력과 신용도에 부정적인 영향을 미칠 수 있습니다. 동박 사업부 매각이 단기 유동성 확보에 도움이 될 수 있으나, 구조적 수익성 개선 여부는 여전히 불확실합니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "전지박 사업 부진 및 해외 법인 투자 부담",
+          "detail": "전기차 수요 둔화 등 전지박 시장 환경 악화로 인해 핵심 사업부의 실적 회복이 지연되고 있습니다. 해외 법인에 대한 대규모 설비투자는 고정비 부담을 가중시키며, 투자 회수 시점이 불확실한 상황입니다. 동박 사업 매각으로 전지박에 집중하는 전략을 택했으나, 시장 수요가 회복되지 않을 경우 추가적인 재무 리스크가 발생할 수 있습니다. 글로벌 전지박 경쟁 심화와 공급 과잉 우려도 사업 전망을 어둡게 하는 요인입니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "글로벌 특허 분쟁으로 인한 법적 리스크",
+          "detail": "동박 사업부 매각 배경 중 하나로 글로벌 특허 분쟁이 언급되고 있어, 해당 분쟁의 진행 상황과 결과에 따라 추가적인 법적·재무적 부담이 발생할 수 있습니다. 특허 소송은 장기화될 경우 상당한 법적 비용과 배상 리스크를 수반합니다. 사업부 매각 이후에도 기존 특허 분쟁과 관련된 책임 범위가 남아있을 가능성이 있어 지속적인 모니터링이 필요합니다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[딜 인사이드] 솔루스첨단소재, 동박과 '헤어질 결심'...선택과 집중",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE33PN_owVQrEpMdaCjsNYqN7vktNNRbV-mBT6GF20YzWROc4TPP0gpWry5pHXLx4KHhWq7XSxFCRtcv_t8J7qffPzL0gyAH0yU__GQXaqVfFyevE0FpR4Nd5vn-jgiEYYDNDrOO5ZtvvyCkFPTLhEkwevr9A==",
+          "source": "블로터",
+          "date": "2026-05-11"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1778496485812
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1778496498890
+    }
   }
 }

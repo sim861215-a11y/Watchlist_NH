@@ -368,5 +368,129 @@
       "skip_reason": "no_new_news",
       "timestamp": 1778496498890
     }
+  },
+  "2026-05-18": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "그룹 유동성 위기로 인한 핵심 자산 매각 압박",
+          "detail": "중앙그룹은 회사채 미매각, 신용등급 하향, 외부 투자 유치 무산 등 복합적 유동성 위기에 직면하여 JTBC·중앙일보 사옥 및 일산 스튜디오 등 핵심 자산을 5000억원 중반대 규모로 매각 추진 중이다. 매각 방식은 세일앤리스백(Sale & Leaseback)으로 기존 공간을 계속 사용하되 자산 소유권을 상실하게 되어 중장기적 재무 유연성이 크게 저하될 수 있다. 이는 단순한 자산 유동화를 넘어 그룹 전반의 재무 건전성 악화를 공식화하는 신호로 해석될 수 있으며, 광고주 및 파트너사의 신뢰도에도 부정적 영향을 미칠 가능성이 높다. 자산 매각 후에도 임차료라는 고정비 부담이 발생하여 JTBC의 수익성 개선에 추가적인 걸림돌이 될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "계열사 지급보증 확대에 따른 신용등급 하락 및 차입 부담 증가",
+          "detail": "나이스신용평가가 중앙일보의 장기신용등급 전망을 '안정적'에서 '부정적'으로 하향 조정한 주요 원인 중 하나로 JTBC에 대한 지급보증 규모 확대가 명시되었다. 이는 JTBC의 독자적인 재무 상황 역시 외부 신용기관으로부터 부정적으로 평가받고 있음을 간접적으로 시사한다. 계열사 간 상호 보증 구조가 심화될 경우, 그룹 내 한 계열사의 유동성 문제가 JTBC로 전이될 연쇄 리스크가 존재한다. 신용등급 하락은 향후 JTBC의 자체적인 자금 조달 비용 상승으로 이어질 수 있어 재무 부담이 가중될 우려가 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "올림픽 중계권 재판매 의무화에 따른 규제 리스크 및 수익 훼손 가능성",
+          "detail": "방송법 개정안 통과로 JTBC는 2032년까지 보유한 올림픽 중계권을 지상파 방송사 최소 1곳 이상에 재판매해야 하는 법적 의무를 지게 되었다. 재판매 협상이 결렬되거나 조건이 불리하게 체결될 경우 중계권 수익의 핵심 부분을 경쟁사와 공유해야 하는 수익 희석 문제가 발생한다. 재판매 의무를 이행하지 않을 시 중계권료의 최대 5%에 달하는 과징금이 부과될 수 있어 규제 리스크가 구체화된 상태다. 중계권 확보를 위한 대규모 투자 대비 기대 수익이 감소할 수 있으며, 현재 그룹의 유동성 위기 상황과 맞물려 재무적 부담을 가중시킬 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "유동성 경고등 켜진 중앙그룹…중앙일보·JTBC 사옥 등 매각 추진",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLU18E0OlL1yLfkYbtMZ2AJds7UBu2vbgTBPxsSiWxLWNE0bcwrUqkNV-Lvq-d0bkDOd5MEFICuJ20YQG6Fg5bp924HqUdXTAphmbgkLSo92orvOeNHw8CE1O_2LCtSlziZKq09L3wQXhYe9aix_iYOs4nXiY1kP55EwFrBp_HztpllKvR65KiBn1uuw==",
+          "source": "조선비즈",
+          "date": "2026-05-08"
+        },
+        {
+          "title": "JTBC, 내년 올림픽 지상파 재판매 실패 땐 5% 과징금?",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEo9Bx0QVlmMenStxwPNmJigLXjbujO2ElbN4k-YTPwJZjIsBhwFteHQu8Hi_chCwDpfGqLXrHm35a9ypXysUXRh2Q-abkYOP9TJp7RQKusC7EfhK6sc_qnzW0lcm_O0SfnBzPWx60uS4MBU5zQeYKn9Q==",
+          "source": "한겨레",
+          "date": "2026-05-07"
+        },
+        {
+          "title": "나신평, 중앙일보 장기신용등급 전망 '부정적'으로 하향",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGN5HxrNBHEZ5WJlL4ouINAQdsu0U-3JvQJW4E-AdIuNStXuWub4yKfWp7YQe1UysD2GuT7UbYQ3G1jCCZmrS59TtaB2P4sQxy6sAgKGhsALq_aY4TP44tcWzE8pNvaKSA-",
+          "source": "아시아경제 CORE",
+          "date": "2026-05-15"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1779105404583
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1779105418179
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "대규모 무형자산 손상 위험 (2.2조원)",
+          "detail": "한온시스템은 전기차 캐즘(일시적 수요 정체) 및 포드의 전기차 사업 구조조정 여파로 2237억원의 무형자산 손상차손을 이미 기록했다. 현재 잔존 무형자산 규모가 2.2조원에 달해 추가 손상 가능성이 상존한다. 전기차 전환 속도 둔화가 지속될 경우 고객사의 추가 구조조정이 연쇄적으로 무형자산 손실로 이어질 수 있다. 이는 재무건전성 악화 및 손익계산서상 대규모 손실 확정으로 연결될 수 있는 고위험 요인이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "전직 임원 횡령·배임 혐의 및 법적 불확실성",
+          "detail": "한온시스템은 전직 임원의 배임 혐의와 관련해 검찰의 혐의없음(증거불충분) 결정에 불복하여 서울고등검찰청에 항고를 제기한 상태다. 이로 인해 불성실공시법인 지정 공시가 이루어지며 시장에서 상장폐지 우려 등 과도한 반응이 나타났다. 항고 결과에 따라 법적 책임 소재 및 내부통제 부실 이슈가 재점화될 수 있다. 현재 진행 중인 법적 절차의 결론이 불확실하여 평판 및 거버넌스 리스크가 지속된다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "회사채 증액 발행에 따른 부채 부담 증가",
+          "detail": "한온시스템은 2026년 4월 회사채 수요예측에서 10배의 수요를 기록하며 2200억원으로 증액 발행을 결정했다. 시장 수요가 높다는 긍정적 신호가 있으나, 무형자산 손상 리스크 및 전기차 시장 불확실성이 공존하는 상황에서 차입금 규모 확대는 재무 레버리지를 높이는 요인이다. 향후 금리 환경 변화나 실적 부진 시 부채 상환 부담이 가중될 수 있어 간접적 재무 리스크로 작용할 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[한온시스템 주가전망] 11일 긴급공지! +20% '한온시스템 상장폐지급 악재?' 횡령",
+          "url": "https://www.youtube.com",
+          "source": "YouTube",
+          "date": "2026-05-11"
+        },
+        {
+          "title": "한온시스템, 회사채 수요예측 10배…2천200억으로 증액 발행",
+          "url": "https://www.yna.co.kr",
+          "source": "연합뉴스",
+          "date": "2026-04-20"
+        },
+        {
+          "title": "[정정]횡령ㆍ배임사실확인 - KRX 공시",
+          "url": "https://www.krx.co.kr",
+          "source": "한국거래소",
+          "date": "2026-04-06"
+        },
+        {
+          "title": "[IB토마토]한온시스템, 포드 쇼크는 예고편?…2.2조 무형자산 '경고등'",
+          "url": "https://www.ibtomato.com",
+          "source": "IB토마토",
+          "date": "2026-04-02"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1779105449507
+    },
+    "솔루션첨단소재": {
+      "company": "솔루션첨단소재",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1779105462731
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1779105477272
+    }
   }
 }

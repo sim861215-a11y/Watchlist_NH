@@ -2,7 +2,7 @@ name: 📊 WATCHLIST PRO 일일 분석
 
 on:
   schedule:
-    - cron: '0 22 * * 0'   # 매일 오후 10시 UTC = 다음날 오전 7시 KST
+    - cron: '0 0 * * 1'   # 매일 오후 10시 UTC = 다음날 오전 7시 KST
   workflow_dispatch:
 
 concurrency:

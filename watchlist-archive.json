@@ -654,5 +654,157 @@
       "skip_reason": "no_new_news",
       "timestamp": 1779713537646
     }
+  },
+  "2026-06-01": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "중앙그룹 유동성 위기로 인한 사옥 자산유동화 추진",
+          "detail": "중앙그룹이 JTBC 및 중앙일보 사옥을 포함한 자산유동화를 검토 중이며, 매각 자문사로 컬리어스를 선정한 상태다. 이는 최근 회사채 미매각, 신용등급 하향, 외부 투자 유치 무산 등 복합적 재무 악화 신호가 연이어 발생한 데 따른 긴급 대응 조치다. 사옥 매각 및 세일앤리스백 등의 유동화 방식이 검토될 경우 JTBC의 자산 기반이 약화되고 임차 비용 부담이 추가될 수 있다. 비핵심 계열사 정리 가능성도 거론되고 있어 그룹 전반의 구조조정 리스크가 JTBC에도 직접적 영향을 미칠 수 있다. 모기업의 재무 불안정이 지속될 경우 JTBC의 독립적 운영과 콘텐츠 투자 역량이 제한될 가능성이 높다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "방송법 개정으로 독점 중계권 수익 모델 위축 가능성",
+          "detail": "국회 과방위가 월드컵·올림픽 등 주요 행사에 대해 MBC 또는 KBS 중 한 곳의 의무 중계를 규정하는 방송법 개정안을 통과시켰다. 이로 인해 JTBC가 향후 주요 스포츠 이벤트 독점 중계권을 확보하더라도 수익화에 제약이 생길 수 있다. 중계방송권자는 행사 6개월 전까지 방통위와 협의해야 하는 의무도 부과되어 운영 부담이 증가한다. 독점 중계를 통한 광고 수익 및 유료 플랫폼 연계 전략이 제한될 수 있어 중장기 콘텐츠 수익 전략에 차질이 예상된다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "방송심의 법정제재로 인한 신뢰도 및 평판 리스크",
+          "detail": "JTBC 뉴스룸이 방송 심의 규정 제14조 객관성 위반으로 방송통신심의위원회로부터 주의 조치를 받아 법정제재 고지 방송을 진행했다. 반복적인 심의 제재는 시청자 신뢰도 하락 및 광고주 이탈로 이어질 수 있는 평판 리스크를 내포한다. 재무 불안정 상황과 맞물릴 경우 JTBC의 브랜드 가치 훼손이 가중될 수 있다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "돈줄 마른 중앙그룹, JTBC·중앙일보 사옥 등 자산유동화 카드 꺼냈다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJ-MjQPr5zi7c-IyxAlHwRt8r-Vj3qItg-Jahxm4cple4PNY5v0o-87xoBeI-wdJH78qS7S3LlNPbdg73LY9FG_YLsY_wHwQDPiyiuDoX9uffXq4vrI_L2UpMsFA5V8Jd3WzfKhAcSn83ygbfyhRqaPNwwsy3B-SEyU-kkIPGkCncVP2KvYPE=",
+          "source": "인베스트조선",
+          "date": "2026-05-07"
+        },
+        {
+          "title": "JTBC 독점 중계 방지 현실화된다… 국회 과방위 통과",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEZah58TGmcWcmxR_LezFfs3k9Urej5Z6vDnNcpNKER2mKH5nqdUZxCu_Ego4xmkzt8cIDBfy-A8qjQjZ6y3pRfm3X29sNb8_BFihHkYVkaCchSGmG9L9DhjxanDvqMkDgYGQclANsf4SFIOQBAh5DeQ7PmZMZUW91w",
+          "source": "미디어오늘",
+          "date": "2026-05-07"
+        },
+        {
+          "title": "방송심의 위반 법정제재 고지 방송 (JTBC 뉴스룸 2025.05.22.)",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHFtDsE0fXzBbDmoe1M6CamLKcziSGzN6Ezcysf3ICQ1ilcG-iCqv1UUP-1j1IQfCVLRQxxO2WkXbblaWmX9K9FE2QRZSyoiXWXXxQEQhiPghPg2XhPrfVgIkJP958zqYImbkV99w==",
+          "source": "YouTube",
+          "date": "2026-05-09"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1780342177085
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "금리 인하 기대 약화에 따른 자금조달 환경 악화 가능성",
+          "detail": "한국은행이 기준금리를 연 2.50%로 동결하며 통화정책 방향에 '기준금리 인상 시기'를 명시함에 따라 시장의 금리 인하 기대감이 크게 약화되었다. 이는 콘텐츠·미디어 기업인 에스엘엘중앙의 프로젝트 파이낸싱 및 제작비 조달 비용 상승으로 이어질 수 있다. 드라마·영상 콘텐츠 제작은 선투자 후회수 구조이므로 금리 환경 악화 시 수익성에 간접적 압박이 가해질 수 있다. 다만 현재 금리 인상이 확정된 것은 아니며 잠재적 리스크 단계에 해당한다.",
+          "severity": "low"
+        },
+        {
+          "rank": 2,
+          "title": "비반도체·콘텐츠 업종으로의 머니무브 수혜 불확실성",
+          "detail": "코스피 8000선 돌파 이후 반도체 중심 상승장에서 비반도체 업종으로의 자금 이동 가능성이 언급되고 있으나, 에스엘엘중앙이 실질적 수혜를 받을지는 불확실하다. 콘텐츠·미디어 업종은 투자 테마 측면에서 변동성이 크며, 시장 관심이 집중되지 않을 경우 주가 및 자금 유치 측면에서 기회를 놓칠 수 있다. 구조적 자본시장 개혁 논의가 진행 중이나 에스엘엘중앙에 대한 직접적 영향은 현재로서는 간접적 수준에 그친다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[리포트 브리핑]에스엘, '불확실성을 상쇄하는 공급 사이클 시작' 목표가 89000원",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHs-A0vEhOKgPD0ElrlrEuOEGLcgMSXD9g0o8KpZkeNQnK-ohUfDEuv5T40bWKGf2mfy33Zu5Hhdi1EN9IxBAqIK2HPYXqddhfNgVYZtCG2wfWcP2TRW-wXN8cjuM5Y4PKhNB7iQ_R_dJKaNg==",
+          "source": "뉴스핌",
+          "date": "2026-05-18"
+        },
+        {
+          "title": "메트로신문 5월29일자 한줄뉴스",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6_Q5mR5dWl-1HbAl9GdPZruu0bbrtjBnVFbFNLK6igS79kn_h-gSaOxLSKcgrcIyUYL0hQuREAUqp7Pw6eYQDY8i8tQ9sFFOmZb91xfGNQGb_nDXhYE4OMc2ZF_fghrVMAx3eYA==",
+          "source": "Daum",
+          "date": "2026-05-29"
+        }
+      ],
+      "overall_sentiment": "neutral",
+      "skip_reason": "수집된 기사 2건 모두 에스엘엘중앙을 직접 다루지 않으며, 관련 기사는 동명 유사 기업(에스엘) 및 거시경제 동향에 관한 내용임. 에스엘엘중앙에 대한 직접적 리스크 정보가 부재하여 간접적 거시 리스크만 도출 가능함.",
+      "timestamp": 1780342207101
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "중장기 목표 달성 불확실성",
+          "detail": "한온시스템은 2030년 매출 14조 7천억원, 영업이익률 9% 달성이라는 공격적인 중장기 목표를 제시했다. 현재 글로벌 자동차 시장은 전동화 전환 속도 둔화, 완성차 업체들의 생산 감축 등 불확실성이 높은 상황이다. 열관리 시스템 시장의 경쟁 심화와 원자재 가격 변동성을 고려할 때 목표 달성까지의 실행 리스크가 존재한다. 애프터마켓 및 신규 사업 영역 확대 전략이 가시적 성과로 이어지기까지 상당한 시간과 투자가 필요할 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 2,
+          "title": "글로벌 2위 입지 유지를 위한 경쟁 압박",
+          "detail": "한온시스템은 글로벌 2위 자동차 열관리 부품 업체로서의 입지를 공고히 하겠다는 전략을 밝혔으나, 중국계 경쟁사들의 빠른 성장과 가격 경쟁이 심화되고 있다. 전동화 전환에 따른 열관리 시스템 수요 변화에 대응하기 위한 지속적인 R&D 투자 부담이 수익성에 압박을 줄 수 있다. 원가 혁신을 핵심 전략으로 내세운 만큼, 실제 비용 절감 효과가 목표치에 미치지 못할 경우 영업이익률 9% 달성이 어려워질 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "사업 확장 전략에 따른 투자 부담 및 실행 리스크",
+          "detail": "애프터마켓 및 신규 사업 영역 확대를 위해 상당한 규모의 추가 투자가 필요할 것으로 예상된다. 신규 사업이 기존 핵심 사업과의 시너지를 내지 못하거나 시장 진입이 지연될 경우 재무 부담으로 작용할 수 있다. 다만 현재 기사에서는 구체적인 재무 손실이나 부채 급증에 대한 정보는 확인되지 않아 간접적 불확실성 수준으로 평가된다.",
+          "severity": "low"
+        }
+      ],
+      "sources": [
+        {
+          "title": "한온시스템, 2030년 매출 14.7조 정조준…글로벌 2위 굳힌다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF7rU59JuMiSOcmMxkG-572mrJw3pGbExkcuqYBiNFfbcdKwiGRT5HLgLpAewE5ah10riaFt-vnzIbyq02dEXOVsH-ColjaI3xuPFfZbb86iddS_HuPaKtj4At044Jaw8isbQPJ1cvC3-SHwzmng_iyghAF",
+          "source": "직썰",
+          "date": "2026-05-26"
+        },
+        {
+          "title": "한온시스템, '2026 글로벌 경영전략혁신회의' 개최, \"Win Now, Lead 2030\" 중장기 전략 공유",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDEYJclZ-DbNQzuu1gXwK_wP0OwqR9oT0Fff8mb9e5gjiigM5Xx5thXqm-iQ5ZbJbtY-IjvpxzVrc3i5xbukt9Qz4Jih2CtBonxSyKdBku6-WJ2s2kVC-OPqy6Iry7vhabbL0lB2miwj9HlTJllKc=",
+          "source": "Hanon Systems",
+          "date": "2026-05-26"
+        }
+      ],
+      "overall_sentiment": "positive",
+      "skip_reason": null,
+      "timestamp": 1780342242985
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "미국 특허 침해 소송 배심원 평결 패소 리스크",
+          "detail": "솔루스첨단소재는 미국 텍사스 연방법원에서 SK넥실리스와의 전기차 배터리용 동박 특허 소송 1심 배심원 평결에서 불리한 결과를 받았다. 회사는 항소 등 후속 법적 절차를 예고하고 있으나, 소송이 장기화될 경우 법률 비용 증가 및 불확실성이 지속될 수 있다. 최종 판결에 따라 손해배상금 지급, 제품 판매 금지 등 중대한 재무적 타격이 발생할 가능성이 있다. 동박 사업은 솔루스첨단소재의 핵심 사업 영역으로, 특허 분쟁 결과에 따라 사업 경쟁력과 시장 지위에 직접적인 영향을 미칠 수 있다. 현 단계는 1심 배심원 평결로 최종 확정은 아니지만, 향후 법원의 최종 판결 및 항소 결과에 따라 리스크 수준이 high로 격상될 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "솔루스첨단소재, 美 배심원 특허 침해 평결 '최종 결론 아냐'…항소 계획",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEl1r0zo41np4YbzDctM-rAoY1OzSIAuRB-sfYxwIfPbFCrMqo_rAThY5mXDbyl3lYC_smh89dOSsFEkp00MKmnpKcIOlWsgj9bXjXg5JcWdSNPGfhOVULZ7RmBoRc6fZxGTvgbr8HJXXlMaQOOvvEeV3P_9E=",
+          "source": "철강금속신문",
+          "date": "2026-05-26"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1780342269852
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1780342284682
+    }
   }
 }

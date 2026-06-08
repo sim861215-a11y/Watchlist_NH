@@ -1,3 +1,29 @@
 {
-  "patterns": []
+  "patterns": [
+    {
+      "signature": "gemini: your prepayment credits are depleted. please go to ai studio at  to manage your project and billing. learn more ",
+      "error_keywords": [
+        "gemini",
+        "your",
+        "prepayment",
+        "credits",
+        "are",
+        "depleted",
+        "please",
+        "studio"
+      ],
+      "sample_error": "Gemini: Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepa",
+      "policy_fix": {
+        "search_queries": [
+          "마제스티골프코리아 부정",
+          "마제스티골프코리아 문제"
+        ],
+        "instructions": "마제스티골프코리아의 재무 악화, 법적 분쟁, 경영진 리스크 관련 기사만 수집하세요. 홍보성 기사는 제외하세요.",
+        "article_limit": 5
+      },
+      "success_count": 5,
+      "created": "2026-06-08",
+      "last_used": "2026-06-08"
+    }
+  ]
 }

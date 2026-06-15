@@ -838,5 +838,185 @@
       "overall_sentiment": "neutral",
       "timestamp": 1780886356402
     }
+  },
+  "2026-06-15": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "206억 원 규모 채무 불이행 및 신용등급 'CCC' 급락",
+          "detail": "JTBC는 2026년 6월 중 206억 원 규모의 유동화 차입금 상환에 실패하며 공식적인 채무 불이행(디폴트) 상태에 진입했다. NICE신용평가는 기존 'BBB' 등급에서 'CCC'로 대폭 하향 조정하였으며, 한국기업평가 역시 신용등급을 'BB'로 강등했다. 'CCC' 등급은 투기등급 중에서도 실질적 부도 위험이 높은 수준으로, 추가 차입이나 자금 조달이 사실상 극도로 어려워진다. 이는 단순한 신용 악화를 넘어 기업의 재무적 존속 가능성에 심각한 의문을 제기하는 수준의 리스크다. 단기적으로 유동성 위기가 확대될 가능성이 매우 높다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "계열사 중앙일보 신용등급 동반 하락 및 그룹 전반 신용 위기 확산",
+          "detail": "JTBC의 채무 불이행 여파가 모회사 격인 계열사 중앙일보의 신용등급 하향 조정으로 이어졌다. 이는 JTBC의 재무 위기가 개별 법인에 국한되지 않고 중앙그룹 전반의 신인도를 훼손하고 있음을 시사한다. 계열사 간 연쇄적 신용 악화는 그룹 차원의 자금 조달 비용 증가와 투자자 이탈을 초래할 수 있다. 그룹 내 크로스 디폴트 조항이 존재할 경우 추가적인 채무 불이행 사태로 번질 위험도 배제할 수 없다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "방송통신위원회 재승인 이행 점검에 따른 행정지도 및 규제 리스크",
+          "detail": "방송미디어통신위원회는 2024년도 종합편성채널 재승인 조건 및 권고사항 이행실적 점검 결과, JTBC에 대해 행정지도를 하기로 의결했다. 재무 위기와 맞물려 규제 당국의 감시가 강화될 경우 향후 재승인 심사에서 불이익을 받을 가능성이 있다. 방송 면허 유지에 차질이 생긴다면 사업 지속성 자체가 위협받는 추가 리스크 요인이 될 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "JTBC, 206억 채무 불이행…신용등급 'CCC' 추락",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEMSKe9C2r-kvIBTMktltxGE0izwwG1BwzJln1aeh_7Ja0pM5DjriuDt7BtGWRIeJnlAM-43IH3yBQE7x7rE36xWUI41GExFScJB0QsxB6TtulztxOaXFkA73KK1NYW7YEtJKo2OfBeY8ChhJCmKyGWjMiSYowKeFKgZbPMqorZ-HyK0uo=",
+          "source": "TV조선뉴스",
+          "date": "2026-06-13"
+        },
+        {
+          "title": "채무불이행 JTBC, 신용등급 강등…중앙일보도 하향",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8BNrMs8SC9ABJqCsu-kOJc457darGB_GZYpPgCLWtkAYAHAA8sEfKzqeV5f446YiGI58DopCib_urV0X8LqC42LEHrJTVwyswwPxYX6UbjNynphMSd-YO7P54ZNP1ouE4riEezRfBRcNwQKtt5f5qkb3jTRak2qlquKqDA3GCiGTqgvIgzv0aU0Wjqnk=",
+          "source": "동아일보",
+          "date": "2026-06-14"
+        },
+        {
+          "title": "JTBC 200억 규모 채무 불이행… 신용등급 CCC로 하향",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJvU-PLW-PqNMjyuljAkHquysk3xtOxrz5tpSFNh3IAWOK067imTCYrvjgoUS3G_4LPjGsSXYs0kddk3iKUtHIO_-qqRiOkZOJ-FdlJVTlZshIkaJTWWcTpOnzDWoOZjnZifmJXFQS65BbUkMAjMpzhmPtfw==",
+          "source": "한국기자협회",
+          "date": "2026-06-12"
+        },
+        {
+          "title": "JTBC, '206억 채무 불이행'에 신용등급 강등",
+          "url": "",
+          "source": "알파경제",
+          "date": "2026-06-14"
+        },
+        {
+          "title": "2026년 제15차 위원회 결과 - 보도자료",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4LNlPTcYNM7kWo1v2y57x_705pn2l0rupWTDQls61kQ_rFqTfJcjCQ72ff4y7SzNzVp5-xVauPyezmEWTWQX-ov34_1YnrbIg-yMhcODkyQm34lcXHnV6LNLGB8PjeInDu94wmKSjbb9F0nnCN-ID",
+          "source": "대한민국 정책브리핑",
+          "date": "2026-06-05"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1781491287465
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "연쇄 신용등급 강등으로 인한 자금조달 능력 급격 약화",
+          "detail": "2026년 6월 한 달 사이 한국신용평가와 한국기업평가 양사로부터 연속적인 신용등급 하향이 이루어졌다. 한국신용평가는 6월 9일 무보증사채를 'BBB'에서 'BBB-'로, 이후 6월 15일 다시 'BB'로 추가 강등하였으며, 한국기업평가도 6월 12일 'BBB(부정적)'에서 'BB+'로 하향 조정했다. 불과 2주 이내에 투자적격등급(BBB)에서 투기등급(BB) 경계로 추락함에 따라 기관투자자들의 채권 매수 기피가 심화될 가능성이 높다. 이는 회사채 발행을 통한 신규 자금조달 비용 급등 및 차환 리스크로 직결되며, 단기 유동성 위기로 전이될 수 있는 고위험 상황이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "JTBC 디폴트 사태로 인한 그룹 전반의 유동성 위기 전염 리스크",
+          "detail": "중앙그룹 핵심 계열사인 JTBC가 유동성 위기로 채무불이행(디폴트) 사태를 맞으면서 채권시장에서 중앙그룹 계열사 전반에 대한 패닉셀링이 발생하고 있다. SLL중앙은 JTBC와 동일 그룹 내 계열사로서 투자자들의 신뢰 붕괴가 동반 확산되는 상황이다. 그룹 차원의 자금조달 부담 확대와 계열사 간 연쇄 신용위험이 현실화되고 있으며, 이는 SLL중앙 독자적인 사업 펀더멘털과 무관하게 재무 압박을 가중시키는 구조적 위험 요인이다. 그룹 전체의 신인도 훼손이 장기화될 경우 SLL중앙의 자금 조달 창구가 사실상 봉쇄될 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "방송산업 구조 변화에 따른 사업 및 수익성 불확실성 지속",
+          "detail": "한국신용평가는 신용등급 강등 사유로 방송산업의 구조적 변화에 따른 사업 및 재무적 불확실성을 명시적으로 언급했다. OTT 플랫폼 확산과 광고 시장 재편 등으로 전통 방송 콘텐츠 사업자의 수익 기반이 약화되는 추세가 지속되고 있다. 그룹 주요 계열사들의 실적 저하가 이미 진행 중인 가운데, SLL중앙 역시 콘텐츠 제작·유통 부문에서 수익성 회복의 가시적 전망이 불투명한 상황이다. 이러한 구조적 역풍은 단기 개선이 어렵고 중장기 신용도 추가 하락 압력으로 작용할 수 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[마켓인]그룹 전체가 흔들린다…SLL중앙, 결국 신용등급 'BBB-'로 추락",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFUyGwj5Hca20R4w4aLOPziDbJFXh4AJNJrFHSmpdnEudvhFMzAk2CHGp3GyGrzDqiPCr4GmDmQMOcwj1JwtPtwvjsH_ggrb7HZKYMDIjpuCUPevwUpD0YkfM0=",
+          "source": "이데일리 마켓인",
+          "date": "2026-06-09"
+        },
+        {
+          "title": "투매 쏟아진 JTBC·SLL중앙…중앙그룹 회사채 급락",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0RVBHfunPj53-paqe03Z4CM7pkQEpyR69T-ILWDupPOwW5sCzghl858L9FYXe9EuX1CwwMzjGrjeudUxbrXmFFXqUQOrLy5la6hRyGTFFZO3EtyrBaZpeDhdwQ9KlU1rzLg==",
+          "source": "이데일리 마켓인",
+          "date": "2026-06-15"
+        },
+        {
+          "title": "에스엘엘중앙(주), 수시, 일반사채, BBB (부정적), BB+↓",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECDehDb_vvt4GE6F2iZiaQjXU6OcUG7IFAdRxd5BeUX5TS0Bz01OSNsUTOADRAELVd2cCWx9ka4zt0XPbCwyyhBnkxedwHsh7bYw_asvFP_K8olUJSkuad",
+          "source": "한국기업평가",
+          "date": "2026-06-12"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1781491326214
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "단기차입금 집중으로 인한 유동성 압박",
+          "detail": "한온시스템은 2026년 1분기 기준 단기차입금이 1조 9,875억원에 달하며 극심한 유동성 압박에 노출되어 있다. 영업이익 급증 및 당기순이익 675억원 흑자전환이라는 긍정적 신호에도 불구하고, 단기차입금 집중 구조는 차환 실패 또는 금리 상승 시 재무적 위기로 직결될 수 있다. 유동비율 개선을 위한 단기차입금의 장기 부채 전환 여부가 핵심 과제이며, 고객사 프로젝트 중단에 따른 미확정 우발부채 리스크까지 겹쳐 재무 불확실성이 높은 상황이다. 최대주주 변경 이후 글로벌 고객 다변화 시너지가 가시화되지 않을 경우 영업현금흐름 개선도 제한적일 수 있어 복합적 위험이 존재한다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "공정위 불공정 하도급 과징금 부과 및 행정소송 리스크",
+          "detail": "공정거래위원회는 한온시스템이 2020년 5월부터 2023년 5월까지 9개 수급사업자에 대해 서면 미발급, 지연이자 미지급 등 하도급법 위반 행위를 저질렀다고 판단하여 시정명령과 과징금 14억 700만원을 부과하였다. 한온시스템은 이에 불복하여 행정소송을 제기할 예정으로, 소송 결과에 따라 추가적인 법적 비용 및 배상 부담이 발생할 수 있다. 과징금 자체의 규모는 제한적이나, 반복적·조직적 법 위반 행태가 드러남으로써 협력사 관계 및 기업 신뢰도에 부정적 영향을 미칠 수 있다. 한국앤컴퍼니그룹 편입 이후 그룹 전체의 ESG 및 공정거래 이미지 훼손으로도 이어질 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "고객사 프로젝트 중단에 따른 우발부채 및 매출 불확실성",
+          "detail": "한온시스템은 일부 고객사의 프로젝트 중단으로 인해 미확정 우발부채 리스크를 안고 있으며, 이는 향후 재무제표에 추가 손실로 반영될 가능성이 있다. 글로벌 전기차 전환 속도 조절 및 완성차 업체들의 투자 계획 변경이 공조시스템 수주에 직접적인 영향을 미치는 구조적 위험 요인이다. 최대주주 변경 이후 고객 포트폴리오 다변화가 아직 가시적 성과를 내지 못하고 있어 특정 고객 의존도에 따른 매출 변동성이 잔존한다. 이러한 수익 불확실성은 대규모 단기차입금 상환 능력에도 부정적 영향을 줄 수 있어 복합 리스크로 작용한다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[재무분석: 한온시스템] 2026년 1Q: 당기순이익 675억 흑자전환, 단기차입금 19875억 압박",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0ZPrTzY3JlkYZ7GF3gkai9qKdvw-46tAHkyMbhs-zu8m-WykGh0V2FrosGjDOpGtvKI6kzuB32rkqLacMos9rMNjWLGLujHnqnkhGewGc-BZw-AW5AqH6jbRg1drE9S_FnNxDd8w=",
+          "source": "Vertex AI Search",
+          "date": "2026-06-07"
+        },
+        {
+          "title": "공정위, 하도급업체에 계약서·대금 지연이자 안 준 한온시스템에 과징금 14억 부과",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAI3whElBh-L3S4xb8GtngbsY2ZbIIJUwj8oCu_UZi8PlSrv-bsAhU2QNzSlbl_cNl-CButcpsKa2D403FnoVaUD3n2bBEQwep4fTrVer7PrrWL_pTlAMM4DT-L0J6om8Paw-bgQ8f63DK5X_HC4vTH4SfFUQ-8-Q-__STxOCbRaWtkZIeXs69YyHGQveZMR4=",
+          "source": "조선일보",
+          "date": "2026-03-03"
+        },
+        {
+          "title": "한온시스템, 불공정 하도급 거래 무더기 적발... 과징금 14억원",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErabMdSiR7tJwF8KcIyl-dvcMqH6j0lo7X-Ex36cIrFUG-sUcIbgPQzrmjP2_eHXg1G3bvk0CeXJjMuSMuFnXXOgXARry9hvzCPWZ2GXmn8pOPpqtrQ0fbejzYRMqIcT8Cqy-cvHh-Pp12EKwttqLiWqRqRg==",
+          "source": "인포스탁데일리",
+          "date": "2026-03-02"
+        },
+        {
+          "title": "공정위, 한온시스템 불공정하도급 제재…과징금 14억 부과",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELZE-LCV1F1md7ezFyxQqZZ6gCGFgCskv_hYAR3deuj0n7jRypzt92vR7JXiEKXZvYLyEzbfUL8qsNVtMoNZfNciB3_pXwPWlLydGuVAMKLvKjMDTgQ5vkt2FI2dRbydcKMXkakUNW9vmizaKtOZxNxtqSNumjJrlQQq4Kc_M=",
+          "source": "전자신문",
+          "date": "2026-03-02"
+        },
+        {
+          "title": "한국앤컴퍼니그룹 체면 구긴 한온시스템, 공정위 14억 과징금",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErdvfOqK4L5t-M_pOTAQ1ikiKsXdQIJTSZa0bdovLk229Q7mBlJC0-rZz6DEypGiQErWk9oQ59VNB1RHTmMMRPq1bS27QJCxtLfukBbmfhZ340cUzbo0eP83o8OrVACj0=",
+          "source": "블로터",
+          "date": "2026-03-02"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1781491373089
+    },
+    "솔루션첨단소재": {
+      "company": "솔루션첨단소재",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1781491387632
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1781491401173
+    }
   }
 }

@@ -1018,5 +1018,211 @@
       "skip_reason": "no_new_news",
       "timestamp": 1781491401173
     }
+  },
+  "2026-06-22": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "채무불이행 및 기업회생절차 신청",
+          "detail": "2026년 6월 12일 JTBC는 206억 원 규모의 유동화차입금채권 만기 상환에 실패하며 공식적인 채무불이행(디폴트) 상태에 돌입했다. 이에 따라 NICE신용평가와 한국기업평가는 JTBC의 신용등급을 즉각 하향 조정했으며, 모기업 중앙홀딩스를 포함한 중앙그룹 5개 계열사가 법원에 기업회생절차 개시를 신청했다. 법원은 5개 사의 자산과 채권을 동결 조치했으며, 회생 사건을 단일 재판부가 일괄 심리하도록 배당하여 절차를 본격화했다. 이는 단순한 유동성 위기를 넘어 그룹 전체의 존속 가능성에 직접적인 위협이 되는 최고 수준의 재무 리스크다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "2,450억 원 규모 상장채권 기한이익 상실 및 채권시장 충격",
+          "detail": "JTBC의 회생절차 신청으로 인해 2,450억 원 규모의 상장채권 4종이 기한이익을 상실하여 만기와 무관하게 채권자들이 즉시 원리금 상환을 요구할 수 있는 상태가 됐다. 한국거래소는 JTBC 채권에 대해 투자유의채권종목 지정 예고 공시를 발령했으며, 이는 채권시장 전반에 신뢰 충격을 야기했다. 또한 중앙일보도 신용등급 하락에 따라 1,370억 원 규모의 회사채 4종에 기한이익상실 사유가 발생해 즉시 상환 대상이 됐다. 그룹 내 계열사 간 연쇄적인 채무 부실화가 진행되고 있어 재무적 손실 확정 규모가 추가로 확대될 가능성이 높다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "광고시장 침체 및 콘텐츠 사업 수익성 구조적 악화",
+          "detail": "이번 사태의 근본 원인으로 광고시장의 지속적 침체와 콘텐츠 산업 전반의 수익성 악화가 복합적으로 작용한 것으로 분석된다. 방송·미디어 업계의 광고 매출 감소는 JTBC의 영업현금흐름을 장기적으로 압박해왔으며, 이는 채무 상환 능력 저하로 직결됐다. 회생절차 진행 중에도 콘텐츠 제작 및 방송 운영의 지속 가능성에 대한 불확실성이 남아 있어 광고주 이탈, 우수 인력 유출, 시청률 하락 등 추가적인 영업 악화 리스크가 상존한다. 홍정도 부회장은 회생 신청이 정상화를 위한 선택이라고 밝혔으나, 구조적 수익성 회복 없이는 재건 가능성이 불투명하다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "JTBC 채무 불이행 및 중앙그룹 계열사 회생절차 신청 사건",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAmn1uy3IfT6mXCbYD2WdN62bo1ZUTc24BLBjwtUEV0uXvwW93wbkM8gbEGHXGOI_jQ14FwRjRfTQGs1aCIPHzpRkw1m1fbmhbMn2Ne2w6DX2E8oiwKT00B1rE3dM9LzDCSFHIEA09NtxC5LHAJ7S1tOeBK9WmjQkQdGxaY9DGYbkacM6DzOpBGBVgplIurntgWoKwPb3PO1qazfbTGYuDtVxBsWvp92IaeImLZI0rvSuPgaFhSskfpcwEGGQ5PVJqm3oBz5rTyBBg49ooUfmKu-tb1KAZGPocRcEaZ-xs5ihs9bYyny4U3cMeK4KcXvH1y96FHhJjRZQ87Sh3KoiWXbq_SdVo6keGZtKWvS5wTu8_BwTY6MgeDHlEKzvloBhohiTxMadfjw==",
+          "source": "나무위키:대문",
+          "date": "2026-06-12"
+        },
+        {
+          "title": "'206억원 차입금' 만기 상환 실패 JTBC, 자산·채권 동결",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHimVaZFqn58_T7WyyLsCQkCcMSu1Ck1bnKMjITAkBfLa7VQ6Qt-YUm8fU__UbNdlMQRkzoa50Wfwx5CfNGLQUURnycStwKnjPNS5ItBB8PrxtIynpaKPOExqNUuAPmdM7ZVdUbpOqRvh7vCUN1eoCh9IvNqJXzbQ==",
+          "source": "시사저널",
+          "date": "2026-06-16"
+        },
+        {
+          "title": "JTBC 회생 신청에 채권시장 충격…2450억 회사채 사실상 디폴트",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGpMlPLZNOVALp0IJ-M-FPTLtKJNqmu5h8glEaixmnzgDogKe1M3eSHW4WdTqO5xj_kqLoFNaVTQCtKmhg-tNM--AgoLdbfrjgfw8L0s-17pS_1zkfruWcMQpJHowf-uUFPtsTT9ci3nG7Vry-KxKfiZaFs0HhxVhk=",
+          "source": "EBN",
+          "date": "2026-06-16"
+        },
+        {
+          "title": "JTBC 여파에 중앙일보 당장 갚아야 할 회사채 1,370억 원",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEiVL-lUB9g-MG8KHlgs6FuE9EH0p0UPtQki1ylqnZGTSXvq_QmV91Q_-9zhxhWJ9OeRZrbgafg2VEV-6KSUj4xcVT6AGAwdPx-C0tA7vhLxLLudI1qTNOFZJUSN711T3hDhEyLuqikhoM=",
+          "source": "YTN",
+          "date": "2026-06-17"
+        },
+        {
+          "title": "206억 상환 불발 후 3일… 중앙그룹, 왜 법원 문을 두드렸나",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRXrOliQ06UdDKcCeNr3FRLWAvq6mAUG4xKnuzYH8Hu19ZbpyMF2T3Do74QRShsiVwdaqFSAAAvhQwHwYresReBrD9FExdkorKcfXmwLQmWbvIhlybm3Tt5oMlDI0h6uO1RV3DXJIYqY8f6YFAEwDW25DK",
+          "source": "nbn 시사경제",
+          "date": "2026-06-19"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782096209485
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "신용등급 하향 및 채권 가격 급락에 따른 재무 신뢰도 훼손",
+          "detail": "JTBC 등 중앙그룹 5개사의 기업회생 절차 신청을 계기로 SLL중앙의 신용등급이 B에서 B-로 하향 조정되었다. 회생 신청 대상에서 제외되었음에도 불구하고 SLL중앙 발행 채권 가격이 급락하여 시장은 정상 상환 가능성을 낮게 평가하고 있다. 개인 투자자들이 고금리를 기대하며 대규모로 보유 중인 해당 채권의 손실이 현실화될 가능성이 높다. 그룹 전반의 유동성 위기가 SLL중앙의 자금 조달 여건을 크게 악화시키고 있으며, 추가적인 신용등급 강등 가능성도 배제할 수 없다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "모회사 그룹 위기에 따른 강제 매각 압력 및 기업가치 훼손",
+          "detail": "중앙그룹은 경영 정상화를 위해 SLL중앙 매각을 핵심 카드로 활용할 가능성이 높으나, 미디어 업종 주가 급락으로 기업가치가 크게 하락한 상황이다. 과거 기업가치 2조원 이상을 기대받았으나, 최근 대만계 엔터테인먼트 펀드와의 협상에서는 1조원 내외의 가치로 제안되었음에도 가격 이견으로 불발되었다. 매각이 성사되더라도 기존 투자자 및 채권자 상환에 매각 대금 대부분이 사용될 것으로 예상되어 SLL중앙 자체의 사업 지속성과 성장 투자 여력이 훼손될 위험이 있다. IPO 또한 시장 환경 악화로 무산된 바 있어 자본 조달 경로가 모두 막힌 상태다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "콘텐츠 투자심리 냉각에 따른 사업 성장 둔화 리스크",
+          "detail": "중앙그룹 회생 절차 신청 이후 콘텐츠 산업 전반의 투자심리가 위축되고 있으며, SLL중앙은 그 중심에 놓인 기업으로 투자 유치와 파트너십 확보에 어려움이 가중될 전망이다. 이미 업황 자체가 꺾인 상황에서 그룹 리스크가 추가적인 악재로 작용하며 콘텐츠 제작·배급 경쟁력 유지에 차질이 생길 수 있다. 미디어 산업 구조조정의 신호탄으로 평가받는 이번 사태는 SLL중앙의 중장기 성장 전략 수립을 불확실하게 만드는 요인으로 작용할 것으로 분석된다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "동반 회생 비껴간 SLL중앙…'매각 카드' 지만 가격이 문제",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwqfoKuzkW0yJvugN9hiYIiF-6Fa7dwJlp-oVtsKevqEZCI1WqAxlBn_C0rrfH9wjcObiSVtELR5scqGq4UscWkNsPUed9SKcRjGtLDu5kO2lPQgZjaEFOJOpXTaEM0EQiX8dD_Y55IYnyCfPAeO9b4O1O4yYKcr5a5YOgjVcyIjsTcsHb9k4=",
+          "source": "인베스트조선",
+          "date": "2026-06-16"
+        },
+        {
+          "title": "\"안그래도 업황 꺾였는데\"…콘텐츠 투자시장에 찬물 끼얹은 중앙그룹",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGXw1tgflpnR3Vn_c0arb0bLRKiH_PYfXHOmbxYDJrBsd4A8x9PLO0E0bY5t63L-dnWLVICOAQ5M9S-2ShdajjlhjFU50lFgCUABJLeilbSmBRIL2dUQmCmk9et_2JleXSCpDVbvklqG7tObOHU290mrpxAYMWC8IbKeYbY4QrEJYbMbqGYWvo=",
+          "source": "인베스트조선",
+          "date": "2026-06-17"
+        },
+        {
+          "title": "SLL중앙 매각 추진도…중앙그룹, 위기 돌파 안간힘",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsE9NsOe8D2kcK4_wLFtTT8PHifzD9aJ_2PpLdPkejlx-G2ImW10fpc7L1CrX_KcEiuIYZhcoPPmXv1Rxr5BFyrz3UhAKNCcRsT6qJaknwNzMEVk461XoTolZ1ixTwle98FDeFmnfFapLEzsfm",
+          "source": "아시아경제",
+          "date": "2026-06-17"
+        },
+        {
+          "title": "JTBC 등 중앙그룹 5개사 회생 신청…중앙일보는 워크아웃",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiRHex1Gfm-Hs0bHnZ7f32tqPQ9HyCqFJsc3gWIx-1-vVKOG8uwynN3sfRl8ReFdc6AsBh_6kWdH_sb_VfaSHXNv3drDCe7kz6I2q5gQi1nR14-RwBabGqWa56F1Fq6Lw=",
+          "source": "글로벌이코노믹",
+          "date": "2026-06-15"
+        },
+        {
+          "title": "중앙그룹 회사채, 기관은 진작 리스크 회피... 수천억 떠안은 개미만 날벼락",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjLPYzFdlAR94Z8mOhux1mGW9HJR5ESF4HPuLy9JON1J49yUS4nrYoFUmxXPRd8-1GXlNYn_IKBwGNSSlddVMKBiKALSpuxEuK5Mp3o_Kct7ua_3R634CDdSQWsuM2d3iRFvzFVUE9c7gz1Mwbp1gCMF-QUBPSWITuWvINwY_0D_RfGT-g5oq6IYeVx3M=",
+          "source": "조선비즈",
+          "date": "2026-06-16"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782096251935
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "단기차입금 과중 및 유동성 압박",
+          "detail": "2026년 1분기 기준 단기차입금이 1조 9,875억 원에 달하는 반면, 현금성 자산은 8,481억 원에 불과하여 약 1조 1,394억 원의 유동성 갭이 존재한다. 단기 부채 상환 능력에 대한 불확실성이 높은 상황으로, 외부 자금 조달 여건이 악화될 경우 유동성 위기로 이어질 수 있다. 이는 기업의 재무 안정성에 직접적인 위협 요인으로 작용하고 있어 단기적 리스크 수준이 매우 높다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "채무증권 차환 발행 시 이자비용 추가 증가",
+          "detail": "6월 및 9월 만기가 도래하는 3,700억 원 규모의 채무증권이 차환 발행될 경우, 이자율이 4%를 초과할 것으로 예상되어 이미 높은 이자비용이 추가적으로 가중될 가능성이 있다. 2026년 1분기 기준 순이자비용이 영업이익의 36%에 해당할 만큼 이자 부담이 크며, 차환 조건 악화 시 수익성 회복세가 다시 꺾일 수 있다. 금리 환경 변화에 따른 재무비용 통제 어려움이 지속될 전망이다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "2대주주 풋옵션 행사 부담에 따른 추가 재무 리스크",
+          "detail": "2대주주가 보유한 풋옵션이 아직 해소되지 않아 잠재적인 추가 자금 유출 가능성이 존재한다. 풋옵션 행사 시 한온시스템의 현금 유출이 발생할 수 있으며, 이미 유동성이 타이트한 상황에서 추가 부담으로 작용할 수 있다. 유안타증권은 이 리스크가 해소되기 전까지 주가 상승이 제한적일 것으로 분석하고 있어 투자 매력도 측면에서도 부정적 요인으로 작용하고 있다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[재무분석: 한온시스템] 2026년 1Q: 당기순이익 675억 흑자전환, 단기차입금 19875억 압박",
+          "url": "https://www.youtube.com",
+          "source": "YouTube",
+          "date": "2026-06-07"
+        },
+        {
+          "title": "[모닝 리포트] \"한온시스템, 손익은 개선·재무는 부담…목표가 4200원\"",
+          "url": "https://www.newspim.com",
+          "source": "뉴스핌",
+          "date": "2026-06-05"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782096286380
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "과중한 차입금 부담 및 재무안정성 위기",
+          "detail": "솔루스첨단소재는 2026년 1분기 기준 유동비율이 56%까지 악화되며 단기 유동성 위험이 심각한 수준에 도달했습니다. 글로벌 생산 캐파 확대를 위한 대규모 투자로 차입금이 급증한 상황이며, 헝가리 법인의 차입약정 위반 리스크가 추가적인 재무 부담 요인으로 작용하고 있습니다. 매출은 전년 대비 22% 증가했음에도 불구하고 영업손실이 -220억원으로 확대되어 외형 성장이 수익성 개선으로 이어지지 못하고 있습니다. LG에너지솔루션의 풋옵션 행사 가능성까지 잠재되어 있어 재무 압박이 복합적으로 가중될 수 있습니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "SK넥실리스와의 특허 소송 패소 및 유럽 판매금지 리스크",
+          "detail": "솔루스첨단소재는 SK넥실리스와의 전지박 관련 특허 침해 소송에서 미국 1심 배심원단 평결에서 패소 판정을 받았습니다. 최종 판결이 수주 내 확정될 예정이며, 패소 확정 시 손해배상 부담 및 미국 시장 내 사업 제약 가능성이 현실화될 수 있습니다. 유럽에서도 동일한 특허 분쟁에 따른 판매금지 리스크가 존재해 핵심 사업인 전지박 부문의 글로벌 영업에 중대한 타격이 우려됩니다. 이미 적자 상태인 전지박 사업부에 법적 리스크까지 더해질 경우 턴어라운드 시점이 더욱 지연될 수 있습니다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "전지박 사업부 영업 적자 지속 및 수익성 회복 불확실성",
+          "detail": "전지박 사업부는 전사 적자의 핵심 원인으로, 대규모 설비 투자와 글로벌 생산 확대에도 불구하고 수익성 개선 시점이 불투명한 상황입니다. 전기차 시장의 수요 회복 속도 지연과 고객사 발주 불확실성이 실적 개선을 제약하는 요인으로 작용하고 있습니다. 소송 리스크와 재무 부담이 복합적으로 작용하는 가운데 투자자 신뢰 회복과 수주 확대 여부가 중장기 생존의 핵심 변수로 부상하고 있습니다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[재무분석: 솔루스첨단소재] 2026년 1Q: 매출 22% 증가, 영업손실 -220억원 확대",
+          "url": "https://www.youtube.com",
+          "source": "YouTube",
+          "date": "2026-06-14"
+        },
+        {
+          "title": "전지박 회복 노리는 솔루스첨단소재, 미국·유럽 소송전 변수",
+          "url": "https://www.datanews.co.kr",
+          "source": "데이터뉴스",
+          "date": "2026-06-01"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782096320534
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1782096336675
+    }
   }
 }

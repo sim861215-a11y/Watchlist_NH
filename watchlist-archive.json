@@ -1224,5 +1224,191 @@
       "skip_reason": "no_new_news",
       "timestamp": 1782096336675
     }
+  },
+  "2026-06-29": {
+    "JTBC": {
+      "company": "JTBC",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "기업회생절차 신청 및 채권 디폴트 위기",
+          "detail": "JTBC는 법원에 기업회생절차를 신청하였으며, 이에 따라 2450억원 규모의 상장 회사채에 대한 기한이익이 일제히 상실되었다. 기한이익 상실로 인해 채권자들은 만기 도래 여부와 무관하게 즉시 원리금 상환을 요구할 수 있는 상태가 되어 사실상 디폴트 상황에 진입하였다. 한국거래소는 JTBC 채권에 대해 투자유의채권종목 지정 예고 공시를 발령하였으며, 채권시장 전반에 충격을 주고 있다. 회생절차 개시 여부는 법원의 3주 내외 검토를 통해 결정될 예정으로, 결과에 따라 재무 상황이 더욱 악화될 가능성이 존재한다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "법원 회생절차 개시 여부 결정 불확실성",
+          "detail": "서울회생법원은 중앙그룹 계열사 5곳에 대한 대표자 심문을 6월 23일 완료하였으며, 향후 3주 안팎의 검토를 거쳐 회생절차 개시 여부를 결정할 예정이다. 법원은 자율구조조정 지원(ARS) 프로그램을 우선 검토하고 있으며, 회생절차 개시를 최대 3개월 보류하고 채권자 협의 진전 시 추가 연장도 가능한 상황이다. 절차 개시 결정이 내려질 경우 경영권 제한, 자산 처분 동결 등 추가적인 경영 리스크가 발생할 수 있다. 결과가 확정되기까지 대내외적 불확실성이 지속되어 광고주 이탈 및 파트너사와의 계약 위축 가능성도 배제할 수 없다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "스포츠 중계권 계약 재협상 및 콘텐츠 사업 지속성 리스크",
+          "detail": "JTBC는 고정비 부담 완화를 위해 IOC 및 FIFA와 체결한 대형 스포츠 중계권 계약의 재협상 계획을 법원에 제시한 것으로 알려졌다. 중계권 재협상 과정에서 계약 조건 변경 또는 계약 해지 가능성이 존재하며, 이는 핵심 콘텐츠 경쟁력 약화로 이어질 수 있다. JTBC 측은 보도 및 스포츠 중계 등 방송 콘텐츠 제작이 정상 운영될 것이라고 밝혔으나, 재정 불안정 상황에서 대형 계약 유지를 위한 재원 확보 여부가 불투명하다. 중계권 축소 또는 상실 시 시청률 및 광고 매출에 직접적인 타격이 예상된다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "JTBC, 오늘(23일) 법원서 대표단 심문..회생절차 본격화",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGHxSJxKqsuuKlwMc_DnckM2mLCoF3hQMqU9OonqLrtvaMHBzUGkI7ub0_KqLCjFkyzxW7Y0jqRYl511eDzj8IvGawtwg5Em4q0fH8R-eSOxJyIsPhf32CmGxj2_QO9gsUvXM_MM1Xl10iqGmu7fRU-9fvlBBiJhfsco5e8EDegjrowwRd43Q==",
+          "source": "스타뉴스",
+          "date": "2026-06-23"
+        },
+        {
+          "title": "중앙그룹 JTBC 회생 심문 종료…법원, 3주 내 운명 가른다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEDndiffsKnMwhdj3OyqVdGXu6ndkvcqujxKwbKkNFQ4pYNDUPOBE_U5nV2Zdnvb0Ny--fT3Ia4-57clcIk6QSegD0iIyKP7qm8C1M3G5E5mMGiwH-HSiV5EwsXhL3jGLpbQRuCrJqgDaYF8u9c9XGCSjXa",
+          "source": "세종의소리",
+          "date": "2026-06-23"
+        },
+        {
+          "title": "법원, '회생 신청' JTBC 등 5개사 대표자 심문...조만간 개시 여부 결정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGv5TfZOSYndl1DvMJADX1o4pGunc7Miqq2q77DgZxBXcTAjHZTPMrHP-BEkiPwMDo3tz2QGebRpec8KvIQU0Z4WNExZklkUu_jPbKHr0bJesdhN6isVPSVCovhd6oB-wJal4fQjHCvBb9iNhA=",
+          "source": "YTN",
+          "date": "2026-06-23"
+        },
+        {
+          "title": "JTBC 회생 신청에 채권시장 충격…2450억 회사채 사실상 디폴트",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEO8Os7pWNlInpgtESzBcMAdn9M6tPNhwygeRFqUlS_zKxXRc_IVgA1j4prAnphBE-RXME0eP1W51nXj9Tnd4yaYSpVFzc6nV82VuVGps3D-0i7i21BpSMssayHFSbQ13yS2vBgMucKmjPzuqd-KPPjetL4ZQ==",
+          "source": "EBN",
+          "date": "2026-06-16"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782700196892
+    },
+    "에스엘엘중앙": {
+      "company": "에스엘엘중앙",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "모회사 중앙그룹 회생 절차 및 지분 담보권 행사에 따른 경영권 불안정",
+          "detail": "중앙그룹 주요 계열사들이 기업회생 절차를 신청하면서 SLL중앙의 2대 주주 인수금융 만기 연장이 불발되었고, 대주단이 담보권을 행사하여 지분을 강제 매각할 가능성이 현실화되고 있다. 경영권 통매각 시나리오가 부상하면서 텐센트 등 외부 전략적 투자자와의 거래 가능성이 거론되고 있다. 지배구조의 급격한 변동은 기존 콘텐츠 사업 전략, 임직원 안정성, 파트너사 신뢰에 심각한 타격을 줄 수 있다. 회생 심문이 시작된 상황에서 은행권의 추가 충당금 적립 압력도 가중되고 있어 자금 조달 환경이 악화될 위험이 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "강제 매각 추진 과정에서의 기업가치 훼손 및 헐값 매각 리스크",
+          "detail": "SLL중앙은 중앙그룹 회생 절차에서 제외되어 핵심 매각 자산으로 활용될 가능성이 높으나, 미디어 업종 전반의 주가 급락으로 인해 적정 가치를 인정받기 어려운 상황이다. 대만계 자본과의 투자 유치 협상이 가격 조건 불일치로 이미 한 차례 불발된 바 있으며, 회생 절차 진행에 따라 협상력이 추가로 약화될 것으로 예상된다. 매각 지연이 장기화될 경우 핵심 인력 이탈 및 콘텐츠 제작 역량 저하로 이어져 기업가치가 추가 하락하는 악순환이 발생할 수 있다.",
+          "severity": "high"
+        },
+        {
+          "rank": 3,
+          "title": "투자자·채권자 간 변제 순위 분쟁 및 소송 리스크",
+          "detail": "SLL중앙에 투자한 프랙시스캐피탈은 회생담보권자로서 일반 채권자보다 앞선 변제 순위를 주장하고 있어, 이해관계자 간 권리 다툼이 본격화될 가능성이 있다. 복잡한 지분 구조와 다수 채권자가 얽혀 있는 만큼 법적 분쟁이 장기화될 경우 매각 일정 및 정상 경영에 차질이 생길 수 있다. 회생 절차 밖에 놓인 SLL중앙의 법적 지위에 대한 불확실성이 해소되지 않는 한, 신규 투자 유치나 금융 조달도 사실상 어려운 상태가 지속될 것으로 우려된다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "'자력 생존'의 역설…SLL중앙, 매각 시계 빨라졌다",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFjm878SfLXg7y8BIISCB5m3xIWK2rLpYoQEEhqNhyAoHqKTZMdk5fZUBzalZI9Lx-GMT4ndtfyHkSroscfwGA-a8GJjjcK1vnpmaY--u9ML5QY9RdisvU1h2DJTGkV686XBhV5NnzPJKFjoA9e9WdO3zJWWDaTgMdD-Ek=",
+          "source": "마켓인",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "중앙그룹 회생 첫 심문…은행권 충당금 부담 현실화하나",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpHuQPzJ9LV0qRntiZ0a9iqdWg-WHnQA_wsqbO0_tbjZuc9c5nBJPXxgo7W2cfEV-35DTQHPsl13fZISHozjG7CK2zeAktRudQxjnPN4o2dQQEFYB72CBk8DDsrtv5LJi55ZTqixKjckaykbKHuJNCnHvjww40LSbpEdyvRr-yDUxV_ahIFw==",
+          "source": "이데일리",
+          "date": "2026-06-23"
+        },
+        {
+          "title": "동반 회생 비껴간 SLL중앙…'매각 카드' 지만 가격이 문제",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGyKmj5XCyd3oIZGIjvfIZEzjj3-bwX3NVDBHc2nxL0Ku2l9Ul7rxK3Bwh8Nf3VEwdqwDCm83eE7qyKtcspC-p0kZn36f4wRUtYTMPfPJUSFOLFCtJSTkKvBDxXjN0nu4txGshDEvfHeteIgMG0Y2G4U10Hyv5ABLObp96EDxFupE_tqI9l1zdI",
+          "source": "인베스트조선",
+          "date": "2026-06-16"
+        },
+        {
+          "title": "SLL중앙 매각 추진도…중앙그룹, 위기 돌파 안간힘",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLIArzo-f693qWKg5tZuMm5IxSLPsNjUIdrgCoHyhwzcZsebZZ13O6qrYFxxhY607hDzMcfE-XS6n0jw9W6lqUEso_Amo3uwZnpDH0qb2P6h6jsZXxnWUjIYl0zbNDC0e-",
+          "source": "Daum",
+          "date": "2026-06-16"
+        },
+        {
+          "title": "중앙그룹 회생에서 빠진 SLL... 투자자들의 운명은?",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELJz19ftfPLl0VPHXitEQonzcgLWZYvX6Niw---CZhbglx7LtAlUlsZGk6N5qcpMowdQ6PKDLMCr4zKjxqpKipYP_26RD2RJG8C6BUyH1-alaogL7pyDOXUHDThfCVvOmR5mXyo5Fvyj_5SUwi6DUmymcP2qRQnadr4RmpC1rBlaCu8D3myD5CnwTi",
+          "source": "조선비즈",
+          "date": "2026-06-16"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782700242086
+    },
+    "한온시스템": {
+      "company": "한온시스템",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1782700258809
+    },
+    "솔루션첨단소재": {
+      "company": "솔루스첨단소재",
+      "risk_factors": [
+        {
+          "rank": 1,
+          "title": "과도한 차입금 부담 및 재무 안정성 위기",
+          "detail": "2026년 1분기 매출이 전년 대비 22% 증가했음에도 불구하고 영업손실이 -220억원으로 확대되며 수익성 개선이 지연되고 있다. 막대한 차입금 부담으로 인해 유동비율이 악화되고 있으며, 헝가리 법인의 차입약정 위반 리스크가 구체적으로 부각되고 있다. 차입약정 위반이 현실화될 경우 기한이익 상실 등 재무적 연쇄 위기로 이어질 가능성이 있다. 전지박 사업의 성장세에도 불구하고 고정비 및 금융비용 부담이 실적 개선을 상쇄하고 있어 단기적 재무 안정성 회복이 불투명하다.",
+          "severity": "high"
+        },
+        {
+          "rank": 2,
+          "title": "미국 전지박 특허 소송 패소 및 다국적 소송 리스크",
+          "detail": "미국 텍사스 동부 연방지방법원에서 SK넥실리스와의 배터리용 동박 특허 침해 소송 1심 배심원 평결에서 핵심 특허 5건 모두 침해가 인정되어 패소하였다. 솔루스첨단소재는 항소 계획을 밝혔으나, 항소 결과에 따라 상당한 손해배상 부담이 확정될 가능성이 존재한다. 현재 한국·미국·유럽 3개 지역에서 동시에 소송이 진행 중이며, 유럽통합특허법원(UPC) 선고가 2026년 말로 예정되어 있어 법적 리스크가 중첩되어 있다. 소송 패소가 누적될 경우 영업 제한 및 대규모 배상금 지급 등으로 재무적 압박이 가중될 수 있다.",
+          "severity": "medium"
+        },
+        {
+          "rank": 3,
+          "title": "지속적 영업적자로 인한 사업 지속성 불확실성",
+          "detail": "매출 성장에도 영업손실이 지속·확대되는 구조적 문제가 해소되지 않고 있으며, 이는 투자자 신뢰도 하락 및 추가 자금 조달 여건 악화로 이어질 수 있다. 전지박 시장의 수요 회복 지연 및 글로벌 경쟁 심화로 단기간 내 수익성 전환이 어려운 상황이다. 재무 악화와 소송 리스크가 복합적으로 작용할 경우 기업 신용등급 하락 및 자금 조달 비용 상승이 우려된다.",
+          "severity": "medium"
+        }
+      ],
+      "sources": [
+        {
+          "title": "[재무분석: 솔루스첨단소재] 2026년 1Q: 매출 22% 증가, 영업손실 -220억원 확대",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGxIGVHARiFNYts7I7V1OI3Lnc3ABf_unMNZqdG5Cup7Wh3C8akxH_ao9AQGDO3oaOx82RmGTpi6kdMlTtP_haTph8vD6f3mPBBDhyTE5rQZVZNIURgOYjyj4YQN5VzOJIMolZxMLo=",
+          "source": "YouTube",
+          "date": "2026-06-14"
+        },
+        {
+          "title": "솔루스첨단소재, 美 배심원 특허 침해 평결 '최종 결론 아냐'…항소 계획",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9Su1HsKQLyeXEJhnInRLIQIInRkgjgXSQgVntr0M2HA1Ij2l_QazVKTUz1nLwXCycS5CSfmHEMhhCBfB7J8HobVUInh-pubZmlJrxwbonpTB5kBGPDLZtLsMQVasILMLze_2WTRUvut1twk3l3K1apXYH-k4=",
+          "source": "철강금속신문",
+          "date": "2026-05-26"
+        },
+        {
+          "title": "솔루스첨단소재, 美 전지박 특허소송 패소에 불복… '항소 계획'",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9Su1HsKQLyeXEJhnInRLIQIInRkgjgXSQgVntr0M2HA1Ij2l_QazVKTUz1nLwXCycS5CSfmHEMhhCBfB7J8HobVUInh-pubZmlJrxwbonpTB5kBGPDLZtLsMQVasILMLze_2WTRUvut1twk3l3K1apXYH-k4=",
+          "source": "마켓인",
+          "date": "2026-05-26"
+        },
+        {
+          "title": "SK넥실리스, 美 동박 특허소송 승소…솔루스첨단소재 항소",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ7V0MTOKIkEvT4b8rhOxcrYmamrExaQINftBt_I8fNVi6Xu_Q4LlHug1PVi1ULWgeG6cDA3dZSDNZDQbzm1WJI4VgmlOcgwG3snh-6pyVUHf22eQ_KqgvWEPPeykYNHu0WUqsvja009HTqjYJzDBcKNQ=",
+          "source": "디일렉(THE ELEC)",
+          "date": "2026-05-26"
+        },
+        {
+          "title": "SK넥실리스, 美 동박 특허 소송 승소…솔루스첨단소재 침해 인정",
+          "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ7V0MTOKIkEvT4b8rhOxcrYmamrExaQINftBt_I8fNVi6Xu_Q4LlHug1PVi1ULWgeG6cDA3dZSDNZDQbzm1WJI4VgmlOcgwG3snh-6pyVUHf22eQ_KqgvWEPPeykYNHu0WUqsvja009HTqjYJzDBcKNQ=",
+          "source": "한경매거진&북",
+          "date": "2026-05-26"
+        }
+      ],
+      "overall_sentiment": "negative",
+      "skip_reason": null,
+      "timestamp": 1782700297039
+    },
+    "마제스티골프코리아": {
+      "company": "마제스티골프코리아",
+      "risk_factors": [],
+      "sources": [],
+      "overall_sentiment": "neutral",
+      "skip_reason": "no_new_news",
+      "timestamp": 1782700311199
+    }
   }
 }
